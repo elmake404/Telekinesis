@@ -53,6 +53,14 @@ public class CurrentZombieControl : MonoBehaviour
         }
     }
 
+    public void AddExplosionForceToBody(Vector3 source)
+    {
+        for (int i = 0; i < allChildrenColliders.Length; i++)
+        {
+            allChildrenColliders[i].attachedRigidbody.AddExplosionForce(3f, source, 1f, 5f, ForceMode.Impulse);
+        }
+    }
+
     public Transform GetHeadTransform()
     {
         return blankEnemy.headContainer;

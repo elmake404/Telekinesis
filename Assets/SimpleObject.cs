@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SimpleObject : MonoBehaviour, IRopeCollision
+public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded
 {
     public Rigidbody objectRigidbody;
     public Collider objectCollider;
+    public TypeOfConnected selectedType = TypeOfConnected.simpleObject;
     private ConnectedPin connectedPin;
 
     public void SetWithRopeConnected(ConnectedPin connectedPin)
@@ -14,9 +15,19 @@ public class SimpleObject : MonoBehaviour, IRopeCollision
         this.connectedPin = connectedPin;
     }
 
+    public TypeOfConnected GetTypeOfConnected()
+    {
+        return selectedType;
+    }
+
     public void InitConnect()
     {
         return;
+    }
+
+    public void Explode(Vector3 source)
+    {
+        objectRigidbody.AddExplosionForce(5f, source, 5f, 5f, ForceMode.Impulse);
     }
 
     public void BreakRope(Vector3 sourceExplosion)

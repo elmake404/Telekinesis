@@ -1,0 +1,394 @@
+fileFormatVersion: 2
+guid: aa1a347c81e2740fcaca1fe952db201e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ' Tree_Tropic_001'
+    100002: ' Tree_Tropic_002'
+    100004: ' Tree_Tropic_003'
+    100006: ' Tree_Tropic_004'
+    100008: ' Tree_Tropic_005'
+    100010: ' Tree_Tropic_006'
+    100012: ' Tree_Tropic_007'
+    100014: ' Tree_Tropic_008'
+    100016: ' Tree_Tropic_009'
+    100018: ' Tree_Tropic_010'
+    100020: ' Tree_Tropic_011'
+    100022: ' Tree_Tropic_012'
+    100024: ' Tree_Tropic_013'
+    100026: ' Tree_Tropic_014'
+    100028: ' Tree_Tropic_015'
+    100030: ' Tree_Tropic_016'
+    100032: ' Tree_Tropic_017'
+    100034: ' Tree_Tropic_018'
+    100036: ' Tree_Tropic_019'
+    100038: ' Tree_Tropic_020'
+    100040: ' Tree_Tropic_021'
+    100042: ' Tree_Tropic_022'
+    100044: ' Tree_Tropic_023'
+    100046: ' Tree_Tropic_025'
+    100048: //RootNode
+    100050: Base
+    100052: Brocken_wall
+    100054: House
+    100056: House_1
+    100058: House_2
+    100060: House_3
+    100062: House_4
+    100064: House_5
+    100066: House_6
+    100068: Object003
+    100070: Object007
+    100072: Object008
+    100074: Plane019
+    100076: Plane022
+    100078: Rock Type4 01 mesh
+    100080: Rock Type4 01 mesh005
+    100082: Rock Type4 01 mesh006
+    100084: Rock Type4 01 mesh007
+    100086: Rock Type4 01 mesh008
+    100088: Rock Type4 01 mesh009
+    100090: Rock Type5 02 mesh
+    100092: Rock Type5 02 mesh001
+    100094: Rock Type5 02 mesh002
+    100096: Rock Type6 03 mesh
+    100098: Stone
+    100100: Tree
+    100102: Wall
+    400000: ' Tree_Tropic_001'
+    400002: ' Tree_Tropic_002'
+    400004: ' Tree_Tropic_003'
+    400006: ' Tree_Tropic_004'
+    400008: ' Tree_Tropic_005'
+    400010: ' Tree_Tropic_006'
+    400012: ' Tree_Tropic_007'
+    400014: ' Tree_Tropic_008'
+    400016: ' Tree_Tropic_009'
+    400018: ' Tree_Tropic_010'
+    400020: ' Tree_Tropic_011'
+    400022: ' Tree_Tropic_012'
+    400024: ' Tree_Tropic_013'
+    400026: ' Tree_Tropic_014'
+    400028: ' Tree_Tropic_015'
+    400030: ' Tree_Tropic_016'
+    400032: ' Tree_Tropic_017'
+    400034: ' Tree_Tropic_018'
+    400036: ' Tree_Tropic_019'
+    400038: ' Tree_Tropic_020'
+    400040: ' Tree_Tropic_021'
+    400042: ' Tree_Tropic_022'
+    400044: ' Tree_Tropic_023'
+    400046: ' Tree_Tropic_025'
+    400048: //RootNode
+    400050: Base
+    400052: Brocken_wall
+    400054: House
+    400056: House_1
+    400058: House_2
+    400060: House_3
+    400062: House_4
+    400064: House_5
+    400066: House_6
+    400068: Object003
+    400070: Object007
+    400072: Object008
+    400074: Plane019
+    400076: Plane022
+    400078: Rock Type4 01 mesh
+    400080: Rock Type4 01 mesh005
+    400082: Rock Type4 01 mesh006
+    400084: Rock Type4 01 mesh007
+    400086: Rock Type4 01 mesh008
+    400088: Rock Type4 01 mesh009
+    400090: Rock Type5 02 mesh
+    400092: Rock Type5 02 mesh001
+    400094: Rock Type5 02 mesh002
+    400096: Rock Type6 03 mesh
+    400098: Stone
+    400100: Tree
+    400102: Wall
+    2100000: 'Material #482'
+    2100002: 'Material #204'
+    2100004: 'Material #122'
+    2100006: 'Material #159'
+    2100008: 'Material #88'
+    2100010: 'Material #481'
+    2100012: 'Material #51'
+    2100014: 'Material #475'
+    2100016: 'Material #480'
+    2100018: 'Material #476'
+    2100020: 'Material #53'
+    2300000: ' Tree_Tropic_001'
+    2300002: ' Tree_Tropic_002'
+    2300004: ' Tree_Tropic_003'
+    2300006: ' Tree_Tropic_004'
+    2300008: ' Tree_Tropic_005'
+    2300010: ' Tree_Tropic_006'
+    2300012: ' Tree_Tropic_007'
+    2300014: ' Tree_Tropic_008'
+    2300016: ' Tree_Tropic_009'
+    2300018: ' Tree_Tropic_010'
+    2300020: ' Tree_Tropic_011'
+    2300022: ' Tree_Tropic_012'
+    2300024: ' Tree_Tropic_013'
+    2300026: ' Tree_Tropic_014'
+    2300028: ' Tree_Tropic_015'
+    2300030: ' Tree_Tropic_016'
+    2300032: ' Tree_Tropic_017'
+    2300034: ' Tree_Tropic_018'
+    2300036: ' Tree_Tropic_019'
+    2300038: ' Tree_Tropic_020'
+    2300040: ' Tree_Tropic_021'
+    2300042: ' Tree_Tropic_022'
+    2300044: ' Tree_Tropic_023'
+    2300046: ' Tree_Tropic_025'
+    2300048: Base
+    2300050: House_1
+    2300052: House_2
+    2300054: House_3
+    2300056: House_4
+    2300058: House_5
+    2300060: House_6
+    2300062: Object003
+    2300064: Object007
+    2300066: Object008
+    2300068: Plane019
+    2300070: Plane022
+    2300072: Rock Type4 01 mesh
+    2300074: Rock Type4 01 mesh005
+    2300076: Rock Type4 01 mesh006
+    2300078: Rock Type4 01 mesh007
+    2300080: Rock Type4 01 mesh008
+    2300082: Rock Type4 01 mesh009
+    2300084: Rock Type5 02 mesh
+    2300086: Rock Type5 02 mesh001
+    2300088: Rock Type5 02 mesh002
+    2300090: Rock Type6 03 mesh
+    2300092: Wall
+    3300000: ' Tree_Tropic_001'
+    3300002: ' Tree_Tropic_002'
+    3300004: ' Tree_Tropic_003'
+    3300006: ' Tree_Tropic_004'
+    3300008: ' Tree_Tropic_005'
+    3300010: ' Tree_Tropic_006'
+    3300012: ' Tree_Tropic_007'
+    3300014: ' Tree_Tropic_008'
+    3300016: ' Tree_Tropic_009'
+    3300018: ' Tree_Tropic_010'
+    3300020: ' Tree_Tropic_011'
+    3300022: ' Tree_Tropic_012'
+    3300024: ' Tree_Tropic_013'
+    3300026: ' Tree_Tropic_014'
+    3300028: ' Tree_Tropic_015'
+    3300030: ' Tree_Tropic_016'
+    3300032: ' Tree_Tropic_017'
+    3300034: ' Tree_Tropic_018'
+    3300036: ' Tree_Tropic_019'
+    3300038: ' Tree_Tropic_020'
+    3300040: ' Tree_Tropic_021'
+    3300042: ' Tree_Tropic_022'
+    3300044: ' Tree_Tropic_023'
+    3300046: ' Tree_Tropic_025'
+    3300048: Base
+    3300050: House_1
+    3300052: House_2
+    3300054: House_3
+    3300056: House_4
+    3300058: House_5
+    3300060: House_6
+    3300062: Object003
+    3300064: Object007
+    3300066: Object008
+    3300068: Plane019
+    3300070: Plane022
+    3300072: Rock Type4 01 mesh
+    3300074: Rock Type4 01 mesh005
+    3300076: Rock Type4 01 mesh006
+    3300078: Rock Type4 01 mesh007
+    3300080: Rock Type4 01 mesh008
+    3300082: Rock Type4 01 mesh009
+    3300084: Rock Type5 02 mesh
+    3300086: Rock Type5 02 mesh001
+    3300088: Rock Type5 02 mesh002
+    3300090: Rock Type6 03 mesh
+    3300092: Wall
+    4300000: Object003
+    4300002: Plane019
+    4300004: Plane022
+    4300006: Object007
+    4300008: Object008
+    4300010: House_1
+    4300012: House_3
+    4300014: House_5
+    4300016: House_6
+    4300018: House_4
+    4300020: House_2
+    4300022: ' Tree_Tropic_002'
+    4300024: ' Tree_Tropic_007'
+    4300026: ' Tree_Tropic_008'
+    4300028: ' Tree_Tropic_009'
+    4300030: ' Tree_Tropic_010'
+    4300032: ' Tree_Tropic_011'
+    4300034: ' Tree_Tropic_012'
+    4300036: ' Tree_Tropic_013'
+    4300038: ' Tree_Tropic_014'
+    4300040: ' Tree_Tropic_015'
+    4300042: ' Tree_Tropic_016'
+    4300044: ' Tree_Tropic_017'
+    4300046: ' Tree_Tropic_019'
+    4300048: ' Tree_Tropic_020'
+    4300050: ' Tree_Tropic_021'
+    4300052: ' Tree_Tropic_022'
+    4300054: ' Tree_Tropic_023'
+    4300056: ' Tree_Tropic_025'
+    4300058: ' Tree_Tropic_001'
+    4300060: ' Tree_Tropic_003'
+    4300062: ' Tree_Tropic_018'
+    4300064: ' Tree_Tropic_004'
+    4300066: ' Tree_Tropic_006'
+    4300068: ' Tree_Tropic_005'
+    4300070: Rock Type4 01 mesh006
+    4300072: Rock Type4 01 mesh007
+    4300074: Rock Type4 01 mesh009
+    4300076: Rock Type4 01 mesh008
+    4300078: Rock Type6 03 mesh
+    4300080: Rock Type5 02 mesh
+    4300082: Rock Type4 01 mesh
+    4300084: Rock Type5 02 mesh001
+    4300086: Rock Type5 02 mesh002
+    4300088: Rock Type4 01 mesh005
+    4300090: Wall
+    4300092: Base
+    6400000: ' Tree_Tropic_001'
+    6400002: ' Tree_Tropic_002'
+    6400004: ' Tree_Tropic_003'
+    6400006: ' Tree_Tropic_004'
+    6400008: ' Tree_Tropic_005'
+    6400010: ' Tree_Tropic_006'
+    6400012: ' Tree_Tropic_007'
+    6400014: ' Tree_Tropic_008'
+    6400016: ' Tree_Tropic_009'
+    6400018: ' Tree_Tropic_010'
+    6400020: ' Tree_Tropic_011'
+    6400022: ' Tree_Tropic_012'
+    6400024: ' Tree_Tropic_013'
+    6400026: ' Tree_Tropic_014'
+    6400028: ' Tree_Tropic_015'
+    6400030: ' Tree_Tropic_016'
+    6400032: ' Tree_Tropic_017'
+    6400034: ' Tree_Tropic_018'
+    6400036: ' Tree_Tropic_019'
+    6400038: ' Tree_Tropic_020'
+    6400040: ' Tree_Tropic_021'
+    6400042: ' Tree_Tropic_022'
+    6400044: ' Tree_Tropic_023'
+    6400046: ' Tree_Tropic_025'
+    6400048: Base
+    6400050: House_1
+    6400052: House_2
+    6400054: House_3
+    6400056: House_4
+    6400058: House_5
+    6400060: House_6
+    6400062: Object003
+    6400064: Object007
+    6400066: Object008
+    6400068: Plane019
+    6400070: Plane022
+    6400072: Rock Type4 01 mesh
+    6400074: Rock Type4 01 mesh005
+    6400076: Rock Type4 01 mesh006
+    6400078: Rock Type4 01 mesh007
+    6400080: Rock Type4 01 mesh008
+    6400082: Rock Type4 01 mesh009
+    6400084: Rock Type5 02 mesh
+    6400086: Rock Type5 02 mesh001
+    6400088: Rock Type5 02 mesh002
+    6400090: Rock Type6 03 mesh
+    6400092: Wall
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

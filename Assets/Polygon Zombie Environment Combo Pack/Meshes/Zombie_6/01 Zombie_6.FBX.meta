@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 3294df5b813f443ccb94d933a4cb5187
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Base
+    100004: Board
+    100006: Car
+    100008: Closer
+    100010: Closer 1
+    100012: Dish
+    100014: Fence_1
+    100016: Fence_2
+    100018: Fence_3
+    100020: Fence_4
+    100022: Gas_meter_1
+    100024: Gas_meter_2
+    100026: Gas_meter_3
+    100028: Gas_meter_4
+    100030: Gas_Station
+    100032: Office
+    100034: Plant_1
+    100036: Plant_2
+    100038: Plant_3
+    100040: Plant_4
+    100042: Plant_5
+    100044: Plant_6
+    100046: Plant_7
+    100048: Plant_8
+    100050: Plants
+    100052: Small_board
+    100054: Wood_branch
+    100056: Wood_branch 1
+    100058: Wood_branch 2
+    100060: Wood_branch 3
+    100062: Wood_branch 4
+    100064: Wood_branch 5
+    400000: //RootNode
+    400002: Base
+    400004: Board
+    400006: Car
+    400008: Closer
+    400010: Closer 1
+    400012: Dish
+    400014: Fence_1
+    400016: Fence_2
+    400018: Fence_3
+    400020: Fence_4
+    400022: Gas_meter_1
+    400024: Gas_meter_2
+    400026: Gas_meter_3
+    400028: Gas_meter_4
+    400030: Gas_Station
+    400032: Office
+    400034: Plant_1
+    400036: Plant_2
+    400038: Plant_3
+    400040: Plant_4
+    400042: Plant_5
+    400044: Plant_6
+    400046: Plant_7
+    400048: Plant_8
+    400050: Plants
+    400052: Small_board
+    400054: Wood_branch
+    400056: Wood_branch 1
+    400058: Wood_branch 2
+    400060: Wood_branch 3
+    400062: Wood_branch 4
+    400064: Wood_branch 5
+    2100000: 'Material #187'
+    2100002: 'Material #31'
+    2100004: 'Material #194'
+    2100006: 'Material #193'
+    2100008: 'Material #74'
+    2100010: 'Material #87'
+    2100012: 'Material #88'
+    2100014: 'Material #290'
+    2100016: 'Material #18'
+    2100018: Material2
+    2100020: 'Material #19'
+    2100022: Material3
+    2100024: signals_florange_signal
+    2100026: 'Material #189'
+    2100028: 'Material #291'
+    2100030: 'Material #62'
+    2100032: 'Material #61'
+    2100034: 'Material #101'
+    2100036: 'Material #138'
+    2100038: 'Material #289'
+    2100040: 'Material #114'
+    2100042: 'Material #288'
+    2100044: 'Material #38'
+    2300000: Base
+    2300002: Board
+    2300004: Car
+    2300006: Closer
+    2300008: Closer 1
+    2300010: Dish
+    2300012: Fence_1
+    2300014: Fence_2
+    2300016: Fence_3
+    2300018: Fence_4
+    2300020: Gas_meter_1
+    2300022: Gas_meter_2
+    2300024: Gas_meter_3
+    2300026: Gas_meter_4
+    2300028: Gas_Station
+    2300030: Office
+    2300032: Plant_1
+    2300034: Plant_2
+    2300036: Plant_3
+    2300038: Plant_4
+    2300040: Plant_5
+    2300042: Plant_6
+    2300044: Plant_7
+    2300046: Plant_8
+    2300048: Small_board
+    2300050: Wood_branch 1
+    2300052: Wood_branch 2
+    2300054: Wood_branch 3
+    2300056: Wood_branch 4
+    2300058: Wood_branch 5
+    3300000: Base
+    3300002: Board
+    3300004: Car
+    3300006: Closer
+    3300008: Closer 1
+    3300010: Dish
+    3300012: Fence_1
+    3300014: Fence_2
+    3300016: Fence_3
+    3300018: Fence_4
+    3300020: Gas_meter_1
+    3300022: Gas_meter_2
+    3300024: Gas_meter_3
+    3300026: Gas_meter_4
+    3300028: Gas_Station
+    3300030: Office
+    3300032: Plant_1
+    3300034: Plant_2
+    3300036: Plant_3
+    3300038: Plant_4
+    3300040: Plant_5
+    3300042: Plant_6
+    3300044: Plant_7
+    3300046: Plant_8
+    3300048: Small_board
+    3300050: Wood_branch 1
+    3300052: Wood_branch 2
+    3300054: Wood_branch 3
+    3300056: Wood_branch 4
+    3300058: Wood_branch 5
+    4300000: Wood_branch
+    4300002: Wood_branch
+    4300004: Wood_branch
+    4300006: Wood_branch
+    4300008: Wood_branch
+    4300010: Plant_1
+    4300012: Plant_2
+    4300014: Plant_3
+    4300016: Plant_4
+    4300018: Plant_5
+    4300020: Plant_6
+    4300022: Plant_7
+    4300024: Plant_8
+    4300026: Closer
+    4300028: Closer
+    4300030: Small_board
+    4300032: Gas_meter_2
+    4300034: Gas_meter_1
+    4300036: Gas_meter_3
+    4300038: Gas_meter_4
+    4300040: Dish
+    4300042: Car
+    4300044: Board
+    4300046: Fence_1
+    4300048: Fence_2
+    4300050: Fence_3
+    4300052: Fence_4
+    4300054: Gas_Station
+    4300056: Office
+    4300058: Base
+    6400000: Base
+    6400002: Board
+    6400004: Car
+    6400006: Closer
+    6400008: Closer 1
+    6400010: Dish
+    6400012: Fence_1
+    6400014: Fence_2
+    6400016: Fence_3
+    6400018: Fence_4
+    6400020: Gas_meter_1
+    6400022: Gas_meter_2
+    6400024: Gas_meter_3
+    6400026: Gas_meter_4
+    6400028: Gas_Station
+    6400030: Office
+    6400032: Plant_1
+    6400034: Plant_2
+    6400036: Plant_3
+    6400038: Plant_4
+    6400040: Plant_5
+    6400042: Plant_6
+    6400044: Plant_7
+    6400046: Plant_8
+    6400048: Small_board
+    6400050: Wood_branch 1
+    6400052: Wood_branch 2
+    6400054: Wood_branch 3
+    6400056: Wood_branch 4
+    6400058: Wood_branch 5
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

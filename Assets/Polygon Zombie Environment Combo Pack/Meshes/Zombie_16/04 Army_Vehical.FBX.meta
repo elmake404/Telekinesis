@@ -1,0 +1,326 @@
+fileFormatVersion: 2
+guid: 560afc4ddcf1444a19e0915c6f7f5714
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Arc007
+    100004: Army_Vehical_1
+    100006: Box256
+    100008: Box257
+    100010: Box258
+    100012: Box259
+    100014: Box260
+    100016: Box261
+    100018: Box262
+    100020: Box263
+    100022: Box264
+    100024: Box265
+    100026: Box266
+    100028: Box267
+    100030: Box268
+    100032: Box269
+    100034: Box270
+    100036: Box271
+    100038: Cylinder063
+    100040: Cylinder064
+    100042: Cylinder065
+    100044: Cylinder066
+    100046: Cylinder067
+    100048: Group129
+    100050: Group130
+    100052: Group131
+    100054: Group132
+    100056: Group133
+    100058: Group134
+    100060: Line109
+    100062: Line110
+    100064: Object030
+    100066: Object031
+    100068: Object032
+    100070: Object033
+    100072: Object034
+    100074: Tube005
+    100076: Wheel
+    100078: Wheel 1
+    100080: Wheel 2
+    100082: Wheel 3
+    100084: Wheel 4
+    400000: //RootNode
+    400002: Arc007
+    400004: Army_Vehical_1
+    400006: Box256
+    400008: Box257
+    400010: Box258
+    400012: Box259
+    400014: Box260
+    400016: Box261
+    400018: Box262
+    400020: Box263
+    400022: Box264
+    400024: Box265
+    400026: Box266
+    400028: Box267
+    400030: Box268
+    400032: Box269
+    400034: Box270
+    400036: Box271
+    400038: Cylinder063
+    400040: Cylinder064
+    400042: Cylinder065
+    400044: Cylinder066
+    400046: Cylinder067
+    400048: Group129
+    400050: Group130
+    400052: Group131
+    400054: Group132
+    400056: Group133
+    400058: Group134
+    400060: Line109
+    400062: Line110
+    400064: Object030
+    400066: Object031
+    400068: Object032
+    400070: Object033
+    400072: Object034
+    400074: Tube005
+    400076: Wheel
+    400078: Wheel 1
+    400080: Wheel 2
+    400082: Wheel 3
+    400084: Wheel 4
+    2100000: 'Material #744'
+    2100002: 'Material #747'
+    2100004: 'Material #745'
+    2100006: 'Material #746'
+    2100008: 'Material #748'
+    2100010: 'Material #749'
+    2100012: 'Material #750'
+    2100014: 'Material #751'
+    2100016: 'Material #752'
+    2300000: Arc007
+    2300002: Box256
+    2300004: Box257
+    2300006: Box258
+    2300008: Box259
+    2300010: Box260
+    2300012: Box261
+    2300014: Box262
+    2300016: Box263
+    2300018: Box264
+    2300020: Box265
+    2300022: Box266
+    2300024: Box267
+    2300026: Box268
+    2300028: Box269
+    2300030: Box270
+    2300032: Box271
+    2300034: Cylinder063
+    2300036: Cylinder064
+    2300038: Cylinder065
+    2300040: Cylinder066
+    2300042: Cylinder067
+    2300044: Line109
+    2300046: Line110
+    2300048: Object030
+    2300050: Object031
+    2300052: Object032
+    2300054: Object033
+    2300056: Object034
+    2300058: Tube005
+    2300060: Wheel
+    2300062: Wheel 1
+    2300064: Wheel 2
+    2300066: Wheel 3
+    2300068: Wheel 4
+    3300000: Arc007
+    3300002: Box256
+    3300004: Box257
+    3300006: Box258
+    3300008: Box259
+    3300010: Box260
+    3300012: Box261
+    3300014: Box262
+    3300016: Box263
+    3300018: Box264
+    3300020: Box265
+    3300022: Box266
+    3300024: Box267
+    3300026: Box268
+    3300028: Box269
+    3300030: Box270
+    3300032: Box271
+    3300034: Cylinder063
+    3300036: Cylinder064
+    3300038: Cylinder065
+    3300040: Cylinder066
+    3300042: Cylinder067
+    3300044: Line109
+    3300046: Line110
+    3300048: Object030
+    3300050: Object031
+    3300052: Object032
+    3300054: Object033
+    3300056: Object034
+    3300058: Tube005
+    3300060: Wheel
+    3300062: Wheel 1
+    3300064: Wheel 2
+    3300066: Wheel 3
+    3300068: Wheel 4
+    4300000: Arc007
+    4300002: Box256
+    4300004: Box257
+    4300006: Box258
+    4300008: Box259
+    4300010: Box260
+    4300012: Box261
+    4300014: Box262
+    4300016: Box263
+    4300018: Box264
+    4300020: Box265
+    4300022: Box266
+    4300024: Box267
+    4300026: Box268
+    4300028: Box269
+    4300030: Box270
+    4300032: Cylinder063
+    4300034: Cylinder064
+    4300036: Cylinder065
+    4300038: Cylinder066
+    4300040: Cylinder067
+    4300042: Wheel
+    4300044: Object030
+    4300046: Wheel
+    4300048: Object031
+    4300050: Wheel
+    4300052: Object032
+    4300054: Wheel
+    4300056: Object033
+    4300058: Wheel
+    4300060: Object034
+    4300062: Box271
+    4300064: Line109
+    4300066: Line110
+    4300068: Tube005
+    6400000: Arc007
+    6400002: Box256
+    6400004: Box257
+    6400006: Box258
+    6400008: Box259
+    6400010: Box260
+    6400012: Box261
+    6400014: Box262
+    6400016: Box263
+    6400018: Box264
+    6400020: Box265
+    6400022: Box266
+    6400024: Box267
+    6400026: Box268
+    6400028: Box269
+    6400030: Box270
+    6400032: Box271
+    6400034: Cylinder063
+    6400036: Cylinder064
+    6400038: Cylinder065
+    6400040: Cylinder066
+    6400042: Cylinder067
+    6400044: Line109
+    6400046: Line110
+    6400048: Object030
+    6400050: Object031
+    6400052: Object032
+    6400054: Object033
+    6400056: Object034
+    6400058: Tube005
+    6400060: Wheel
+    6400062: Wheel 1
+    6400064: Wheel 2
+    6400066: Wheel 3
+    6400068: Wheel 4
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,27 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieBodyPart : MonoBehaviour, IRopeCollision
+public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
 {
-    private float minImpulseToActive = 20f;
+    private float minImpulseToActive = 3f;
     public CurrentZombieControl currentZombie;
     private ConnectedPin connectedPin;
+    public TypeOfConnected selectedType = TypeOfConnected.zombieBody;
 
     public void SetWithRopeConnected(ConnectedPin connectedPin)
     {
         this.connectedPin = connectedPin;
+        
+    }
+
+    public TypeOfConnected GetTypeOfConnected()
+    {
+        return selectedType;
     }
 
     public void InitConnect()
     {
-        currentZombie.EnableRagdoll();
+
     }
 
     public void BreakRope(Vector3 possourceExplosion)
     {
         
-        Debug.Log("EnableRagdoll");
 
+    }
+
+    public void Explode(Vector3 source)
+    {
+        currentZombie.AddExplosionForceToBody(source);
+        currentZombie.EnableRagdoll();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,5 +43,21 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision
         {
             currentZombie.EnableRagdoll();
         }
+
+        if (collision.gameObject.layer == 8)
+        {
+            if (connectedPin.createRope == null) { return; }
+            ConnectedObject[] objects = connectedPin.createRope.GetConnectedObjects();
+            int index = 0;
+            if (connectedPin.indexConnect == 0) { index = 1; }
+            else { index = 0; }
+
+            if (collision.collider.gameObject.GetHashCode() == objects[index].attacheRigidbody.gameObject.GetHashCode())
+            {
+                connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
+            }
+        }
+
+        
     }
 }

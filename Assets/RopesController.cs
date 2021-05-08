@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TypeOfConnected
+{
+    zombieBody,
+    zombieHead,
+    barrelBomb,
+    simpleObject,
+    staticSimpleObject
+}
+
 public class RopesController : MonoBehaviour
 {
     public GameObject createRope;
@@ -11,10 +20,10 @@ public class RopesController : MonoBehaviour
     {
         GameObject newObjCreatedRope = Instantiate(createRope);
         CreateRope createdRope = newObjCreatedRope.GetComponent<CreateRope>();
-        createdRope.SetConnectObjectsRigidbodies(connectedObject);
-        createdRope.SetPointsToSpawn(points);
-        createdRope.GenerateRopeSections();
-        createdRope.CreateCurrentRope();
+        createdRope.SetConnectObjectsRigidbodies(connectedObject);  // ok
+        createdRope.SetPointsToSpawn(points); // ok
+        createdRope.GenerateRopeSections(); // ok
+        createdRope.CreateCurrentRope();  // ok
         createdRope.PickObjectsToRope();
         createdRope.ObjectsIgnoreCollisionWithRope();
         createdRope.SetPinToConnected();

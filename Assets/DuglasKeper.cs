@@ -66,7 +66,7 @@ public class DuglasKeper
         float maxDistance = 0f;
         int index = -1;
 
-        Debug.Log(startIndex + " " + " " + endIndex);
+        //Debug.Log(startIndex + " " + " " + endIndex);
 
         Vector2 firstPoint = points[startIndex];
         Vector2 endPoint = points[endIndex];

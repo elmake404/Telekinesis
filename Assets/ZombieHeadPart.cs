@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieHeadPart : MonoBehaviour, IRopeCollision
+public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 {
     public CurrentZombieControl zombieControl;
     public Collider headCollider;
     public Rigidbody headRigidbody;
     public CharacterJoint headJoint;
     public GameObject splatBloodParticles;
+    public TypeOfConnected selectedType = TypeOfConnected.zombieHead;
     private ConnectedPin connectedPin;
 
+    public TypeOfConnected GetTypeOfConnected()
+    {
+        return selectedType;
+    }
+
+    public void Explode()
+    {
+        zombieControl.EnableRagdoll();
+    }
 
     public void InitConnect()
     {
@@ -32,6 +42,12 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision
     public void BreakRope(Vector3 source)
     {
         return;
+    }
+
+    public void Explode(Vector3 source)
+    {
+        zombieControl.AddExplosionForceToBody(source);
+        zombieControl.EnableRagdoll();
     }
 
     private Rigidbody SeparateHead()

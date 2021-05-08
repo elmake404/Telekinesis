@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: 3dd617919b558453a80d81bc1b11cf65
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: _11_tree003
+    100004: _11_tree005
+    100006: Ball
+    100008: Base
+    100010: Boat_1
+    100012: Boat_2
+    100014: Box015
+    100016: Box079
+    100018: Box081
+    100020: Broken_House
+    100022: Broken_umbrella
+    100024: Broken_Wooden_Pull
+    100026: Cafe_Blinds
+    100028: Life Gurd tube_1
+    100030: Life Gurd tube_2
+    100032: Life Gurd tube_3
+    100034: Object001
+    100036: Object002
+    100038: Trunk
+    100040: Wooden_fence_1
+    100042: Wooden_fence_2
+    400000: //RootNode
+    400002: _11_tree003
+    400004: _11_tree005
+    400006: Ball
+    400008: Base
+    400010: Boat_1
+    400012: Boat_2
+    400014: Box015
+    400016: Box079
+    400018: Box081
+    400020: Broken_House
+    400022: Broken_umbrella
+    400024: Broken_Wooden_Pull
+    400026: Cafe_Blinds
+    400028: Life Gurd tube_1
+    400030: Life Gurd tube_2
+    400032: Life Gurd tube_3
+    400034: Object001
+    400036: Object002
+    400038: Trunk
+    400040: Wooden_fence_1
+    400042: Wooden_fence_2
+    2100000: 'Material #571'
+    2100002: 'Material #570'
+    2100004: 'Material #572'
+    2100006: 'Material #573'
+    2100008: 'Material #52'
+    2100010: 'Material #574'
+    2100012: 'Material #89'
+    2100014: 'Material #54'
+    2100016: 'Material #575'
+    2100018: 'Material #576'
+    2100020: 'Material #77'
+    2100022: 'Material #577'
+    2100024: 'Material #205'
+    2100026: 'Material #217'
+    2100028: 'Material #229'
+    2100030: 'Material #232'
+    2100032: 'Material #51'
+    2100034: 'Material #153'
+    2100036: 'Material #578'
+    2300000: _11_tree003
+    2300002: _11_tree005
+    2300004: Ball
+    2300006: Base
+    2300008: Boat_1
+    2300010: Boat_2
+    2300012: Box015
+    2300014: Box079
+    2300016: Box081
+    2300018: Broken_House
+    2300020: Broken_umbrella
+    2300022: Broken_Wooden_Pull
+    2300024: Cafe_Blinds
+    2300026: Life Gurd tube_1
+    2300028: Life Gurd tube_2
+    2300030: Life Gurd tube_3
+    2300032: Object001
+    2300034: Object002
+    2300036: Wooden_fence_1
+    2300038: Wooden_fence_2
+    3300000: _11_tree003
+    3300002: _11_tree005
+    3300004: Ball
+    3300006: Base
+    3300008: Boat_1
+    3300010: Boat_2
+    3300012: Box015
+    3300014: Box079
+    3300016: Box081
+    3300018: Broken_House
+    3300020: Broken_umbrella
+    3300022: Broken_Wooden_Pull
+    3300024: Cafe_Blinds
+    3300026: Life Gurd tube_1
+    3300028: Life Gurd tube_2
+    3300030: Life Gurd tube_3
+    3300032: Object001
+    3300034: Object002
+    3300036: Wooden_fence_1
+    3300038: Wooden_fence_2
+    4300000: Base
+    4300002: Broken_Wooden_Pull
+    4300004: Wooden_fence_1
+    4300006: Broken_House
+    4300008: Cafe_Blinds
+    4300010: Wooden_fence_2
+    4300012: Ball
+    4300014: Life Gurd tube_1
+    4300016: Life Gurd tube_2
+    4300018: Life Gurd tube_3
+    4300020: Boat_2
+    4300022: Boat_1
+    4300024: Broken_umbrella
+    4300026: _11_tree003
+    4300028: _11_tree005
+    4300030: Object002
+    4300032: Object001
+    4300034: Box081
+    4300036: Box079
+    4300038: Box015
+    6400000: _11_tree003
+    6400002: _11_tree005
+    6400004: Ball
+    6400006: Base
+    6400008: Boat_1
+    6400010: Boat_2
+    6400012: Box015
+    6400014: Box079
+    6400016: Box081
+    6400018: Broken_House
+    6400020: Broken_umbrella
+    6400022: Broken_Wooden_Pull
+    6400024: Cafe_Blinds
+    6400026: Life Gurd tube_1
+    6400028: Life Gurd tube_2
+    6400030: Life Gurd tube_3
+    6400032: Object001
+    6400034: Object002
+    6400036: Wooden_fence_1
+    6400038: Wooden_fence_2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

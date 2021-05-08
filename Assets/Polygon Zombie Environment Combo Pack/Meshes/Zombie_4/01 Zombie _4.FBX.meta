@@ -1,0 +1,423 @@
+fileFormatVersion: 2
+guid: ca491729b7b864c0cbcc100160a29b56
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Air_supplier_1
+    100004: Air_supplier_2
+    100006: Base
+    100008: Car
+    100010: Green_signel_1
+    100012: Green_signel_2
+    100014: Green_signel_3
+    100016: Hoarding
+    100018: House
+    100020: Mountain
+    100022: Red_signel_1
+    100024: Red_signel_2
+    100026: Red_signel_3
+    100028: Road
+    100030: Rock Type2 01 mesh
+    100032: Rock Type2 01 mesh001
+    100034: Rock Type2 01 mesh002
+    100036: Rock Type2 01 mesh003
+    100038: Rock Type2 01 mesh004
+    100040: Rock Type2 01 mesh005
+    100042: Rock Type2 01 mesh006
+    100044: Rock Type4 01 mesh
+    100046: Rock Type4 01 mesh 1
+    100048: Rock Type4 01 mesh001
+    100050: Rock Type4 02 mesh001
+    100052: Rock Type5 01 mesh
+    100054: Signboard_1
+    100056: Signboard_2
+    100058: Signboard_3
+    100060: Speed_Breaker_1
+    100062: Speed_Breaker_2
+    100064: Speed_Breaker_3
+    100066: Speed_Breaker_4
+    100068: Speed_Breaker_5
+    100070: Stone
+    100072: Trunk
+    100074: Trunk 1
+    100076: Trunk 2
+    100078: Trunk 3
+    100080: Trunk 4
+    100082: Trunk 5
+    100084: Trunk 6
+    100086: Trunk 7
+    100088: Tunnel
+    100090: Zombie
+    100092: Zombie 1
+    100094: Zombie 2
+    100096: Zombie 3
+    100098: Zombie 4
+    100100: Zombie 5
+    400000: //RootNode
+    400002: Air_supplier_1
+    400004: Air_supplier_2
+    400006: Base
+    400008: Car
+    400010: Green_signel_1
+    400012: Green_signel_2
+    400014: Green_signel_3
+    400016: Hoarding
+    400018: House
+    400020: Mountain
+    400022: Red_signel_1
+    400024: Red_signel_2
+    400026: Red_signel_3
+    400028: Road
+    400030: Rock Type2 01 mesh
+    400032: Rock Type2 01 mesh001
+    400034: Rock Type2 01 mesh002
+    400036: Rock Type2 01 mesh003
+    400038: Rock Type2 01 mesh004
+    400040: Rock Type2 01 mesh005
+    400042: Rock Type2 01 mesh006
+    400044: Rock Type4 01 mesh
+    400046: Rock Type4 01 mesh 1
+    400048: Rock Type4 01 mesh001
+    400050: Rock Type4 02 mesh001
+    400052: Rock Type5 01 mesh
+    400054: Signboard_1
+    400056: Signboard_2
+    400058: Signboard_3
+    400060: Speed_Breaker_1
+    400062: Speed_Breaker_2
+    400064: Speed_Breaker_3
+    400066: Speed_Breaker_4
+    400068: Speed_Breaker_5
+    400070: Stone
+    400072: Trunk
+    400074: Trunk 1
+    400076: Trunk 2
+    400078: Trunk 3
+    400080: Trunk 4
+    400082: Trunk 5
+    400084: Trunk 6
+    400086: Trunk 7
+    400088: Tunnel
+    400090: Zombie
+    400092: Zombie 1
+    400094: Zombie 2
+    400096: Zombie 3
+    400098: Zombie 4
+    400100: Zombie 5
+    2100000: 'Material #172'
+    2100002: 'Material #148'
+    2100004: 'Material #149'
+    2100006: 'Material #155'
+    2100008: 'Material #26'
+    2100010: 'Material #145'
+    2100012: 'Material #54'
+    2100014: 'Material #151'
+    2100016: 'Material #152'
+    2100018: 'Material #40'
+    2100020: 'Material #28'
+    2100022: 'Material #53'
+    2100024: 'Material #66'
+    2100026: 'Material #78'
+    2100028: 'Material #147'
+    2100030: 'Material #80'
+    2100032: 'Material #143'
+    2100034: 'Material #144'
+    2100036: 'Material #117'
+    2100038: 'Material #121'
+    2100040: 'Material #118'
+    2100042: 'Material #119'
+    2100044: 'Material #114'
+    2100046: 'Material #115'
+    2100048: 'Material #116'
+    2100050: 'Material #146'
+    2100052: 'Material #18'
+    2100054: Material2
+    2100056: 'Material #19'
+    2100058: Material3
+    2100060: signals_florange_signal
+    2100062: 'Material #185'
+    2100064: 'Material #186'
+    2100066: 'Material #189'
+    2100068: 'Material #22'
+    2100070: 'Material #21'
+    2100072: 'Material #191'
+    2100074: 'Material #188'
+    2100076: 'Material #20'
+    2100078: Jill_HiMidRes_Eyes_MAT
+    2100080: 'Material #190'
+    2100082: 'Material #153'
+    2300000: Air_supplier_1
+    2300002: Air_supplier_2
+    2300004: Base
+    2300006: Car
+    2300008: Green_signel_1
+    2300010: Green_signel_2
+    2300012: Green_signel_3
+    2300014: Hoarding
+    2300016: House
+    2300018: Mountain
+    2300020: Red_signel_1
+    2300022: Red_signel_2
+    2300024: Red_signel_3
+    2300026: Road
+    2300028: Rock Type2 01 mesh
+    2300030: Rock Type2 01 mesh001
+    2300032: Rock Type2 01 mesh002
+    2300034: Rock Type2 01 mesh003
+    2300036: Rock Type2 01 mesh004
+    2300038: Rock Type2 01 mesh005
+    2300040: Rock Type2 01 mesh006
+    2300042: Rock Type4 01 mesh
+    2300044: Rock Type4 01 mesh 1
+    2300046: Rock Type4 01 mesh001
+    2300048: Rock Type4 02 mesh001
+    2300050: Rock Type5 01 mesh
+    2300052: Signboard_1
+    2300054: Signboard_2
+    2300056: Signboard_3
+    2300058: Speed_Breaker_1
+    2300060: Speed_Breaker_2
+    2300062: Speed_Breaker_3
+    2300064: Speed_Breaker_4
+    2300066: Speed_Breaker_5
+    2300068: Trunk 1
+    2300070: Trunk 2
+    2300072: Trunk 3
+    2300074: Trunk 4
+    2300076: Trunk 5
+    2300078: Trunk 6
+    2300080: Trunk 7
+    2300082: Tunnel
+    2300084: Zombie 1
+    2300086: Zombie 2
+    2300088: Zombie 3
+    2300090: Zombie 4
+    2300092: Zombie 5
+    3300000: Air_supplier_1
+    3300002: Air_supplier_2
+    3300004: Base
+    3300006: Car
+    3300008: Green_signel_1
+    3300010: Green_signel_2
+    3300012: Green_signel_3
+    3300014: Hoarding
+    3300016: House
+    3300018: Mountain
+    3300020: Red_signel_1
+    3300022: Red_signel_2
+    3300024: Red_signel_3
+    3300026: Road
+    3300028: Rock Type2 01 mesh
+    3300030: Rock Type2 01 mesh001
+    3300032: Rock Type2 01 mesh002
+    3300034: Rock Type2 01 mesh003
+    3300036: Rock Type2 01 mesh004
+    3300038: Rock Type2 01 mesh005
+    3300040: Rock Type2 01 mesh006
+    3300042: Rock Type4 01 mesh
+    3300044: Rock Type4 01 mesh 1
+    3300046: Rock Type4 01 mesh001
+    3300048: Rock Type4 02 mesh001
+    3300050: Rock Type5 01 mesh
+    3300052: Signboard_1
+    3300054: Signboard_2
+    3300056: Signboard_3
+    3300058: Speed_Breaker_1
+    3300060: Speed_Breaker_2
+    3300062: Speed_Breaker_3
+    3300064: Speed_Breaker_4
+    3300066: Speed_Breaker_5
+    3300068: Trunk 1
+    3300070: Trunk 2
+    3300072: Trunk 3
+    3300074: Trunk 4
+    3300076: Trunk 5
+    3300078: Trunk 6
+    3300080: Trunk 7
+    3300082: Tunnel
+    3300084: Zombie 1
+    3300086: Zombie 2
+    3300088: Zombie 3
+    3300090: Zombie 4
+    3300092: Zombie 5
+    4300000: Base
+    4300002: Mountain
+    4300004: Tunnel
+    4300006: Road
+    4300008: Speed_Breaker_1
+    4300010: Speed_Breaker_2
+    4300012: Speed_Breaker_3
+    4300014: Speed_Breaker_4
+    4300016: Speed_Breaker_5
+    4300018: Hoarding
+    4300020: Signboard_1
+    4300022: Signboard_2
+    4300024: Signboard_3
+    4300026: Red_signel_1
+    4300028: Red_signel_2
+    4300030: Red_signel_3
+    4300032: Green_signel_1
+    4300034: Green_signel_2
+    4300036: Green_signel_3
+    4300038: Air_supplier_1
+    4300040: Air_supplier_2
+    4300042: Car
+    4300044: House
+    4300046: Rock Type4 01 mesh
+    4300048: Rock Type2 01 mesh
+    4300050: Rock Type4 01 mesh001
+    4300052: Rock Type2 01 mesh001
+    4300054: Rock Type4 01 mesh
+    4300056: Rock Type2 01 mesh002
+    4300058: Rock Type4 02 mesh001
+    4300060: Rock Type2 01 mesh005
+    4300062: Rock Type2 01 mesh003
+    4300064: Rock Type5 01 mesh
+    4300066: Rock Type2 01 mesh004
+    4300068: Rock Type2 01 mesh006
+    4300070: Zombie 1
+    4300072: Zombie 2
+    4300074: Zombie 3
+    4300076: Zombie 4
+    4300078: Zombie 5
+    4300080: Trunk 7
+    4300082: Trunk 6
+    4300084: Trunk 5
+    4300086: Trunk 4
+    4300088: Trunk 3
+    4300090: Trunk 2
+    4300092: Trunk 1
+    6400000: Air_supplier_1
+    6400002: Air_supplier_2
+    6400004: Base
+    6400006: Car
+    6400008: Green_signel_1
+    6400010: Green_signel_2
+    6400012: Green_signel_3
+    6400014: Hoarding
+    6400016: House
+    6400018: Mountain
+    6400020: Red_signel_1
+    6400022: Red_signel_2
+    6400024: Red_signel_3
+    6400026: Road
+    6400028: Rock Type2 01 mesh
+    6400030: Rock Type2 01 mesh001
+    6400032: Rock Type2 01 mesh002
+    6400034: Rock Type2 01 mesh003
+    6400036: Rock Type2 01 mesh004
+    6400038: Rock Type2 01 mesh005
+    6400040: Rock Type2 01 mesh006
+    6400042: Rock Type4 01 mesh
+    6400044: Rock Type4 01 mesh 1
+    6400046: Rock Type4 01 mesh001
+    6400048: Rock Type4 02 mesh001
+    6400050: Rock Type5 01 mesh
+    6400052: Signboard_1
+    6400054: Signboard_2
+    6400056: Signboard_3
+    6400058: Speed_Breaker_1
+    6400060: Speed_Breaker_2
+    6400062: Speed_Breaker_3
+    6400064: Speed_Breaker_4
+    6400066: Speed_Breaker_5
+    6400068: Trunk 1
+    6400070: Trunk 2
+    6400072: Trunk 3
+    6400074: Trunk 4
+    6400076: Trunk 5
+    6400078: Trunk 6
+    6400080: Trunk 7
+    6400082: Tunnel
+    6400084: Zombie 1
+    6400086: Zombie 2
+    6400088: Zombie 3
+    6400090: Zombie 4
+    6400092: Zombie 5
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

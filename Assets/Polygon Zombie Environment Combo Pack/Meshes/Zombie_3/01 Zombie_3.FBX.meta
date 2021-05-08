@@ -1,0 +1,340 @@
+fileFormatVersion: 2
+guid: 4fd4b9fb0f3654509ab99ed43afd62f7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Base
+    100004: Bin
+    100006: Bin_2
+    100008: Box071
+    100010: Box072
+    100012: Box073
+    100014: Box074
+    100016: Box075
+    100018: Box076
+    100020: Box077
+    100022: Box078
+    100024: Box080
+    100026: Box081
+    100028: Box082
+    100030: Box083
+    100032: Box084
+    100034: Box085
+    100036: Box086
+    100038: Broken_box
+    100040: Building_1
+    100042: Building_2
+    100044: Building_3
+    100046: Building_4
+    100048: Car1
+    100050: Car2
+    100052: Car3
+    100054: Car4
+    100056: Car5
+    100058: Hoarding
+    100060: Light_poll_1
+    100062: Light_poll_2
+    100064: Light_poll_3
+    100066: Light_poll_4
+    100068: Phone booth_1
+    100070: Phone booth_2
+    400000: //RootNode
+    400002: Base
+    400004: Bin
+    400006: Bin_2
+    400008: Box071
+    400010: Box072
+    400012: Box073
+    400014: Box074
+    400016: Box075
+    400018: Box076
+    400020: Box077
+    400022: Box078
+    400024: Box080
+    400026: Box081
+    400028: Box082
+    400030: Box083
+    400032: Box084
+    400034: Box085
+    400036: Box086
+    400038: Broken_box
+    400040: Building_1
+    400042: Building_2
+    400044: Building_3
+    400046: Building_4
+    400048: Car1
+    400050: Car2
+    400052: Car3
+    400054: Car4
+    400056: Car5
+    400058: Hoarding
+    400060: Light_poll_1
+    400062: Light_poll_2
+    400064: Light_poll_3
+    400066: Light_poll_4
+    400068: Phone booth_1
+    400070: Phone booth_2
+    2100000: 'Material #25'
+    2100002: 'Material #37'
+    2100004: 'Material #332'
+    2100006: 'Material #333'
+    2100008: 'Material #334'
+    2100010: 'Material #53'
+    2100012: 'Material #221'
+    2100014: 'Material #215'
+    2100016: 'Material #216'
+    2100018: 'Material #335'
+    2100020: 'Material #336'
+    2100022: 'Material #127'
+    2100024: 'Material #337'
+    2100026: 'Material #196'
+    2100028: 'Material #338'
+    2100030: 'Material #219'
+    2100032: 'Material #218'
+    2100034: 'Material #342'
+    2100036: 'Material #341'
+    2100038: 'Material #222'
+    2100040: 'Material #139'
+    2100042: 'Material #140'
+    2100044: 'Material #141'
+    2100046: 'Material #51'
+    2100048: 'Material #52'
+    2100050: 'Material #343'
+    2100052: 'Material #91'
+    2100054: 'Material #90'
+    2100056: 'Material #344'
+    2100058: 'Material #149'
+    2100060: 'Material #153'
+    2100062: 'Material #150'
+    2100064: 'Material #151'
+    2100066: 'Material #152'
+    2100068: 'Material #107'
+    2100070: 'Material #106'
+    2100072: 'Material #156'
+    2100074: 'Material #345'
+    2100076: 'Material #168'
+    2100078: 'Material #220'
+    2100080: 'Material #217'
+    2300000: Base
+    2300002: Bin
+    2300004: Bin_2
+    2300006: Box071
+    2300008: Box072
+    2300010: Box073
+    2300012: Box074
+    2300014: Box075
+    2300016: Box076
+    2300018: Box077
+    2300020: Box078
+    2300022: Box080
+    2300024: Box081
+    2300026: Box082
+    2300028: Box083
+    2300030: Box084
+    2300032: Box085
+    2300034: Box086
+    2300036: Building_1
+    2300038: Building_2
+    2300040: Building_3
+    2300042: Building_4
+    2300044: Car1
+    2300046: Car2
+    2300048: Car3
+    2300050: Car4
+    2300052: Car5
+    2300054: Hoarding
+    2300056: Light_poll_1
+    2300058: Light_poll_2
+    2300060: Light_poll_3
+    2300062: Light_poll_4
+    2300064: Phone booth_1
+    2300066: Phone booth_2
+    3300000: Base
+    3300002: Bin
+    3300004: Bin_2
+    3300006: Box071
+    3300008: Box072
+    3300010: Box073
+    3300012: Box074
+    3300014: Box075
+    3300016: Box076
+    3300018: Box077
+    3300020: Box078
+    3300022: Box080
+    3300024: Box081
+    3300026: Box082
+    3300028: Box083
+    3300030: Box084
+    3300032: Box085
+    3300034: Box086
+    3300036: Building_1
+    3300038: Building_2
+    3300040: Building_3
+    3300042: Building_4
+    3300044: Car1
+    3300046: Car2
+    3300048: Car3
+    3300050: Car4
+    3300052: Car5
+    3300054: Hoarding
+    3300056: Light_poll_1
+    3300058: Light_poll_2
+    3300060: Light_poll_3
+    3300062: Light_poll_4
+    3300064: Phone booth_1
+    3300066: Phone booth_2
+    4300000: Base
+    4300002: Building_1
+    4300004: Building_3
+    4300006: Building_2
+    4300008: Light_poll_1
+    4300010: Bin
+    4300012: Bin_2
+    4300014: Light_poll_2
+    4300016: Light_poll_3
+    4300018: Light_poll_4
+    4300020: Box073
+    4300022: Box076
+    4300024: Box080
+    4300026: Hoarding
+    4300028: Building_4
+    4300030: Phone booth_1
+    4300032: Phone booth_2
+    4300034: Car2
+    4300036: Car3
+    4300038: Car5
+    4300040: Car4
+    4300042: Car1
+    4300044: Box081
+    4300046: Box084
+    4300048: Box085
+    4300050: Box086
+    4300052: Box083
+    4300054: Box075
+    4300056: Box074
+    4300058: Box078
+    4300060: Box071
+    4300062: Box072
+    4300064: Box077
+    4300066: Box082
+    6400000: Base
+    6400002: Bin
+    6400004: Bin_2
+    6400006: Box071
+    6400008: Box072
+    6400010: Box073
+    6400012: Box074
+    6400014: Box075
+    6400016: Box076
+    6400018: Box077
+    6400020: Box078
+    6400022: Box080
+    6400024: Box081
+    6400026: Box082
+    6400028: Box083
+    6400030: Box084
+    6400032: Box085
+    6400034: Box086
+    6400036: Building_1
+    6400038: Building_2
+    6400040: Building_3
+    6400042: Building_4
+    6400044: Car1
+    6400046: Car2
+    6400048: Car3
+    6400050: Car4
+    6400052: Car5
+    6400054: Hoarding
+    6400056: Light_poll_1
+    6400058: Light_poll_2
+    6400060: Light_poll_3
+    6400062: Light_poll_4
+    6400064: Phone booth_1
+    6400066: Phone booth_2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

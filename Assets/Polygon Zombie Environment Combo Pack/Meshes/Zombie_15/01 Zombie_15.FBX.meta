@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 195e63ec2a4db465893f91ebcb8ec85b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ' Notice_Board'
+    100002: //RootNode
+    100004: Base
+    100006: Blood_2
+    100008: Blood_3
+    100010: Blood_4
+    100012: Box030
+    100014: Box031
+    100016: Box032
+    100018: Box043
+    100020: Box044
+    100022: Box045
+    100024: Box046
+    100026: Box047
+    100028: Box072
+    100030: Box073
+    100032: Box074
+    100034: Box075
+    100036: Box076
+    100038: Box088
+    100040: Box089
+    100042: Box090
+    100044: Box091
+    100046: Boxes
+    100048: Boxes 1
+    100050: Chair_1
+    100052: Chair_2
+    100054: Chair_3
+    100056: Chair_4
+    100058: Gate_Pass
+    100060: Glass_Gate
+    100062: Glass_Gate_1
+    100064: Glass_Gate_2
+    100066: Glass_Gate_3
+    100068: Glass_Gate_4
+    100070: Hoarding
+    100072: Line079
+    100074: Office
+    100076: Piller_1
+    100078: Piller_2
+    100080: Piller_3
+    100082: Rectangle001
+    100084: Rectangle002
+    100086: Rectangle003
+    100088: Rectangle004
+    100090: Rectangle014
+    100092: Rectangle015
+    100094: Rectangle016
+    100096: Rectangle017
+    100098: Rectangle018
+    100100: Rectangle020
+    100102: Relling
+    100104: Storage Box
+    100106: Table
+    100108: Wall
+    100110: Watch
+    400000: ' Notice_Board'
+    400002: //RootNode
+    400004: Base
+    400006: Blood_2
+    400008: Blood_3
+    400010: Blood_4
+    400012: Box030
+    400014: Box031
+    400016: Box032
+    400018: Box043
+    400020: Box044
+    400022: Box045
+    400024: Box046
+    400026: Box047
+    400028: Box072
+    400030: Box073
+    400032: Box074
+    400034: Box075
+    400036: Box076
+    400038: Box088
+    400040: Box089
+    400042: Box090
+    400044: Box091
+    400046: Boxes
+    400048: Boxes 1
+    400050: Chair_1
+    400052: Chair_2
+    400054: Chair_3
+    400056: Chair_4
+    400058: Gate_Pass
+    400060: Glass_Gate
+    400062: Glass_Gate_1
+    400064: Glass_Gate_2
+    400066: Glass_Gate_3
+    400068: Glass_Gate_4
+    400070: Hoarding
+    400072: Line079
+    400074: Office
+    400076: Piller_1
+    400078: Piller_2
+    400080: Piller_3
+    400082: Rectangle001
+    400084: Rectangle002
+    400086: Rectangle003
+    400088: Rectangle004
+    400090: Rectangle014
+    400092: Rectangle015
+    400094: Rectangle016
+    400096: Rectangle017
+    400098: Rectangle018
+    400100: Rectangle020
+    400102: Relling
+    400104: Storage Box
+    400106: Table
+    400108: Wall
+    400110: Watch
+    2100000: 'Material #627'
+    2100002: 'Material #633'
+    2100004: 'Material #634'
+    2100006: 'Material #638'
+    2100008: 'Material #640'
+    2100010: 'Material #641'
+    2100012: 'Material #642'
+    2100014: 'Material #643'
+    2100016: 'Material #644'
+    2100018: 'Material #645'
+    2100020: 'Material #646'
+    2100022: 'Material #647'
+    2100024: 'Material #648'
+    2100026: 'Material #649'
+    2100028: 'Material #650'
+    2100030: 'Material #654'
+    2100032: 'Material #657'
+    2100034: 'Material #658'
+    2100036: 'Material #659'
+    2100038: 'Material #660'
+    2100040: 'Material #667'
+    2100042: 'Material #668'
+    2300000: ' Notice_Board'
+    2300002: Base
+    2300004: Blood_2
+    2300006: Blood_3
+    2300008: Blood_4
+    2300010: Box030
+    2300012: Box031
+    2300014: Box032
+    2300016: Box043
+    2300018: Box044
+    2300020: Box045
+    2300022: Box046
+    2300024: Box047
+    2300026: Box072
+    2300028: Box073
+    2300030: Box074
+    2300032: Box075
+    2300034: Box076
+    2300036: Box088
+    2300038: Box089
+    2300040: Box090
+    2300042: Box091
+    2300044: Boxes 1
+    2300046: Chair_1
+    2300048: Chair_2
+    2300050: Chair_3
+    2300052: Chair_4
+    2300054: Gate_Pass
+    2300056: Glass_Gate_1
+    2300058: Glass_Gate_2
+    2300060: Glass_Gate_3
+    2300062: Glass_Gate_4
+    2300064: Hoarding
+    2300066: Line079
+    2300068: Office
+    2300070: Piller_1
+    2300072: Piller_2
+    2300074: Piller_3
+    2300076: Rectangle001
+    2300078: Rectangle002
+    2300080: Rectangle003
+    2300082: Rectangle004
+    2300084: Rectangle014
+    2300086: Rectangle015
+    2300088: Rectangle016
+    2300090: Rectangle017
+    2300092: Rectangle018
+    2300094: Rectangle020
+    2300096: Table
+    2300098: Wall
+    2300100: Watch
+    3300000: ' Notice_Board'
+    3300002: Base
+    3300004: Blood_2
+    3300006: Blood_3
+    3300008: Blood_4
+    3300010: Box030
+    3300012: Box031
+    3300014: Box032
+    3300016: Box043
+    3300018: Box044
+    3300020: Box045
+    3300022: Box046
+    3300024: Box047
+    3300026: Box072
+    3300028: Box073
+    3300030: Box074
+    3300032: Box075
+    3300034: Box076
+    3300036: Box088
+    3300038: Box089
+    3300040: Box090
+    3300042: Box091
+    3300044: Boxes 1
+    3300046: Chair_1
+    3300048: Chair_2
+    3300050: Chair_3
+    3300052: Chair_4
+    3300054: Gate_Pass
+    3300056: Glass_Gate_1
+    3300058: Glass_Gate_2
+    3300060: Glass_Gate_3
+    3300062: Glass_Gate_4
+    3300064: Hoarding
+    3300066: Line079
+    3300068: Office
+    3300070: Piller_1
+    3300072: Piller_2
+    3300074: Piller_3
+    3300076: Rectangle001
+    3300078: Rectangle002
+    3300080: Rectangle003
+    3300082: Rectangle004
+    3300084: Rectangle014
+    3300086: Rectangle015
+    3300088: Rectangle016
+    3300090: Rectangle017
+    3300092: Rectangle018
+    3300094: Rectangle020
+    3300096: Table
+    3300098: Wall
+    3300100: Watch
+    4300000: Base
+    4300002: Wall
+    4300004: Office
+    4300006: Table
+    4300008: ' Notice_Board'
+    4300010: Watch
+    4300012: Gate_Pass
+    4300014: Piller_1
+    4300016: Piller_2
+    4300018: Piller_3
+    4300020: Hoarding
+    4300022: Rectangle002
+    4300024: Rectangle001
+    4300026: Rectangle003
+    4300028: Rectangle004
+    4300030: Line079
+    4300032: Rectangle018
+    4300034: Rectangle014
+    4300036: Rectangle015
+    4300038: Rectangle017
+    4300040: Rectangle020
+    4300042: Rectangle016
+    4300044: Boxes
+    4300046: Box088
+    4300048: Box089
+    4300050: Box090
+    4300052: Box091
+    4300054: Chair_1
+    4300056: Glass_Gate_1
+    4300058: Glass_Gate_4
+    4300060: Glass_Gate_2
+    4300062: Glass_Gate_3
+    4300064: Box075
+    4300066: Box076
+    4300068: Box073
+    4300070: Box074
+    4300072: Box072
+    4300074: Box032
+    4300076: Box030
+    4300078: Box031
+    4300080: Box046
+    4300082: Box047
+    4300084: Box043
+    4300086: Box044
+    4300088: Box045
+    4300090: Chair_2
+    4300092: Chair_3
+    4300094: Chair_4
+    4300096: Blood_2
+    4300098: Blood_3
+    4300100: Blood_4
+    6400000: ' Notice_Board'
+    6400002: Base
+    6400004: Blood_2
+    6400006: Blood_3
+    6400008: Blood_4
+    6400010: Box030
+    6400012: Box031
+    6400014: Box032
+    6400016: Box043
+    6400018: Box044
+    6400020: Box045
+    6400022: Box046
+    6400024: Box047
+    6400026: Box072
+    6400028: Box073
+    6400030: Box074
+    6400032: Box075
+    6400034: Box076
+    6400036: Box088
+    6400038: Box089
+    6400040: Box090
+    6400042: Box091
+    6400044: Boxes 1
+    6400046: Chair_1
+    6400048: Chair_2
+    6400050: Chair_3
+    6400052: Chair_4
+    6400054: Gate_Pass
+    6400056: Glass_Gate_1
+    6400058: Glass_Gate_2
+    6400060: Glass_Gate_3
+    6400062: Glass_Gate_4
+    6400064: Hoarding
+    6400066: Line079
+    6400068: Office
+    6400070: Piller_1
+    6400072: Piller_2
+    6400074: Piller_3
+    6400076: Rectangle001
+    6400078: Rectangle002
+    6400080: Rectangle003
+    6400082: Rectangle004
+    6400084: Rectangle014
+    6400086: Rectangle015
+    6400088: Rectangle016
+    6400090: Rectangle017
+    6400092: Rectangle018
+    6400094: Rectangle020
+    6400096: Table
+    6400098: Wall
+    6400100: Watch
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

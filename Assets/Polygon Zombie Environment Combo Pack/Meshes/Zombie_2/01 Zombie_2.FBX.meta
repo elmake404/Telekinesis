@@ -1,0 +1,480 @@
+fileFormatVersion: 2
+guid: 6bde538343e114bebb783bd7b3ec6087
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Base
+    100004: Broken_car
+    100006: Broken_car_2
+    100008: Broken_car_3
+    100010: Broken_helicopter1
+    100012: Broken_helicopter2
+    100014: Fence
+    100016: Fhighter_Plan_1
+    100018: Fhighter_Plan_2
+    100020: Fighter_plane_3
+    100022: Latter_Box_1
+    100024: Latter_Box_2
+    100026: Latter_Box_3
+    100028: Light_Poll_1
+    100030: Light_Poll_2
+    100032: Plane001
+    100034: Plane002
+    100036: Plane003
+    100038: Plane004
+    100040: Plane005
+    100042: Plane006
+    100044: Plane007
+    100046: Plane008
+    100048: Plane009
+    100050: Plane010
+    100052: Propeller
+    100054: Rock
+    100056: Rock Type3 02 mesh
+    100058: Rock Type3 02 mesh001
+    100060: Rock Type3 02 mesh002
+    100062: Rock Type3 02 mesh003
+    100064: Rock Type3 02 mesh004
+    100066: Rock Type3 04 mesh
+    100068: Rock Type3 04 mesh001
+    100070: Rock Type3 04 mesh002
+    100072: Rock Type3 04 mesh003
+    100074: Rock Type3 04 mesh004
+    100076: Rock Type3 04 mesh005
+    100078: Rock Type3 04 mesh006
+    100080: Rock Type3 04 mesh007
+    100082: Rock Type3 04 mesh008
+    100084: Rock Type3 04 mesh009
+    100086: Rock Type3 04 mesh010
+    100088: Rock Type3 04 mesh011
+    100090: Rock Type3 04 mesh012
+    100092: Rock Type3 04 mesh013
+    100094: Rock Type4 01 mesh
+    100096: Rock Type4 01 mesh001
+    100098: Rock Type4 01 mesh002
+    100100: Rock Type4 01 mesh003
+    100102: Rock Type5 01 mesh
+    100104: Rock Type5 01 mesh001
+    100106: Rock Type5 01 mesh002
+    100108: Rock Type5 01 mesh003
+    100110: Signel_light_1
+    100112: Signel_light_2
+    100114: Steel_sheet
+    100116: Wheels_1
+    100118: Wheels_2
+    100120: Wheels_3
+    100122: Wheels_4
+    100124: Wheels_6
+    400000: //RootNode
+    400002: Base
+    400004: Broken_car
+    400006: Broken_car_2
+    400008: Broken_car_3
+    400010: Broken_helicopter1
+    400012: Broken_helicopter2
+    400014: Fence
+    400016: Fhighter_Plan_1
+    400018: Fhighter_Plan_2
+    400020: Fighter_plane_3
+    400022: Latter_Box_1
+    400024: Latter_Box_2
+    400026: Latter_Box_3
+    400028: Light_Poll_1
+    400030: Light_Poll_2
+    400032: Plane001
+    400034: Plane002
+    400036: Plane003
+    400038: Plane004
+    400040: Plane005
+    400042: Plane006
+    400044: Plane007
+    400046: Plane008
+    400048: Plane009
+    400050: Plane010
+    400052: Propeller
+    400054: Rock
+    400056: Rock Type3 02 mesh
+    400058: Rock Type3 02 mesh001
+    400060: Rock Type3 02 mesh002
+    400062: Rock Type3 02 mesh003
+    400064: Rock Type3 02 mesh004
+    400066: Rock Type3 04 mesh
+    400068: Rock Type3 04 mesh001
+    400070: Rock Type3 04 mesh002
+    400072: Rock Type3 04 mesh003
+    400074: Rock Type3 04 mesh004
+    400076: Rock Type3 04 mesh005
+    400078: Rock Type3 04 mesh006
+    400080: Rock Type3 04 mesh007
+    400082: Rock Type3 04 mesh008
+    400084: Rock Type3 04 mesh009
+    400086: Rock Type3 04 mesh010
+    400088: Rock Type3 04 mesh011
+    400090: Rock Type3 04 mesh012
+    400092: Rock Type3 04 mesh013
+    400094: Rock Type4 01 mesh
+    400096: Rock Type4 01 mesh001
+    400098: Rock Type4 01 mesh002
+    400100: Rock Type4 01 mesh003
+    400102: Rock Type5 01 mesh
+    400104: Rock Type5 01 mesh001
+    400106: Rock Type5 01 mesh002
+    400108: Rock Type5 01 mesh003
+    400110: Signel_light_1
+    400112: Signel_light_2
+    400114: Steel_sheet
+    400116: Wheels_1
+    400118: Wheels_2
+    400120: Wheels_3
+    400122: Wheels_4
+    400124: Wheels_6
+    2100000: 'Material #50'
+    2100002: 'Material #283'
+    2100004: 'Material #38'
+    2100006: 'Material #284'
+    2100008: 'Material #82'
+    2100010: 'Material #224'
+    2100012: 'Material #223'
+    2100014: 'Material #148'
+    2100016: 'Material #147'
+    2100018: 'Material #67'
+    2100020: 'Material #49'
+    2100022: 'Material #48'
+    2100024: 'Material #285'
+    2100026: 'Material #80'
+    2100028: 'Material #104'
+    2100030: 'Material #146'
+    2100032: 'Material #286'
+    2100034: 'Material #287'
+    2100036: 'Material #120'
+    2100038: 'Material #95'
+    2100040: 'Material #108'
+    2100042: 'Material #96'
+    2100044: 'Material #158'
+    2300000: Base
+    2300002: Broken_car
+    2300004: Broken_car_2
+    2300006: Broken_car_3
+    2300008: Broken_helicopter1
+    2300010: Broken_helicopter2
+    2300012: Fence
+    2300014: Fhighter_Plan_1
+    2300016: Fhighter_Plan_2
+    2300018: Fighter_plane_3
+    2300020: Latter_Box_1
+    2300022: Latter_Box_2
+    2300024: Latter_Box_3
+    2300026: Light_Poll_1
+    2300028: Light_Poll_2
+    2300030: Plane001
+    2300032: Plane002
+    2300034: Plane003
+    2300036: Plane004
+    2300038: Plane005
+    2300040: Plane006
+    2300042: Plane007
+    2300044: Plane008
+    2300046: Plane009
+    2300048: Plane010
+    2300050: Propeller
+    2300052: Rock Type3 02 mesh
+    2300054: Rock Type3 02 mesh001
+    2300056: Rock Type3 02 mesh002
+    2300058: Rock Type3 02 mesh003
+    2300060: Rock Type3 02 mesh004
+    2300062: Rock Type3 04 mesh
+    2300064: Rock Type3 04 mesh001
+    2300066: Rock Type3 04 mesh002
+    2300068: Rock Type3 04 mesh003
+    2300070: Rock Type3 04 mesh004
+    2300072: Rock Type3 04 mesh005
+    2300074: Rock Type3 04 mesh006
+    2300076: Rock Type3 04 mesh007
+    2300078: Rock Type3 04 mesh008
+    2300080: Rock Type3 04 mesh009
+    2300082: Rock Type3 04 mesh010
+    2300084: Rock Type3 04 mesh011
+    2300086: Rock Type3 04 mesh012
+    2300088: Rock Type3 04 mesh013
+    2300090: Rock Type4 01 mesh
+    2300092: Rock Type4 01 mesh001
+    2300094: Rock Type4 01 mesh002
+    2300096: Rock Type4 01 mesh003
+    2300098: Rock Type5 01 mesh
+    2300100: Rock Type5 01 mesh001
+    2300102: Rock Type5 01 mesh002
+    2300104: Rock Type5 01 mesh003
+    2300106: Signel_light_1
+    2300108: Signel_light_2
+    2300110: Wheels_1
+    2300112: Wheels_2
+    2300114: Wheels_3
+    2300116: Wheels_4
+    2300118: Wheels_6
+    3300000: Base
+    3300002: Broken_car
+    3300004: Broken_car_2
+    3300006: Broken_car_3
+    3300008: Broken_helicopter1
+    3300010: Broken_helicopter2
+    3300012: Fence
+    3300014: Fhighter_Plan_1
+    3300016: Fhighter_Plan_2
+    3300018: Fighter_plane_3
+    3300020: Latter_Box_1
+    3300022: Latter_Box_2
+    3300024: Latter_Box_3
+    3300026: Light_Poll_1
+    3300028: Light_Poll_2
+    3300030: Plane001
+    3300032: Plane002
+    3300034: Plane003
+    3300036: Plane004
+    3300038: Plane005
+    3300040: Plane006
+    3300042: Plane007
+    3300044: Plane008
+    3300046: Plane009
+    3300048: Plane010
+    3300050: Propeller
+    3300052: Rock Type3 02 mesh
+    3300054: Rock Type3 02 mesh001
+    3300056: Rock Type3 02 mesh002
+    3300058: Rock Type3 02 mesh003
+    3300060: Rock Type3 02 mesh004
+    3300062: Rock Type3 04 mesh
+    3300064: Rock Type3 04 mesh001
+    3300066: Rock Type3 04 mesh002
+    3300068: Rock Type3 04 mesh003
+    3300070: Rock Type3 04 mesh004
+    3300072: Rock Type3 04 mesh005
+    3300074: Rock Type3 04 mesh006
+    3300076: Rock Type3 04 mesh007
+    3300078: Rock Type3 04 mesh008
+    3300080: Rock Type3 04 mesh009
+    3300082: Rock Type3 04 mesh010
+    3300084: Rock Type3 04 mesh011
+    3300086: Rock Type3 04 mesh012
+    3300088: Rock Type3 04 mesh013
+    3300090: Rock Type4 01 mesh
+    3300092: Rock Type4 01 mesh001
+    3300094: Rock Type4 01 mesh002
+    3300096: Rock Type4 01 mesh003
+    3300098: Rock Type5 01 mesh
+    3300100: Rock Type5 01 mesh001
+    3300102: Rock Type5 01 mesh002
+    3300104: Rock Type5 01 mesh003
+    3300106: Signel_light_1
+    3300108: Signel_light_2
+    3300110: Wheels_1
+    3300112: Wheels_2
+    3300114: Wheels_3
+    3300116: Wheels_4
+    3300118: Wheels_6
+    4300000: Base
+    4300002: Latter_Box_1
+    4300004: Latter_Box_2
+    4300006: Latter_Box_3
+    4300008: Fence
+    4300010: Wheels_1
+    4300012: Broken_car
+    4300014: Broken_car_2
+    4300016: Broken_car_3
+    4300018: Broken_helicopter1
+    4300020: Broken_helicopter2
+    4300022: Fighter_plane_3
+    4300024: Fhighter_Plan_2
+    4300026: Fhighter_Plan_1
+    4300028: Propeller
+    4300030: Wheels_2
+    4300032: Wheels_3
+    4300034: Wheels_4
+    4300036: Wheels_6
+    4300038: Light_Poll_1
+    4300040: Light_Poll_2
+    4300042: Signel_light_1
+    4300044: Signel_light_2
+    4300046: Plane001
+    4300048: Plane002
+    4300050: Plane003
+    4300052: Plane004
+    4300054: Plane005
+    4300056: Plane006
+    4300058: Plane007
+    4300060: Plane008
+    4300062: Plane009
+    4300064: Plane010
+    4300066: Rock Type3 02 mesh
+    4300068: Rock Type3 02 mesh001
+    4300070: Rock Type3 02 mesh002
+    4300072: Rock Type3 02 mesh003
+    4300074: Rock Type3 02 mesh004
+    4300076: Rock Type3 04 mesh
+    4300078: Rock Type3 04 mesh001
+    4300080: Rock Type3 04 mesh002
+    4300082: Rock Type3 04 mesh003
+    4300084: Rock Type3 04 mesh004
+    4300086: Rock Type3 04 mesh005
+    4300088: Rock Type3 04 mesh006
+    4300090: Rock Type3 04 mesh007
+    4300092: Rock Type3 04 mesh008
+    4300094: Rock Type3 04 mesh009
+    4300096: Rock Type3 04 mesh010
+    4300098: Rock Type3 04 mesh011
+    4300100: Rock Type3 04 mesh012
+    4300102: Rock Type3 04 mesh013
+    4300104: Rock Type4 01 mesh
+    4300106: Rock Type4 01 mesh001
+    4300108: Rock Type4 01 mesh002
+    4300110: Rock Type4 01 mesh003
+    4300112: Rock Type5 01 mesh
+    4300114: Rock Type5 01 mesh001
+    4300116: Rock Type5 01 mesh002
+    4300118: Rock Type5 01 mesh003
+    6400000: Base
+    6400002: Broken_car
+    6400004: Broken_car_2
+    6400006: Broken_car_3
+    6400008: Broken_helicopter1
+    6400010: Broken_helicopter2
+    6400012: Fence
+    6400014: Fhighter_Plan_1
+    6400016: Fhighter_Plan_2
+    6400018: Fighter_plane_3
+    6400020: Latter_Box_1
+    6400022: Latter_Box_2
+    6400024: Latter_Box_3
+    6400026: Light_Poll_1
+    6400028: Light_Poll_2
+    6400030: Plane001
+    6400032: Plane002
+    6400034: Plane003
+    6400036: Plane004
+    6400038: Plane005
+    6400040: Plane006
+    6400042: Plane007
+    6400044: Plane008
+    6400046: Plane009
+    6400048: Plane010
+    6400050: Propeller
+    6400052: Rock Type3 02 mesh
+    6400054: Rock Type3 02 mesh001
+    6400056: Rock Type3 02 mesh002
+    6400058: Rock Type3 02 mesh003
+    6400060: Rock Type3 02 mesh004
+    6400062: Rock Type3 04 mesh
+    6400064: Rock Type3 04 mesh001
+    6400066: Rock Type3 04 mesh002
+    6400068: Rock Type3 04 mesh003
+    6400070: Rock Type3 04 mesh004
+    6400072: Rock Type3 04 mesh005
+    6400074: Rock Type3 04 mesh006
+    6400076: Rock Type3 04 mesh007
+    6400078: Rock Type3 04 mesh008
+    6400080: Rock Type3 04 mesh009
+    6400082: Rock Type3 04 mesh010
+    6400084: Rock Type3 04 mesh011
+    6400086: Rock Type3 04 mesh012
+    6400088: Rock Type3 04 mesh013
+    6400090: Rock Type4 01 mesh
+    6400092: Rock Type4 01 mesh001
+    6400094: Rock Type4 01 mesh002
+    6400096: Rock Type4 01 mesh003
+    6400098: Rock Type5 01 mesh
+    6400100: Rock Type5 01 mesh001
+    6400102: Rock Type5 01 mesh002
+    6400104: Rock Type5 01 mesh003
+    6400106: Signel_light_1
+    6400108: Signel_light_2
+    6400110: Wheels_1
+    6400112: Wheels_2
+    6400114: Wheels_3
+    6400116: Wheels_4
+    6400118: Wheels_6
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

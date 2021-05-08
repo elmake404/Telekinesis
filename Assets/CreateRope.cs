@@ -10,24 +10,15 @@ public class CreateRope : MonoBehaviour
     private ConnectedObject[] connectObjects = new ConnectedObject[2];
     private ConfigurableJoint[] jointsConnected = new ConfigurableJoint[2];
     private bool isBreakROpe = false;
+    private int numOfDetectingCollision = 0;
+    private Coroutine coroutineTimerToBreakRope;
 
     private void Start()
     {
         InitWorkOnConnectedObjects();
+        coroutineTimerToBreakRope = StartCoroutine(TimerToDestreoyRope());
     }
 
-    private void FixedUpdate()
-    {
-        if (isBreakROpe == false)
-        {
-            if(GetDistanceBeetwenJoints() < 0.5f)
-            {
-                BreakRope();
-                isBreakROpe = true;
-            }
-        }
-        
-    }
 
     public void SetConnectObjectsRigidbodies(ConnectedObject[] connectObject)
     {
@@ -86,7 +77,6 @@ public class CreateRope : MonoBehaviour
         {
             SpringJoint springJoint = createdRopeSections[i].springJoint;
             springJoint.autoConfigureConnectedAnchor = false;
-            springJoint.spring = 300f;
 
             if (i == createdRopeSections.Count - 1)
             {
@@ -102,7 +92,55 @@ public class CreateRope : MonoBehaviour
 
     public void PickObjectsToRope()
     {
+        TypeOfConnected[] typeOfConnects = new TypeOfConnected[2];
+        typeOfConnects[0] = connectObjects[0].attacheRigidbody.gameObject.GetComponent<IRopeCollision>().GetTypeOfConnected();
+        typeOfConnects[1] = connectObjects[1].attacheRigidbody.gameObject.GetComponent<IRopeCollision>().GetTypeOfConnected();
 
+
+        if (typeOfConnects[0] == TypeOfConnected.zombieBody || typeOfConnects[1] == TypeOfConnected.zombieBody)
+        {
+            if (typeOfConnects[0] == TypeOfConnected.zombieBody && typeOfConnects[1] == TypeOfConnected.zombieBody)
+            {
+                UnitonObjectsAtTwoEndsRope();
+                return;
+            }
+
+            else if (typeOfConnects[0] == TypeOfConnected.staticSimpleObject || typeOfConnects[1] == TypeOfConnected.staticSimpleObject)
+            {
+                int index = 0;
+                if (typeOfConnects[0] == TypeOfConnected.zombieBody)
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index = 1;
+                }
+
+                UnionObjectWithFixedJoint(index);
+                connectObjects[index].attacheRigidbody.transform.GetComponent<ZombieBodyPart>().currentZombie.EnableRagdoll();
+                return;
+            }
+
+            else
+            {
+                int index = 0;
+                if (typeOfConnects[0] == TypeOfConnected.zombieBody) { index = 1; } else { index = 0; }
+                UnionObjectWithFixedJoint(index);
+                return;
+            }
+        }
+
+        else
+        {
+            UnitonObjectsAtTwoEndsRope();
+        }
+
+        //joint2.enableCollision = true;
+    }
+
+    private void UnitonObjectsAtTwoEndsRope()
+    {
         ConfigurableJoint joint1 = createdRopeSections[0].transform.gameObject.AddComponent<ConfigurableJoint>();
         jointsConnected[0] = joint1;
         jointsConnected[0].connectedBody = connectObjects[0].attacheRigidbody;
@@ -117,7 +155,39 @@ public class CreateRope : MonoBehaviour
         joint2.xMotion = ConfigurableJointMotion.Locked;
         joint2.yMotion = ConfigurableJointMotion.Locked;
         joint2.zMotion = ConfigurableJointMotion.Locked;
-        //joint2.enableCollision = true;
+    }
+
+    private void UnionObjectWithFixedJoint(int indexNonFixed)
+    {
+        int indexRopeSection = 0;
+        if (indexNonFixed == 0) { indexRopeSection = 0; }
+        else { indexRopeSection = createdRopeSections.Count - 1; }
+
+        ConfigurableJoint joint1 = createdRopeSections[indexRopeSection].transform.gameObject.AddComponent<ConfigurableJoint>();
+        jointsConnected[0] = joint1;
+        jointsConnected[0].connectedBody = connectObjects[indexNonFixed].attacheRigidbody;
+        joint1.xMotion = ConfigurableJointMotion.Locked;
+        joint1.yMotion = ConfigurableJointMotion.Locked;
+        joint1.zMotion = ConfigurableJointMotion.Locked;
+
+        int indexFixed = 0;
+        if (indexNonFixed == 0) { indexFixed = 1; }
+        else { indexFixed = 0; }
+
+        int indexOtherEndSectionRope = 0;
+        if (indexRopeSection == 0)
+        {
+            indexOtherEndSectionRope = createdRopeSections.Count - 1;
+        }
+        else { indexOtherEndSectionRope = 0; }
+
+        ConfigurableJoint joint2 = connectObjects[indexFixed].attacheRigidbody.gameObject.AddComponent<ConfigurableJoint>();
+        Debug.Log(joint2.transform.gameObject.name);
+        jointsConnected[1] = joint2;
+        jointsConnected[1].connectedBody = createdRopeSections[indexOtherEndSectionRope].sphereRigidbody;
+        joint2.xMotion = ConfigurableJointMotion.Locked;
+        joint2.yMotion = ConfigurableJointMotion.Locked;
+        joint2.zMotion = ConfigurableJointMotion.Locked;
     }
 
     public void SetPinToConnected()
@@ -159,7 +229,13 @@ public class CreateRope : MonoBehaviour
         return createdRopeSections;
     }
 
-    private void BreakRope()
+    private IEnumerator TimerToDestreoyRope()
+    {
+        yield return new WaitForSeconds(1f);
+        BreakRope();
+    }
+
+    public void BreakRope()
     {
         jointsConnected[0].connectedBody = null;
         jointsConnected[1].connectedBody = null;
@@ -168,10 +244,6 @@ public class CreateRope : MonoBehaviour
 
     }
 
-    private float GetDistanceBeetwenJoints()
-    {
-        return Vector3.Distance(createdRopeSections[0].transform.position, createdRopeSections[createdRopeSections.Count - 1].transform.position);
-    }
 
     private void InitHitConnectedObjects()
     {
@@ -205,6 +277,22 @@ public class CreateRope : MonoBehaviour
     public void ChangeConnectedObjectToPin(Rigidbody bodyToChange, int indexPin)
     {
         jointsConnected[indexPin].connectedBody = bodyToChange;
+    }
+
+    public void ManualBreakRopeIfConnectedObjCollided()
+    {
+        numOfDetectingCollision += 1;
+        if(numOfDetectingCollision >= 2)
+        {
+            StopCoroutine(coroutineTimerToBreakRope);
+            BreakRope();
+            Debug.Log("Break Rope ");
+        }
+    }
+
+    public ConnectedObject[] GetConnectedObjects()
+    {
+        return connectObjects;
     }
 }
 
