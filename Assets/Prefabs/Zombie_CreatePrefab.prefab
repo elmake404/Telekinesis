@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &104164
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &115996
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &130262
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &134176
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &137140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &150480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &151438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &174142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &174302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
+  selectedType: 0
 --- !u!1 &186004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,6 +1846,9 @@ MonoBehaviour:
   headRigidbody: {fileID: 9123443129854459816}
   headJoint: {fileID: 1538714856453583293}
   splatBloodParticles: {fileID: 121962, guid: 22e35da3d2c81274bb1c8fd73cca399e, type: 3}
+  destroyedHeadParticles: {fileID: 135106, guid: f563a43ef6da8ce43b59040b834b597d,
+    type: 3}
+  selectedType: 1
 --- !u!1 &193508
 GameObject:
   m_ObjectHideFlags: 0

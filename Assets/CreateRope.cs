@@ -182,7 +182,6 @@ public class CreateRope : MonoBehaviour
         else { indexOtherEndSectionRope = 0; }
 
         ConfigurableJoint joint2 = connectObjects[indexFixed].attacheRigidbody.gameObject.AddComponent<ConfigurableJoint>();
-        Debug.Log(joint2.transform.gameObject.name);
         jointsConnected[1] = joint2;
         jointsConnected[1].connectedBody = createdRopeSections[indexOtherEndSectionRope].sphereRigidbody;
         joint2.xMotion = ConfigurableJointMotion.Locked;

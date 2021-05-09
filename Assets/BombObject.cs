@@ -72,7 +72,6 @@ public class BombObject : MonoBehaviour, IRopeCollision
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            Debug.Log(colliders[i].gameObject.name);
             IRopeCollision ropeCollision = colliders[i].gameObject.GetComponent<IRopeCollision>();
             if (ropeCollision.GetTypeOfConnected() == TypeOfConnected.barrelBomb) { continue; }
 

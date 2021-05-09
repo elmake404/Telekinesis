@@ -15,6 +15,7 @@ public class CurrentZombieControl : MonoBehaviour
     public BlankEnemy blankEnemy;
     public ZombieAnimController zombieAnimController;
     private bool isEnabledRagdoll = false;
+    
     private PlayerController playerController;
     private float yRotate = 0;
     private float minDistanceToPlayer = 2f;
@@ -57,6 +58,7 @@ public class CurrentZombieControl : MonoBehaviour
     {
         for (int i = 0; i < allChildrenColliders.Length; i++)
         {
+            if (allChildrenColliders[i].enabled == false) { continue; }
             allChildrenColliders[i].attachedRigidbody.AddExplosionForce(3f, source, 1f, 5f, ForceMode.Impulse);
         }
     }
