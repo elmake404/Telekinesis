@@ -9,7 +9,8 @@ public class GeneralManager : MonoBehaviour
     public RopesController ropesController;
     public CanvasManager canvasManager;
     public ZombieConstructor zombieConstructor;
-
+    public PlatformsController platformsController;
+    public PlayerController playerController;
 
     private void OnEnable()
     {

@@ -7,7 +7,10 @@ public class SpawnZombies : MonoBehaviour
     public GameObject zombiePrefabBones;
     public Transform[] posSpawn;
     public GameObject spawnZombieParticles;
+    public PlatformController platformController;
+    private List<GameObject> linksToSpawnedZombies = new List<GameObject>();
     private int numOfPosChanges = 0;
+    private int numOfDeadZombies = 0;
 
 
     private void Start()
@@ -19,6 +22,10 @@ public class SpawnZombies : MonoBehaviour
     {
 
         GameObject instanceZombie = Instantiate(zombiePrefabBones);
+        linksToSpawnedZombies.Add(instanceZombie);
+        CurrentZombieControl currentZombieControl = instanceZombie.GetComponent<CurrentZombieControl>();
+        currentZombieControl.SetSpawnZombies(this);
+
         BlankEnemy blankEnemy = instanceZombie.GetComponent<BlankEnemy>();
 
         GameObject head = GeneralManager.instance.zombieConstructor.GetLinkToRandomHead();
@@ -51,7 +58,7 @@ public class SpawnZombies : MonoBehaviour
         for (int i = 0; i < posSpawn.Length; i++)
         {
             CreateEnemy();
-            yield return new WaitForSeconds(0.50f);
+            yield return new WaitForSeconds(1f);
         }
 
         yield return null;
@@ -67,4 +74,36 @@ public class SpawnZombies : MonoBehaviour
         Destroy(particles);
         yield return null;
     }
+
+    public void AddNumOfDeadZombies()
+    {
+        numOfDeadZombies += 1;
+
+        if (numOfDeadZombies >= posSpawn.Length)
+        {
+            StartCoroutine(DelayStartMoveToNextPlatform());
+            StartCoroutine(LazyDeleteAllSpawnedZombies());
+
+        }
+    }
+
+    private IEnumerator DelayStartMoveToNextPlatform()
+    {
+        yield return new WaitForSeconds(1f);
+        GeneralManager.instance.platformsController.TimeToChangePlatform();
+        yield return null;
+    }
+
+    private IEnumerator LazyDeleteAllSpawnedZombies()
+    {
+        yield return new WaitForSeconds(3f);
+
+        for (int i = 0; i < linksToSpawnedZombies.Count; i++)
+        {
+            Destroy(linksToSpawnedZombies[i]);
+            yield return new WaitForSeconds(0.4f);    
+        }
+        yield return null;
+    }
 }
+

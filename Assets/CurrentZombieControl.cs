@@ -15,11 +15,13 @@ public class CurrentZombieControl : MonoBehaviour
     public BlankEnemy blankEnemy;
     public ZombieAnimController zombieAnimController;
     private bool isEnabledRagdoll = false;
-    
+    public bool isInterCollisionWithOther = false;
+
     private PlayerController playerController;
     private float yRotate = 0;
     private float minDistanceToPlayer = 2f;
     private Collider[] allChildrenColliders;
+    private SpawnZombies spawnZombies;
 
     private ZombieControllerState controllerState = ZombieControllerState.zombieEmerge;
 
@@ -71,9 +73,9 @@ public class CurrentZombieControl : MonoBehaviour
     public void EnableRagdoll()
     {
         if (isEnabledRagdoll == true) { return; }
-
         controllerState = ZombieControllerState.zombieDie;
         zombieAnimController.DisableAnimator();
+        spawnZombies.AddNumOfDeadZombies();
 
         isEnabledRagdoll = true;
         Rigidbody[] rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
@@ -101,7 +103,7 @@ public class CurrentZombieControl : MonoBehaviour
 
     private void InitPlayerController()
     {
-        playerController = CameraController.instance.transform.GetComponent<PlayerController>();
+        playerController = GeneralManager.instance.playerController;
     }
 
     private void RotateZombie()
@@ -114,6 +116,7 @@ public class CurrentZombieControl : MonoBehaviour
     }
     private void MoveToPlayer()
     {
+        if (isInterCollisionWithOther == true) { return; }
         Vector3 playerPos = playerController.transform.position;
         playerPos.y = 0f;
         Vector3 pos = Vector3.MoveTowards(transform.position, playerPos, Time.deltaTime/3f);
@@ -163,4 +166,10 @@ public class CurrentZombieControl : MonoBehaviour
             allChildrenColliders[i].transform.gameObject.layer = 0;
         }
     }
+
+    public void SetSpawnZombies(SpawnZombies spawnZombies)
+    {
+        this.spawnZombies = spawnZombies;
+    }
+    
 }

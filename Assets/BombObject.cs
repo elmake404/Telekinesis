@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombObject : MonoBehaviour, IRopeCollision
+public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
 {
+    public Rigidbody thisRigidbody;
+    public Collider thisCollider;
     public Transform parent;
     public GameObject particlesExplosion;
     private ConnectedPin connectedPin;
@@ -13,7 +15,20 @@ public class BombObject : MonoBehaviour, IRopeCollision
 
     void Start()
     {
+        InitEnable();
+    }
 
+    public void InitComponent()
+    {
+        this.enabled = true;
+    }
+
+    private void InitEnable()
+    {
+        thisCollider.enabled = true;
+        thisRigidbody.useGravity = true;
+        thisRigidbody.isKinematic = false;
+        
     }
 
     public void InitConnect()

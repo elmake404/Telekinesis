@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded
+public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObject
 {
     public Rigidbody objectRigidbody;
     public Collider objectCollider;
     public TypeOfConnected selectedType = TypeOfConnected.simpleObject;
     private ConnectedPin connectedPin;
+
+    private void Start()
+    {
+        InitEnable();
+    }
+
+    public void InitComponent()
+    {
+        this.enabled = true;
+    }
+
+    private void InitEnable()
+    {
+        objectRigidbody.useGravity = true;
+        objectRigidbody.isKinematic = false;
+        objectCollider.enabled = true;
+    }
 
     public void SetWithRopeConnected(ConnectedPin connectedPin)
     {

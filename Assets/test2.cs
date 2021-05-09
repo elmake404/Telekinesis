@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class test2 : MonoBehaviour
 {
-    public GameObject gaObject;
+    public Transform gaObject;
 
     void Start()
     {
-
+        IInitObject initObject = gaObject.GetComponent<IInitObject>();
+        initObject.InitComponent();
     }
 
 

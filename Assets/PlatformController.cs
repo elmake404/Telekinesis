@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform interactObjectPlaceholder;
+    public Transform playerLocate;
+    public SpawnZombies spawnZombies;
+
     void Start()
     {
-        
+        EnableInteractObject();
+        EnableSpawnZombie();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void EnableInteractObject()
     {
-        
+        IInitObject[] initObjects = interactObjectPlaceholder.GetComponentsInChildren<IInitObject>();
+        for (int i = 0; i < initObjects.Length; i++)
+        {
+            initObjects[i].InitComponent();
+        }
+    }
+
+    private void EnableSpawnZombie()
+    {
+        spawnZombies.enabled = true;
+    }
+
+    public void DisableThisPlatform()
+    {
+        gameObject.SetActive(false);
     }
 }

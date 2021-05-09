@@ -1949,6 +1949,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blankEnemy: {fileID: 692836481119786091}
   zombieAnimController: {fileID: 4074619451195942874}
+  zombieInterCollision: {fileID: 0}
+  isInterCollisionWithOther: 0
 --- !u!114 &4074619451195942874
 MonoBehaviour:
   m_ObjectHideFlags: 0

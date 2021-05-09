@@ -2,10 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaticObject : MonoBehaviour, IRopeCollision, IExploded
+public class StaticObject : MonoBehaviour, IRopeCollision, IExploded, IInitObject
 {
+    public Collider thisCollider;
     private ConnectedPin connectedPin;
     public TypeOfConnected selectedType = TypeOfConnected.staticSimpleObject;
+
+    private void Start()
+    {
+        InitEnable();
+    }
+
+    public void InitComponent()
+    {
+        this.enabled = true;
+    }
+
+    private void InitEnable()
+    {
+        thisCollider.enabled = true;
+    }
 
     public void InitConnect()
     {
