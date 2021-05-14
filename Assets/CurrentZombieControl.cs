@@ -103,8 +103,9 @@ public class CurrentZombieControl : MonoBehaviour
 
     private IEnumerator SpawnParticlesOnHit(Vector3 source, Transform placeholder)
     {
-        GameObject instance = Instantiate(particlesOnHit, placeholder);
-        particlesOnHit.transform.position = source;
+        GameObject instance = Instantiate(particlesOnHit);
+        instance.transform.SetParent(placeholder);
+        instance.transform.position = source;
         ParticleSystem particleSystem = instance.GetComponent<ParticleSystem>();
         
         float duration = particleSystem.main.duration;
