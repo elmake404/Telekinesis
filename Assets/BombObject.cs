@@ -13,9 +13,15 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
     private float minImpulseStrength = 5f;
     private float radiusExplosion = 20f;
 
+
     void Start()
     {
         InitEnable();
+    }
+
+    public int GetUniqueID()
+    {
+        return gameObject.GetInstanceID();
     }
 
     public void InitComponent()
@@ -36,7 +42,7 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
 
     }
 
-    public void BreakRope(Vector3 source)
+    public void BreakRope()
     {
 
     }
@@ -71,7 +77,7 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
                 if (connectedPin.indexConnect == 0) { index = 1; }
                 else { index = 0; }
 
-                if (collision.collider.gameObject.GetHashCode() == objects[index].attacheRigidbody.gameObject.GetHashCode())
+                if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
                 {
                     connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
                 }

@@ -15,14 +15,17 @@ public class CurrentZombieControl : MonoBehaviour
     public BlankEnemy blankEnemy;
     public ZombieAnimController zombieAnimController;
     private bool isEnabledRagdoll = false;
-    public bool isInterCollisionWithOther = false;
+    [HideInInspector] public bool isInterCollisionWithOther = false;
+    public ConnectedPin connectedPin;
 
     private PlayerController playerController;
     private float yRotate = 0;
     private float minDistanceToPlayer = 2f;
     private Collider[] allChildrenColliders;
     private SpawnZombies spawnZombies;
-
+    [HideInInspector] public bool isRopeBreak = false;
+    [HideInInspector] public bool isPinned = false;
+    public GameObject particlesOnHit;
     private ZombieControllerState controllerState = ZombieControllerState.zombieEmerge;
 
     private void Start()
@@ -65,6 +68,11 @@ public class CurrentZombieControl : MonoBehaviour
         }
     }
 
+    public bool GetIsEnabledRagdoll()
+    {
+        return isEnabledRagdoll;
+    }
+
     public Transform GetHeadTransform()
     {
         return blankEnemy.headContainer;
@@ -85,7 +93,24 @@ public class CurrentZombieControl : MonoBehaviour
             rigidbodies[i].isKinematic = false;
             rigidbodies[i].useGravity = true;
         }
-        SetDefaultLayersToAllColliders();
+        //SetDefaultLayersToAllColliders();
+    }
+
+    public void PlayParticlesOnHit(Vector3 source, Transform placeholder)
+    {
+        StartCoroutine(SpawnParticlesOnHit(source, placeholder));
+    }
+
+    private IEnumerator SpawnParticlesOnHit(Vector3 source, Transform placeholder)
+    {
+        GameObject instance = Instantiate(particlesOnHit, placeholder);
+        particlesOnHit.transform.position = source;
+        ParticleSystem particleSystem = instance.GetComponent<ParticleSystem>();
+        
+        float duration = particleSystem.main.duration;
+        yield return new WaitForSeconds(duration);
+        Destroy(instance);
+        yield return null;
     }
 
     private IEnumerator DelayedDeath()
@@ -159,7 +184,7 @@ public class CurrentZombieControl : MonoBehaviour
 
     }
 
-    private void SetDefaultLayersToAllColliders()
+    public void SetDefaultLayersToAllColliders()
     {
         for (int i = 0; i < allChildrenColliders.Length; i++)
         {

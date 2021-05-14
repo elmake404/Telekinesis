@@ -13,6 +13,11 @@ public class StaticObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
         InitEnable();
     }
 
+    public int GetUniqueID()
+    {
+        return gameObject.GetInstanceID();
+    }
+
     public void InitComponent()
     {
         this.enabled = true;
@@ -28,7 +33,7 @@ public class StaticObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
 
     }
 
-    public void BreakRope(Vector3 source)
+    public void BreakRope()
     {
         
     }
@@ -57,8 +62,10 @@ public class StaticObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
             if (connectedPin.indexConnect == 0) { index = 1; }
             else { index = 0; }
 
-            if (collision.collider.gameObject.GetHashCode() == objects[index].attacheRigidbody.gameObject.GetHashCode())
+            
+            if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
             {
+                Debug.Log(collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() + "   " + objects[index].uniqueID);
                 connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
             }
         }

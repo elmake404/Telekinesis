@@ -15,6 +15,11 @@ public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
         InitEnable();
     }
 
+    public int GetUniqueID()
+    {
+        return gameObject.GetInstanceID();
+    }
+
     public void InitComponent()
     {
         this.enabled = true;
@@ -44,30 +49,30 @@ public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
 
     public void Explode(Vector3 source)
     {
-        objectRigidbody.AddExplosionForce(5f, source, 5f, 5f, ForceMode.Impulse);
+        //objectRigidbody.AddExplosionForce(5f, source, 5f, 5f, ForceMode.Impulse);
     }
 
-    public void BreakRope(Vector3 sourceExplosion)
+    public void BreakRope()
     {
-        Vector3 clotsestPos = objectCollider.ClosestPoint(sourceExplosion);
-        Vector3 forceDir = (clotsestPos - sourceExplosion).normalized;
-        objectRigidbody.AddForce(clotsestPos + 5f * forceDir, ForceMode.Impulse);
+        
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-
         if (collision.gameObject.layer == 8)
         {
+
             if (connectedPin.createRope == null) { return; }
+            Debug.Log(collision.collider.gameObject.name);
             ConnectedObject[] objects = connectedPin.createRope.GetConnectedObjects();
             int index = 0;
             if (connectedPin.indexConnect == 0) { index = 1; }
             else { index = 0; }
 
-            if (collision.collider.gameObject.GetHashCode() == objects[index].attacheRigidbody.gameObject.GetHashCode())
+            if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
             {
+                
                 connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
             }
         }

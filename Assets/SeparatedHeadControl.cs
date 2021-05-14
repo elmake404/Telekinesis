@@ -25,7 +25,7 @@ public class SeparatedHeadControl : MonoBehaviour
     {
         if (collision.impulse.magnitude > 5f)
         {
-            connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
+            //connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
             DestroyThisObject();
         }
 

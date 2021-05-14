@@ -11,8 +11,13 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     public GameObject splatBloodParticles;
     public GameObject destroyedHeadParticles;
     public TypeOfConnected selectedType = TypeOfConnected.zombieHead;
-    private ConnectedPin connectedPin;
+    private bool isDetachHead = false;
     private float minImpulseToActive = 5f;
+
+    public int GetUniqueID()
+    {
+        return zombieControl.gameObject.GetInstanceID();
+    }
 
     public TypeOfConnected GetTypeOfConnected()
     {
@@ -26,17 +31,18 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
     public void InitConnect()
     {
-        DetachHead();
+        zombieControl.isPinned = true;
     }
 
     public void SetWithRopeConnected(ConnectedPin connectedPin)
     {
-        this.connectedPin = connectedPin;
+        zombieControl.connectedPin = connectedPin;
     }
 
-    public void BreakRope(Vector3 source)
+    public void BreakRope()
     {
-        return;
+        zombieControl.isRopeBreak = true;
+        zombieControl.isPinned = false;
     }
 
     public void Explode(Vector3 source)
@@ -52,7 +58,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
         GameObject head = zombieControl.GetHeadTransform().GetChild(0).gameObject;
         head.transform.SetParent(null);
         SeparatedHeadControl separatedHead = head.AddComponent<SeparatedHeadControl>();
-        separatedHead.SetConnectedPin(connectedPin);
+        //separatedHead.SetConnectedPin(zombieControl.connectedPin);
         separatedHead.destroyHeadParticles = destroyedHeadParticles;
         SphereCollider sphereCollider = head.AddComponent<SphereCollider>();
         Rigidbody rigidbody = head.AddComponent<Rigidbody>();
@@ -64,15 +70,17 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
     private void DetachHead()
     {
+        isDetachHead = true;
         headCollider.enabled = false;
         headRigidbody.isKinematic = false;
         headRigidbody.useGravity = true;
-        Rigidbody newObjRigidbody = SeparateHead();
+        SeparateHead();
         StartCoroutine(PlayAndDeleteBloodSplat());
-        connectedPin.createRope.ChangeConnectedObjectToPin(newObjRigidbody, connectedPin.indexConnect);
+        //zombieControl.connectedPin.createRope.ChangeConnectedObjectToPin(newObjRigidbody, zombieControl.connectedPin.indexConnect);
         zombieControl.StartRoutineDelayDeath();
     }
 
+    
     private void ExplodeHeadOnExplode()
     {
         headCollider.enabled = false;
@@ -86,9 +94,30 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (zombieControl.isRopeBreak == true) { return; }
+
         if (collision.impulse.magnitude > minImpulseToActive)
         {
+            DetachHead();
             zombieControl.EnableRagdoll();
+        }
+
+
+        if (zombieControl.isPinned == true)
+        {
+            if (collision.gameObject.layer == 8)
+            {
+                ConnectedObject[] objects = zombieControl.connectedPin.createRope.GetConnectedObjects();
+                int index = 0;
+                if (zombieControl.connectedPin.indexConnect == 0) { index = 1; }
+                else { index = 0; }
+
+
+                if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
+                {
+                    zombieControl.connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
+                }
+            }
         }
 
     }
