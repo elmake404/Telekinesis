@@ -419,6 +419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 11 Gas_Cylinder_1
       objectReference: {fileID: 0}
+    - target: {fileID: 7202509301848893795, guid: b450498f5dfe14dcba60fa2fa0712319,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b450498f5dfe14dcba60fa2fa0712319, type: 3}
 --- !u!4 &8812353344174891843 stripped
@@ -437,7 +442,7 @@ PrefabInstance:
     - target: {fileID: 8060604251770992293, guid: db87a612b1f6a4b1f833a7bf6d3d9915,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 8060604251770992293, guid: db87a612b1f6a4b1f833a7bf6d3d9915,
         type: 3}
@@ -447,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 8060604251770992293, guid: db87a612b1f6a4b1f833a7bf6d3d9915,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.77
+      value: 2.43
       objectReference: {fileID: 0}
     - target: {fileID: 8060604251770992293, guid: db87a612b1f6a4b1f833a7bf6d3d9915,
         type: 3}
@@ -718,6 +723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 11 Gas_Cylinder_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202509301848893795, guid: b450498f5dfe14dcba60fa2fa0712319,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b450498f5dfe14dcba60fa2fa0712319, type: 3}

@@ -82,6 +82,7 @@ public class CreateRope : MonoBehaviour
 
             if (i == createdRopeSections.Count - 1)
             {
+                Destroy(springJoint);
                 continue;
             }
 
