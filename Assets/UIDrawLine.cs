@@ -10,11 +10,12 @@ public class UIDrawLine : MonoBehaviour
     private List<Vector2> drawPoints = new List<Vector2>();
     private ConnectedObject[] connectedObjects = new ConnectedObject[2];
     public LayerMask hitToOnject;
+    private SlowMotionControl slowMotionControl;
 
 
     private void Start()
     {
-
+        slowMotionControl = GeneralManager.instance.slowMotionControl;
     }
 
     private void Update()
@@ -22,11 +23,13 @@ public class UIDrawLine : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (slowMotionControl.isSlowMotion == true) { return; }
             CheckEntryRaycast();
         }
 
         if (Input.GetMouseButton(0))
         {
+            
             AddDrawPoint(Input.mousePosition);
         }
 
@@ -98,6 +101,6 @@ public class UIDrawLine : MonoBehaviour
     private List <Vector2> GetSimpleSpline()
     {
         List<Vector2> simpledPoints = DuglasKeper.GetSimpleSpline(drawPoints, 10f);
-        return simpledPoints;
+        return simpledPoints;   
     }
 }
