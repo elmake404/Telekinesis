@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public PlayerController playerController;
-    private Transform destinationPoint;
-    private Transform currentPlayerLocate;
     private Vector3 startPos;
     private Vector3 endPos;
     float currentLerpTime = 0f;
@@ -15,7 +13,6 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         currentLerpTime = 0f;
-        SetEndAndStartPos();
     }
 
     void Update()
@@ -37,17 +34,11 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    private void SetEndAndStartPos()
-    {
-        startPos = new Vector3(currentPlayerLocate.position.x, transform.position.y, currentPlayerLocate.position.z);
-        endPos = new Vector3(destinationPoint.position.x, transform.position.y, destinationPoint.position.z);
-        
-    }
 
-    public void SetCurrentLocateAndDestination(Transform current, Transform destination)
+    public void SetCurrentLocateAndDestination(Vector3 current, Vector3 destination)
     {
-        this.destinationPoint = destination;
-        this.currentPlayerLocate = current;
+        this.endPos = destination;
+        this.startPos = current;
     }
 
     public void EnablePlayerMove()

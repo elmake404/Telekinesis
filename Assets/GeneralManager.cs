@@ -12,6 +12,7 @@ public class GeneralManager : MonoBehaviour
     public PlatformsController platformsController;
     public PlayerController playerController;
     public SlowMotionControl slowMotionControl;
+    public CivilianConstructor civilianConstructor;
 
     private void OnEnable()
     {

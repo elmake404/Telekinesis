@@ -7,10 +7,12 @@ public class PlatformController : MonoBehaviour
     public Transform interactObjectPlaceholder;
     public Transform playerLocate;
     public SpawnZombies spawnZombies;
+    public SpawnCivilian spawnCivilian;
 
     void Start()
     {
         EnableInteractObject();
+        EnableSpawnCivillian();
         EnableSpawnZombie();
     }
 
@@ -26,6 +28,11 @@ public class PlatformController : MonoBehaviour
     private void EnableSpawnZombie()
     {
         spawnZombies.enabled = true;
+    }
+
+    private void EnableSpawnCivillian()
+    {
+        spawnCivilian.enabled = true;
     }
 
     public void DisableThisPlatform()

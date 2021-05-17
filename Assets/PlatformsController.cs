@@ -25,7 +25,7 @@ public class PlatformsController : MonoBehaviour
             return;
         }
 
-        GeneralManager.instance.playerController.SetCurrentAndDestinationLoc(platformControllers[currentPlatformIndex].playerLocate, platformControllers[currentPlatformIndex + 1].playerLocate);
+        //GeneralManager.instance.playerController.SetCurrentAndDestinationLoc(platformControllers[currentPlatformIndex].playerLocate, platformControllers[currentPlatformIndex + 1].playerLocate);
         GeneralManager.instance.playerController.SwitchStateAction(PlayerState.playerIsMove);
         //currentPlatformIndex += 1;
     }

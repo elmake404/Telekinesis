@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class test2 : MonoBehaviour
 {
-    public Transform gaObject;
+    public SkinnedMeshRenderer skinnedMesh;
 
     void Start()
     {
-        IInitObject initObject = gaObject.GetComponent<IInitObject>();
-        initObject.InitComponent();
+        Transform[] bones = skinnedMesh.bones;
+        Debug.Log("Root bone: " + skinnedMesh.rootBone.name);
+        for (int i = 0; i < bones.Length; i++)
+        {
+            Debug.Log(i + "   " + bones[i].gameObject.name);
+        }
     }
 
 

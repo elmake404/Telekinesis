@@ -7,6 +7,8 @@ public enum ZombieControllerState
     zombieEmerge,
     zombieRun,
     zombieAttack,
+    zombieIdle,
+    zombieEating,
     zombieDie
 }
 
@@ -18,9 +20,9 @@ public class CurrentZombieControl : MonoBehaviour
     [HideInInspector] public bool isInterCollisionWithOther = false;
     public ConnectedPin connectedPin;
 
-    private PlayerController playerController;
+    public CivilianController civillianController;
     private float yRotate = 0;
-    private float minDistanceToPlayer = 2f;
+    private float minDistanceToPlayer = 1f;
     private Collider[] allChildrenColliders;
     private SpawnZombies spawnZombies;
     [HideInInspector] public bool isRopeBreak = false;
@@ -30,7 +32,6 @@ public class CurrentZombieControl : MonoBehaviour
 
     private void Start()
     {
-        InitPlayerController();
         StartCoroutine(WaitZombieEmergeAnim());
     }
 
@@ -39,11 +40,19 @@ public class CurrentZombieControl : MonoBehaviour
         SwitchStateEnemy(controllerState);
     }
 
+    public void AttackTriggerAnimation()
+    {
+        spawnZombies.InitCivillianDead();
+        controllerState = ZombieControllerState.zombieEating;
+        SwitchStateEnemy(controllerState);
+    }
+
     private void SwitchStateEnemy(ZombieControllerState state)
     {
         switch (state)
         {
             case ZombieControllerState.zombieEmerge:
+                
                 break;
             case ZombieControllerState.zombieRun:
                 MoveToPlayer();
@@ -53,10 +62,24 @@ public class CurrentZombieControl : MonoBehaviour
             case ZombieControllerState.zombieAttack:
                 RotateZombie();
                 zombieAnimController.SetAnimation(ZombieAnimationState.isAttack);
+                this.enabled = false;
                 break;
             case ZombieControllerState.zombieDie:
+                this.enabled = false;
+                break;
+            case ZombieControllerState.zombieIdle:
+                zombieAnimController.SetAnimation(ZombieAnimationState.isIdle);
+                this.enabled = false;
+                break;
+            case ZombieControllerState.zombieEating:
+                zombieAnimController.SetAnimation(ZombieAnimationState.isEating);
                 break;
         }
+    }
+
+    public void MakeIdleZombie()
+    {
+        controllerState = ZombieControllerState.zombieIdle;
     }
 
     public void AddExplosionForceToBody(Vector3 source)
@@ -93,7 +116,7 @@ public class CurrentZombieControl : MonoBehaviour
             rigidbodies[i].isKinematic = false;
             rigidbodies[i].useGravity = true;
         }
-        //SetDefaultLayersToAllColliders();
+        
     }
 
     public void PlayParticlesOnHit(Vector3 source, Transform placeholder)
@@ -127,14 +150,9 @@ public class CurrentZombieControl : MonoBehaviour
         StartCoroutine(DelayedDeath());
     }
 
-    private void InitPlayerController()
-    {
-        playerController = GeneralManager.instance.playerController;
-    }
-
     private void RotateZombie()
     {
-        Vector3 playerCamPos = playerController.transform.position;
+        Vector3 playerCamPos = civillianController.transform.position;
         Vector3 normaDirToPlayer = (playerCamPos - transform.position).normalized;
         float yTargetRotate = Mathf.Atan2(normaDirToPlayer.x, transform.forward.z) * Mathf.Rad2Deg;
         yRotate = Mathf.MoveTowards(yRotate, yTargetRotate, 8f * Time.deltaTime);
@@ -143,7 +161,7 @@ public class CurrentZombieControl : MonoBehaviour
     private void MoveToPlayer()
     {
         if (isInterCollisionWithOther == true) { return; }
-        Vector3 playerPos = playerController.transform.position;
+        Vector3 playerPos = civillianController.transform.position;
         playerPos.y = 0f;
         Vector3 pos = Vector3.MoveTowards(transform.position, playerPos, Time.deltaTime/3f);
         transform.position = pos;
@@ -151,7 +169,7 @@ public class CurrentZombieControl : MonoBehaviour
 
     private float CalculateDistanceToPlayer()
     {
-        return Vector3.Distance(transform.position, playerController.transform.position);
+        return Vector3.Distance(transform.position, civillianController.transform.position);
     }
 
     private void WaitToAttackState()
@@ -159,6 +177,7 @@ public class CurrentZombieControl : MonoBehaviour
         if (CalculateDistanceToPlayer() < minDistanceToPlayer)
         {
             controllerState = ZombieControllerState.zombieAttack;
+            spawnZombies.StopAnotherZombies(this.GetHashCode());
         }
     }
 
