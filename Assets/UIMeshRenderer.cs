@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIMeshRenderer : Graphic
 {
     public MeshedPoints meshedPoints = new MeshedPoints();
+    
 
     protected override void OnPopulateMesh(VertexHelper vh)
     {

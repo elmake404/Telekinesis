@@ -8,13 +8,14 @@ public class MeshedPoints
     private List<Vector2> points = new List<Vector2>();
     private List<UIVertex> vertexes = new List<UIVertex>();
     public float roadWidth = 50f;
-    private Vector2 screenOffset = new Vector2(Screen.width/2, Screen.height/2);
+    //private 
 
 
     public void Clear()
     {
         points.Clear();
         vertexes.Clear();
+        
     }
 
     public void AddPoint(Vector2 pointPos)
@@ -23,7 +24,7 @@ public class MeshedPoints
         color.a = 1;
 
         points.Add(pointPos);
-       
+        
 
         int newPointIndex = points.Count - 1;
 
@@ -43,13 +44,15 @@ public class MeshedPoints
         float completetionPercent = newPointIndex / (float)(points.Count - 1);
 
         UIVertex vertex1 = UIVertex.simpleVert;
-        vertex1.position = points[newPointIndex] + left * roadWidth * 0.5f - screenOffset;
+        vertex1.position = points[newPointIndex] + left * roadWidth * 0.5f ; 
         vertex1.uv0 = new Vector2(0, completetionPercent);
         vertex1.color = color;
         vertexes.Add(vertex1);
+        
+
 
         UIVertex vertex2 = UIVertex.simpleVert;
-        vertex2.position = points[newPointIndex] - left * roadWidth * 0.5f - screenOffset;
+        vertex2.position = points[newPointIndex] - left * roadWidth * 0.5f ;
         vertex2.uv0 = new Vector2(1, completetionPercent);
         vertex2.color = color;
         vertexes.Add(vertex2);

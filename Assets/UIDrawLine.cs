@@ -7,11 +7,14 @@ public class UIDrawLine : MonoBehaviour
     public UIMeshRenderer uIMeshRenderer;
     public float widthLine;
     public float minStepLine;
+    public float maxRopeLength;
     private List<Vector2> drawPoints = new List<Vector2>();
     private ConnectedObject[] connectedObjects = new ConnectedObject[2];
     public LayerMask hitToOnject;
+    public RectTransform canvasRectTransform;
+    public Canvas canvas;
     private SlowMotionControl slowMotionControl;
-
+    private float drawLineLength = 0f;
 
     private void Start()
     {
@@ -23,19 +26,21 @@ public class UIDrawLine : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log(Input.mousePosition);
             if (slowMotionControl.isSlowMotion == true) { return; }
             CheckEntryRaycast();
         }
 
         if (Input.GetMouseButton(0))
         {
-            
+            if (drawLineLength >= maxRopeLength) { return; }
             AddDrawPoint(Input.mousePosition);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             CheckOutroRaycast();
+            drawLineLength = 0f;
         }
     }
 
@@ -49,13 +54,22 @@ public class UIDrawLine : MonoBehaviour
         float distance = Vector2.Distance(drawPoints[drawPoints.Count - 1], point);
         if (distance > minStepLine)
         {
+            Vector2 adjustPoint = point;
+            
+            adjustPoint = point - new Vector2(canvasRectTransform.position.x, canvasRectTransform.position.y);
+            adjustPoint /= canvas.scaleFactor;
+            //adjustPoint = point - Vector2.Lerp(Vector2.zero, new Vector2(540, 960), canvasRectTransform.localScale.magnitude);
+            drawLineLength += minStepLine;
+            
             drawPoints.Add(point);
-            uIMeshRenderer.meshedPoints.AddPoint(point);
+            uIMeshRenderer.meshedPoints.AddPoint(adjustPoint);
             uIMeshRenderer.UpdateMesh();
             return;
         }
         
     }
+
+
 
     private void CheckEntryRaycast()
     {
