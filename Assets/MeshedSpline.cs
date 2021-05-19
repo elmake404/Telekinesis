@@ -7,12 +7,9 @@ public class MeshedSpline
 {
 
 
-    public static MeshSpline GetGeneratedMesh(Vector2[] points, float roadWidth, Color color)
+    public static MeshSpline GetGeneratedMesh(Vector2[] points, float roadWidth, Color color, float canvasScale)
     {
-        float defaultScreen = new Vector2Int(1080, 1920).magnitude;
-        float currentScreen = new Vector2Int(Screen.width, Screen.height).magnitude;
-
-        roadWidth = (roadWidth * currentScreen) / defaultScreen;
+        
 
         MeshSpline meshSpline;
         meshSpline.uIVertices = new UIVertex[points.Length * 2];

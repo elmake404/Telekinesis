@@ -7,7 +7,7 @@ public class MeshedPoints
 {
     private List<Vector2> points = new List<Vector2>();
     private List<UIVertex> vertexes = new List<UIVertex>();
-    public float roadWidth = 50f;
+    private float roadWidth = 15f;
     //private 
 
 

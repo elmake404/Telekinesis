@@ -7,6 +7,7 @@ public class CivilianController : MonoBehaviour
 {
     public CivilianRun civilianRun;
     public CivillianAnimController civillianAnimController;
+    public GameObject heartsParticles;
     [HideInInspector] public Transform restPoint;
     [HideInInspector] public Vector3 platformPos;
     private CivillianState civillianState = CivillianState.civillRun;
@@ -15,6 +16,7 @@ public class CivilianController : MonoBehaviour
     void Start()
     {
         RunRunCivilianToRestPoint();
+
     }
 
     private void RunRunCivilianToRestPoint()
@@ -43,8 +45,21 @@ public class CivilianController : MonoBehaviour
                 civillianAnimController.ChangeAnimState(CivillianAnimState.death);
                 break;
             case CivillianState.civilSaved:
+                StartCoroutine(PlayHeartsParticles());
                 civillianAnimController.ChangeAnimState(CivillianAnimState.idle);
                 break;
         }
+    }
+
+    private IEnumerator PlayHeartsParticles()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GameObject particles = Instantiate(heartsParticles);
+        Vector3 spawnPos = transform.position;
+        spawnPos.y += 3f;
+        particles.transform.position = spawnPos;
+        float duration = particles.GetComponent<ParticleSystem>().main.duration;
+        yield return new WaitForSeconds(duration);
+        Destroy(particles);
     }
 }

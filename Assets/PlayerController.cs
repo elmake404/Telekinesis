@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 currentPlayerLoc = transform.position;
         Vector3 destinationLoc = currentPlayerLoc;
-        destinationLoc.z += -9.0f;
+        destinationLoc.z += -20.0f;
         playerMove.SetCurrentLocateAndDestination(currentPlayerLoc, destinationLoc);
         playerMove.EnablePlayerMove();
         

@@ -11,7 +11,7 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
     private ConnectedPin connectedPin;
     public TypeOfConnected selectedType = TypeOfConnected.barrelBomb;
     private float minImpulseStrength = 5f;
-    private float radiusExplosion = 20f;
+    private float radiusExplosion = 3f;
 
 
     void Start()
@@ -121,4 +121,6 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
     {
         Destroy(parent.gameObject);
     }
+
+    
 }

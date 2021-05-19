@@ -485,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   civilianRun: {fileID: 9040305837728105783}
   civillianAnimController: {fileID: 425349330814760436}
+  heartsParticles: {fileID: 120334, guid: cc0562e923d0cf9448bba7acdb82e626, type: 3}
   restPoint: {fileID: 0}
   platformPos: {x: 0, y: 0, z: 0}
 --- !u!114 &425349330814760436

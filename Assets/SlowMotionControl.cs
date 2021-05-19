@@ -21,7 +21,7 @@ public class SlowMotionControl : MonoBehaviour
     private IEnumerator RunSlowMotion()
     {
         isSlowMotion = true;
-        yield return new WaitForSecondsRealtime(0.3f);
+        //yield return new WaitForSecondsRealtime(0.3f);
         Time.timeScale = slowFactor;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
         yield return new WaitForSecondsRealtime(1.5f);

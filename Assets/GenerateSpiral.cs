@@ -27,6 +27,7 @@ public class GenerateSpiral
             spawnPos.y = (a + b * angle) * Mathf.Sin(angle);
 
             spawnPos = Quaternion.Euler(0f,0f,zRotate) * spawnPos;
+
             points[i] = spawnPos;
         }
 

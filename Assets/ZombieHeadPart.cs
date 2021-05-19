@@ -12,7 +12,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     public GameObject destroyedHeadParticles;
     public TypeOfConnected selectedType = TypeOfConnected.zombieHead;
     private bool isDetachHead = false;
-    private float minImpulseToActive = 5f;
+    private float minImpulseToActive = 2f;
 
     public int GetUniqueID()
     {
@@ -96,10 +96,14 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     {
         if (zombieControl.isRopeBreak == true) { return; }
 
-        if (collision.impulse.magnitude > minImpulseToActive)
+        float force = collision.impulse.magnitude;
+
+        if (force > minImpulseToActive)
         {
             DetachHead();
             zombieControl.EnableRagdoll();
+            StartCoroutine(PlayParticlesOnSimpleHead(collision.contacts[0].point, force));
+            StartCoroutine(PlayDirectParticles(collision.contacts[0], force));
         }
 
 
@@ -122,6 +126,29 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
     }
 
+    private IEnumerator PlayParticlesOnSimpleHead(Vector3 pos, float forceHit)
+    {
+        GameObject instance = Instantiate(zombieControl.particlesOnHit);
+        instance.transform.position = pos;
+        instance.transform.localScale = new Vector3(1, 1, 1);
+        instance.transform.localScale *= Mathf.Lerp(0.5f, 1f, Mathf.InverseLerp(5, 30, forceHit));
+        ParticleSystem particleSystem = instance.GetComponent<ParticleSystem>();
+        yield return new WaitForSeconds(particleSystem.main.duration);
+        Destroy(instance);
+    }
+
+    private IEnumerator PlayDirectParticles(ContactPoint contactPoint, float forceHit)
+    {
+        GameObject instance = Instantiate(zombieControl.directParticlesOnHit);
+        instance.transform.position = contactPoint.point;
+        instance.transform.localRotation = Quaternion.FromToRotation(Vector3.back, contactPoint.normal);
+        instance.transform.localScale = new Vector3(1, 1, 1);
+        instance.transform.localScale *= Mathf.Lerp(1f, 2f, Mathf.InverseLerp(5, 30, forceHit));
+        ParticleSystem particleSystem = instance.GetComponent<ParticleSystem>();
+        yield return new WaitForSeconds(particleSystem.main.duration);
+        Destroy(instance);
+    }
+
     private IEnumerator PlayDestroyHeadParicles(Vector3 pos)
     {
         GameObject particles = Instantiate(destroyedHeadParticles);
@@ -129,6 +156,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
         float duration = particles.GetComponent<ParticleSystem>().main.duration;
         yield return new WaitForSeconds(duration);
         Destroy(particles);
+        yield return null;
 
     }
 

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ropeSection: {fileID: 1192590631051773759, guid: 79f4ac593997833458f9f4a6652a8b96,
     type: 3}
+  tracer: {fileID: 4909993498332597047, guid: 72584ffb599036a449bc672aa1e1f908, type: 3}
 --- !u!114 &3529329935672506978
 MonoBehaviour:
   m_ObjectHideFlags: 0

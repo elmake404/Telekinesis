@@ -156,4 +156,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectRigidbody: {fileID: 5241259130726169014}
   objectCollider: {fileID: 6642787386532811228}
+  interactParticles: {fileID: 165672, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
   selectedType: 3

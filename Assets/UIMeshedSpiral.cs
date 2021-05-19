@@ -7,17 +7,22 @@ public class UIMeshedSpiral : Graphic
 {
     [Range(0, 100)] public int sliderToggle;
     public float width;
-    protected override void OnValidate()
+    private float canvasScale;
+
+
+
+    protected override void Start()
     {
-        UpdateMesh();
+        if (!Application.isPlaying) { return; }
+        canvasScale = GeneralManager.instance.canvas.scaleFactor;
         
     }
 
-
     protected override void OnPopulateMesh(VertexHelper vh)
     {
-        
         vh.Clear();
+        if (!Application.isPlaying) { return; }
+        
         if (sliderToggle == 0)
         {
             return;
@@ -25,18 +30,13 @@ public class UIMeshedSpiral : Graphic
         canvasRenderer.SetMaterial(this.material, null);
         
 
-        MeshSpline meshSpline = MeshedSpline.GetGeneratedMesh(GenerateSpiral.GetSpiralPoints(sliderToggle, rectTransform.rect.size), width, color);
+        MeshSpline meshSpline = MeshedSpline.GetGeneratedMesh(GenerateSpiral.GetSpiralPoints(sliderToggle, rectTransform.rect.size), width, color, canvasScale);
         
         vh.AddUIVertexStream(new List<UIVertex>(meshSpline.uIVertices), new List<int>(meshSpline.tris));
         
     }
 
-
-
-    private void BuildMesh(VertexHelper vh)
-    {
-
-    }
+    
 
     public void UpdateMesh()
     {

@@ -5,5 +5,5 @@ using UnityEngine;
 public class CanvasManager : MonoBehaviour
 {
     public UIDrawLine uiDrawLine;
-
+    
 }

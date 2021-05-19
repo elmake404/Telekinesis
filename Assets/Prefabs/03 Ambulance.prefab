@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisCollider: {fileID: 401401324627043279}
+  interactParticles: {fileID: 195900, guid: ec61825cb06be72419bb09eee03af08c, type: 3}
   selectedType: 4
 --- !u!65 &401401324627043279
 BoxCollider:

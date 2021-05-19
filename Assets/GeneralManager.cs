@@ -13,9 +13,13 @@ public class GeneralManager : MonoBehaviour
     public PlayerController playerController;
     public SlowMotionControl slowMotionControl;
     public CivilianConstructor civilianConstructor;
+    public Canvas canvas;
+    public RectTransform canvasRectTransform;
 
     private void OnEnable()
     {
         instance = this;
     }
+
+
 }

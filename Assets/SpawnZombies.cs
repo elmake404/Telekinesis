@@ -118,7 +118,7 @@ public class SpawnZombies : MonoBehaviour
 
     private IEnumerator DelayStartMoveToNextPlatform()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         GeneralManager.instance.platformsController.TimeToChangePlatform();
         yield return null;
     }
@@ -129,7 +129,7 @@ public class SpawnZombies : MonoBehaviour
 
         for (int i = 0; i < linksToSpawnedZombies.Count; i++)
         {
-            Destroy(linksToSpawnedZombies[i]);
+            Destroy(linksToSpawnedZombies[i].gameObject);
             yield return new WaitForSeconds(0.4f);    
         }
         yield return null;

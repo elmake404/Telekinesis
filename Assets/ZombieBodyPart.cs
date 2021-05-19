@@ -43,15 +43,27 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
         currentZombie.EnableRagdoll();
     }
 
+    private IEnumerator PlaySimpleParticlesOnHit(Vector3 pos, float forceHit)
+    {
+        GameObject instance = Instantiate(currentZombie.particlesOnHit);
+        instance.transform.position = pos;
+        instance.transform.localScale = new Vector3(1, 1, 1);
+        instance.transform.localScale *= Mathf.Lerp(0.2f, 1f, Mathf.InverseLerp(5, 50, forceHit));
+        ParticleSystem particleSystem = instance.GetComponent<ParticleSystem>();
+        yield return new WaitForSeconds(particleSystem.main.duration);
+        Destroy(instance);
+        yield return null;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        
+        float force = collision.impulse.magnitude;
         if (collision.impulse.magnitude > minImpulseToActive)
         {
             ContactPoint[] contacts = collision.contacts;
             for (int i = 0; i < contacts.Length; i++)
             {
-                currentZombie.PlayParticlesOnHit(contacts[i].point, transform);
+                StartCoroutine(PlaySimpleParticlesOnHit(contacts[i].point, force));
             }
 
             currentZombie.EnableRagdoll();
@@ -78,8 +90,6 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
                 }
             }
         }
-
-        
 
         
     }

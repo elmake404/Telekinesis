@@ -7,8 +7,10 @@ public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
 {
     public Rigidbody objectRigidbody;
     public Collider objectCollider;
+    public GameObject interactParticles;
     public TypeOfConnected selectedType = TypeOfConnected.simpleObject;
     private ConnectedPin connectedPin;
+    
 
     private void Start()
     {
@@ -58,13 +60,30 @@ public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
 
     }
 
+    private IEnumerator PlayParticlesOnHit(ContactPoint contactPoint, float forceHit)
+    {
+        GameObject instance = Instantiate(interactParticles);
+        instance.transform.position = contactPoint.point;
+        instance.transform.localScale = new Vector3(1, 1, 1);
+        instance.transform.localScale *= Mathf.Lerp(0.3f, 1f, Mathf.InverseLerp(5, 30, forceHit));
+        ParticleSystem particleSystem = instance.GetComponent<ParticleSystem>();
+        yield return new WaitForSeconds(particleSystem.main.duration);
+        Destroy(instance);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
+        float force = collision.impulse.magnitude;
+
+        if (force > 5f)
+        {
+            StartCoroutine(PlayParticlesOnHit(collision.contacts[0], force));
+        }
+
         if (collision.gameObject.layer == 8)
         {
 
             if (connectedPin.createRope == null) { return; }
-            Debug.Log(collision.collider.gameObject.name);
             ConnectedObject[] objects = connectedPin.createRope.GetConnectedObjects();
             int index = 0;
             if (connectedPin.indexConnect == 0) { index = 1; }

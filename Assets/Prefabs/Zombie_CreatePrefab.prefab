@@ -1950,9 +1950,11 @@ MonoBehaviour:
   blankEnemy: {fileID: 692836481119786091}
   zombieAnimController: {fileID: 4074619451195942874}
   isInterCollisionWithOther: 0
+  civillianController: {fileID: 0}
   isRopeBreak: 0
   isPinned: 0
   particlesOnHit: {fileID: 137732, guid: b2a41848dc033f04295f551876431a40, type: 3}
+  directParticlesOnHit: {fileID: 128904, guid: 0588baf7ce32f9e42bb9d8777136e52c, type: 3}
 --- !u!114 &4074619451195942874
 MonoBehaviour:
   m_ObjectHideFlags: 0

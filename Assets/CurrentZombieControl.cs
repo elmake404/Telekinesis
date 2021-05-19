@@ -20,7 +20,7 @@ public class CurrentZombieControl : MonoBehaviour
     [HideInInspector] public bool isInterCollisionWithOther = false;
     public ConnectedPin connectedPin;
 
-    public CivilianController civillianController;
+    [HideInInspector] public CivilianController civillianController;
     private float yRotate = 0;
     private float minDistanceToPlayer = 1f;
     private Collider[] allChildrenColliders;
@@ -28,6 +28,7 @@ public class CurrentZombieControl : MonoBehaviour
     [HideInInspector] public bool isRopeBreak = false;
     [HideInInspector] public bool isPinned = false;
     public GameObject particlesOnHit;
+    public GameObject directParticlesOnHit;
     private ZombieControllerState controllerState = ZombieControllerState.zombieEmerge;
 
     private void Start()
@@ -87,7 +88,7 @@ public class CurrentZombieControl : MonoBehaviour
         for (int i = 0; i < allChildrenColliders.Length; i++)
         {
             if (allChildrenColliders[i].enabled == false) { continue; }
-            allChildrenColliders[i].attachedRigidbody.AddExplosionForce(3f, source, 1f, 5f, ForceMode.Impulse);
+            allChildrenColliders[i].attachedRigidbody.AddExplosionForce(3f, source, 5f, 10f, ForceMode.Impulse);
         }
     }
 
@@ -104,6 +105,7 @@ public class CurrentZombieControl : MonoBehaviour
     public void EnableRagdoll()
     {
         if (isEnabledRagdoll == true) { return; }
+        GeneralManager.instance.slowMotionControl.StartRunSlowMotion();
         controllerState = ZombieControllerState.zombieDie;
         zombieAnimController.DisableAnimator();
         spawnZombies.AddNumOfDeadZombies();
@@ -117,24 +119,6 @@ public class CurrentZombieControl : MonoBehaviour
             rigidbodies[i].useGravity = true;
         }
         
-    }
-
-    public void PlayParticlesOnHit(Vector3 source, Transform placeholder)
-    {
-        StartCoroutine(SpawnParticlesOnHit(source, placeholder));
-    }
-
-    private IEnumerator SpawnParticlesOnHit(Vector3 source, Transform placeholder)
-    {
-        GameObject instance = Instantiate(particlesOnHit);
-        instance.transform.SetParent(placeholder);
-        instance.transform.position = source;
-        ParticleSystem particleSystem = instance.GetComponent<ParticleSystem>();
-        
-        float duration = particleSystem.main.duration;
-        yield return new WaitForSeconds(duration);
-        Destroy(instance);
-        yield return null;
     }
 
     private IEnumerator DelayedDeath()
