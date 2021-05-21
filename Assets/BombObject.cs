@@ -119,6 +119,8 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
 
     private void DestroyThisObject()
     {
+        int hash = gameObject.GetComponent<Renderer>().GetHashCode();
+        TemporaryRendererContainer.instance.DeleteRenderer(hash);
         Destroy(parent.gameObject);
     }
 

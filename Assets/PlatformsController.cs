@@ -10,10 +10,13 @@ public class PlatformsController : MonoBehaviour
     private void Start()
     {
         EnableFirsPlatform();
+        
     }
+
 
     private void EnableFirsPlatform()
     {
+
         platformControllers[0].enabled = true;
         currentPlatformIndex = 0;
     }

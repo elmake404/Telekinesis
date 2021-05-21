@@ -19,7 +19,6 @@ public class CurrentZombieControl : MonoBehaviour
     private bool isEnabledRagdoll = false;
     [HideInInspector] public bool isInterCollisionWithOther = false;
     public ConnectedPin connectedPin;
-
     [HideInInspector] public CivilianController civillianController;
     private float yRotate = 0;
     private float minDistanceToPlayer = 1f;
@@ -34,6 +33,7 @@ public class CurrentZombieControl : MonoBehaviour
     private void Start()
     {
         StartCoroutine(WaitZombieEmergeAnim());
+
     }
 
     private void FixedUpdate()

@@ -21,7 +21,19 @@ public class PlatformController : MonoBehaviour
         IInitObject[] initObjects = interactObjectPlaceholder.GetComponentsInChildren<IInitObject>();
         for (int i = 0; i < initObjects.Length; i++)
         {
+            
             initObjects[i].InitComponent();
+        }
+
+        AddInteractObjToRendererCobtainer();
+    }
+
+    private void AddInteractObjToRendererCobtainer()
+    {
+        Renderer[] renderers = interactObjectPlaceholder.GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            TemporaryRendererContainer.instance.AddRendererToPost(renderers[i]);
         }
     }
 

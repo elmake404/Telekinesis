@@ -35,11 +35,13 @@ public class SpawnZombies : MonoBehaviour
         GameObject body = GeneralManager.instance.zombieConstructor.GetLinkToRandomBody();
 
         GameObject instanceBody = Instantiate(body, blankEnemy.bodyContainer);
+        TemporaryRendererContainer.instance.AddRendererToPost(instanceBody.GetComponent<Renderer>());
         SkinnedMeshRenderer skinnedMeshRenderer = instanceBody.GetComponent<SkinnedMeshRenderer>();
         skinnedMeshRenderer.rootBone = blankEnemy.rootBones;
         skinnedMeshRenderer.bones = blankEnemy.GetBones();
 
-        Instantiate(head, blankEnemy.headContainer);
+        GameObject instanceHead = Instantiate(head, blankEnemy.headContainer);
+        TemporaryRendererContainer.instance.AddRendererToPost(instanceHead.GetComponent<Renderer>());
 
         Vector3 posSpawn = GetPosSpawn();
         instanceZombie.transform.position = posSpawn;

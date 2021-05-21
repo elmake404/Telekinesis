@@ -17,7 +17,7 @@ public class RopeLengthController : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 followPos = Input.mousePosition;
         followPos.y += yOffsetSpiral;

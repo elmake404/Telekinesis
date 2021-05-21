@@ -71,6 +71,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     private void DetachHead()
     {
         isDetachHead = true;
+        
         headCollider.enabled = false;
         headRigidbody.isKinematic = false;
         headRigidbody.useGravity = true;
@@ -87,7 +88,12 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
         headRigidbody.isKinematic = false;
         headRigidbody.useGravity = true;
         Transform headTransform = zombieControl.GetHeadTransform();
+
+        int hash = headTransform.GetComponent<Renderer>().GetHashCode();
+        TemporaryRendererContainer.instance.DeleteRenderer(hash);
+
         headTransform.GetChild(0).gameObject.SetActive(false);
+
         StartCoroutine(PlayDestroyHeadParicles(headTransform.position));
         StartCoroutine(PlayAndDeleteBloodSplat());
     }

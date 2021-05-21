@@ -1950,6 +1950,9 @@ MonoBehaviour:
   blankEnemy: {fileID: 692836481119786091}
   zombieAnimController: {fileID: 4074619451195942874}
   isInterCollisionWithOther: 0
+  zombieRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
   civillianController: {fileID: 0}
   isRopeBreak: 0
   isPinned: 0

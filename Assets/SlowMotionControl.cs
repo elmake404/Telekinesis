@@ -18,10 +18,19 @@ public class SlowMotionControl : MonoBehaviour
         StartCoroutine(RunSlowMotion());
     }
 
+    public void StopTime()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void ContinueTime()
+    {
+        Time.timeScale = 1f;
+    }
+
     private IEnumerator RunSlowMotion()
     {
         isSlowMotion = true;
-        //yield return new WaitForSecondsRealtime(0.3f);
         Time.timeScale = slowFactor;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
         yield return new WaitForSecondsRealtime(1.5f);

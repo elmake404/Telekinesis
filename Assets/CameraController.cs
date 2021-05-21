@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
     [HideInInspector] public Camera mainCamera;
+    public Postprocessing postprocessingCamera;
 
     private void OnEnable()
     {

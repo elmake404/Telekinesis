@@ -16,10 +16,16 @@ public class GeneralManager : MonoBehaviour
     public Canvas canvas;
     public RectTransform canvasRectTransform;
 
+    public TemporaryRendererContainer rendererContainer;
+
     private void OnEnable()
     {
         instance = this;
+        OnceInit();
     }
 
-
+    private void OnceInit()
+    {
+        rendererContainer = new TemporaryRendererContainer();
+    }
 }
