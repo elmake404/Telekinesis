@@ -23,28 +23,29 @@ public class PlatformsController : MonoBehaviour
 
     public void TimeToChangePlatform()
     {
-        if (currentPlatformIndex + 1 > platformControllers.Length)
+        if (currentPlatformIndex + 1 >= platformControllers.Length)
         {
+            GeneralManager.instance.canvasManager.DelayActivateWinBlock();
             return;
         }
 
-        //GeneralManager.instance.playerController.SetCurrentAndDestinationLoc(platformControllers[currentPlatformIndex].playerLocate, platformControllers[currentPlatformIndex + 1].playerLocate);
         GeneralManager.instance.playerController.SwitchStateAction(PlayerState.playerIsMove);
-        //currentPlatformIndex += 1;
     }
 
-    public Transform GetFirstLocatePlayer()
-    {
-        return platformControllers[0].playerLocate;
-    }
 
     public int GetCurrentIndexPlatform()
     {
         return currentPlatformIndex;
     }
 
-    public void AddIndexToCurrentPlatform()
+    public void SwitchToTheNextPlatform()
     {
         currentPlatformIndex += 1;
+        ActivatePlatform(currentPlatformIndex);
+    }
+
+    private void ActivatePlatform(int index)
+    {
+        platformControllers[index].enabled = true;
     }
 }

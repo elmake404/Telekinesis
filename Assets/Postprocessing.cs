@@ -22,7 +22,6 @@ public class Postprocessing : MonoBehaviour
     private void Start()
     {
 		InitRenderTexture();
-		
 	}
 
 	public void EnableEffect()

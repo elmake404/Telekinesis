@@ -10,6 +10,11 @@ public class PlayerMove : MonoBehaviour
     float currentLerpTime = 0f;
     float lerpTime = 4f;
 
+    private void OnEnable()
+    {
+        currentLerpTime = 0f;
+    }
+
     private void Start()
     {
         currentLerpTime = 0f;
@@ -23,7 +28,7 @@ public class PlayerMove : MonoBehaviour
             currentLerpTime = lerpTime;
             playerController.SwitchStateAction(PlayerState.playerIsNormal);
             GeneralManager.instance.platformsController.platformControllers[GeneralManager.instance.platformsController.GetCurrentIndexPlatform()].DisableThisPlatform();
-            GeneralManager.instance.platformsController.AddIndexToCurrentPlatform();
+            GeneralManager.instance.platformsController.SwitchToTheNextPlatform();
             DisablePlayerMove();
         }
 

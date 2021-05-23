@@ -20,6 +20,7 @@ public class GeneralManager : MonoBehaviour
 
     private void OnEnable()
     {
+        TemporaryRendererContainer.instance = null;
         instance = this;
         OnceInit();
     }
@@ -28,4 +29,5 @@ public class GeneralManager : MonoBehaviour
     {
         rendererContainer = new TemporaryRendererContainer();
     }
+
 }

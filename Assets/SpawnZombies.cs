@@ -96,6 +96,7 @@ public class SpawnZombies : MonoBehaviour
 
         if (numOfDeadZombies >= posSpawn.Length)
         {
+            TemporaryRendererContainer.instance.ClearTemporaryRenderers();
             InitSavedCivillians();
             StartCoroutine(DelayStartMoveToNextPlatform());
             StartCoroutine(LazyDeleteAllSpawnedZombies());

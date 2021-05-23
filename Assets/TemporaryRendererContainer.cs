@@ -7,15 +7,17 @@ public class TemporaryRendererContainer
     public static TemporaryRendererContainer instance;
     public List<Renderer> temporaryRenderers = new List<Renderer>();
 
+
     public TemporaryRendererContainer()
     {
+        TemporaryRendererContainer.instance = null;
         instance = this;
     }
+
 
     public void AddRendererToPost(Renderer renderer)
     {
         temporaryRenderers.Add(renderer);
-        Debug.Log(temporaryRenderers.Count);
 
     }
 
@@ -23,6 +25,7 @@ public class TemporaryRendererContainer
     {
         for (int i = 0; i < temporaryRenderers.Count; i++)
         {
+            
             if (temporaryRenderers[i].GetInstanceID() == objectIdToDestroy)
             {
                 temporaryRenderers.RemoveAt(i);

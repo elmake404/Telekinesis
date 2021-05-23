@@ -43,6 +43,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     {
         zombieControl.isRopeBreak = true;
         zombieControl.isPinned = false;
+        zombieControl.SetDefaultLayersToAllColliders();
     }
 
     public void Explode(Vector3 source)
@@ -53,12 +54,16 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
         ExplodeHeadOnExplode();
     }
 
+    public void IgnoreRopeColliders(Collider[] colliders)
+    {
+        zombieControl.IgnoreRopeColliders(colliders);
+    }
+
     private Rigidbody SeparateHead()
     {
         GameObject head = zombieControl.GetHeadTransform().GetChild(0).gameObject;
         head.transform.SetParent(null);
         SeparatedHeadControl separatedHead = head.AddComponent<SeparatedHeadControl>();
-        //separatedHead.SetConnectedPin(zombieControl.connectedPin);
         separatedHead.destroyHeadParticles = destroyedHeadParticles;
         SphereCollider sphereCollider = head.AddComponent<SphereCollider>();
         Rigidbody rigidbody = head.AddComponent<Rigidbody>();
@@ -71,13 +76,17 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     private void DetachHead()
     {
         isDetachHead = true;
-        
+
+        Transform headTransform = zombieControl.GetHeadTransform();
+        int hash = headTransform.GetComponent<Renderer>().GetHashCode();
+        TemporaryRendererContainer.instance.DeleteRenderer(hash);
+
         headCollider.enabled = false;
         headRigidbody.isKinematic = false;
         headRigidbody.useGravity = true;
         SeparateHead();
         StartCoroutine(PlayAndDeleteBloodSplat());
-        //zombieControl.connectedPin.createRope.ChangeConnectedObjectToPin(newObjRigidbody, zombieControl.connectedPin.indexConnect);
+
         zombieControl.StartRoutineDelayDeath();
     }
 
@@ -91,6 +100,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
         int hash = headTransform.GetComponent<Renderer>().GetHashCode();
         TemporaryRendererContainer.instance.DeleteRenderer(hash);
+        
 
         headTransform.GetChild(0).gameObject.SetActive(false);
 
@@ -101,8 +111,9 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     private void OnCollisionEnter(Collision collision)
     {
         if (zombieControl.isRopeBreak == true) { return; }
+        if (isDetachHead == true) { return; }
 
-        float force = collision.impulse.magnitude;
+        float force = Mathf.Abs(collision.impulse.magnitude);
 
         if (force > minImpulseToActive)
         {

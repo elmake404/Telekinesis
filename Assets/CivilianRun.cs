@@ -35,6 +35,7 @@ public class CivilianRun : MonoBehaviour
         if (currentLerpTime > lerpTime)
         {
             //currentLerpTime = lerpTime;
+            civilianController.SpawnHelp();
             civilianController.ChangeCivillianState(CivillianState.civillPanic);
             this.enabled = false;
         }

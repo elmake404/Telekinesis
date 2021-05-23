@@ -34,13 +34,18 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
     {
         currentZombie.isRopeBreak = true;
         currentZombie.isPinned = false;
-
+        currentZombie.SetDefaultLayersToAllColliders();
     }
 
     public void Explode(Vector3 source)
     {
         currentZombie.AddExplosionForceToBody(source);
         currentZombie.EnableRagdoll();
+    }
+
+    public void IgnoreRopeColliders(Collider[] colliders)
+    {
+        currentZombie.IgnoreRopeColliders(colliders);
     }
 
     private IEnumerator PlaySimpleParticlesOnHit(Vector3 pos, float forceHit)
@@ -57,8 +62,8 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
 
     private void OnCollisionEnter(Collision collision)
     {
-        float force = collision.impulse.magnitude;
-        if (collision.impulse.magnitude > minImpulseToActive)
+        float force = Mathf.Abs(collision.impulse.magnitude);
+        if (force > minImpulseToActive)
         {
             ContactPoint[] contacts = collision.contacts;
             for (int i = 0; i < contacts.Length; i++)
@@ -84,8 +89,6 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
 
                 if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
                 {
-                    Debug.Log(collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() + "   " + objects[index].uniqueID);
-
                     currentZombie.connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
                 }
             }

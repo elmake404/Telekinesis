@@ -12,6 +12,7 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
     public TypeOfConnected selectedType = TypeOfConnected.barrelBomb;
     private float minImpulseStrength = 5f;
     private float radiusExplosion = 3f;
+    private bool isExplode = false;
 
 
     void Start()
@@ -59,8 +60,11 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.impulse.magnitude > minImpulseStrength)
+        if (isExplode == true) { return; }
+
+        if (Mathf.Abs(collision.impulse.magnitude) > minImpulseStrength)
         {
+            isExplode = true;
             MakeExplosion();
             StartCoroutine(PlayParticlesExplosion());
             ManualDestroyRope();
@@ -69,6 +73,7 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
 
         else 
         {
+            
             if (collision.gameObject.layer == 8)
             {
                 if (connectedPin.createRope == null) { return; }
@@ -80,6 +85,7 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
                 if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
                 {
                     connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
+
                 }
             }
         }

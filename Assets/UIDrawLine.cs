@@ -16,7 +16,9 @@ public class UIDrawLine : MonoBehaviour
     private Canvas canvas;
     private SlowMotionControl slowMotionControl;
     private float drawLineLength = 0f;
+    private int[] uniqueIDStorage = new int[2];
     Postprocessing postprocessing;
+
 
     private void Start()
     {
@@ -86,8 +88,12 @@ public class UIDrawLine : MonoBehaviour
         RaycastHit raycastHit;
         bool isHit = Physics.Raycast(ray, out raycastHit, 100f, hitToOnject);
 
+
         if (isHit == true)
         {
+            IRopeCollision ropeCollision = raycastHit.collider.gameObject.GetComponent<IRopeCollision>();
+            uniqueIDStorage[0] = ropeCollision.GetUniqueID();
+
             slowMotionControl.StopTime();
             postprocessing.EnableEffect();
             connectedObjects[0] = new ConnectedObject(raycastHit.point, raycastHit.rigidbody, raycastHit.collider);
@@ -110,20 +116,25 @@ public class UIDrawLine : MonoBehaviour
 
         if (isHit == true)
         {
-            connectedObjects[1] = new ConnectedObject(raycastHit.point, raycastHit.rigidbody, raycastHit.collider);
-            uIMeshRenderer.meshedPoints.Clear();
-            uIMeshRenderer.UpdateMesh();
+            IRopeCollision ropeCollision = raycastHit.collider.gameObject.GetComponent<IRopeCollision>();
+            uniqueIDStorage[1] = ropeCollision.GetUniqueID();
 
-            GeneralManager.instance.ropesController.CreateNewRope(GetSimpleSpline(), connectedObjects);
-            drawPoints.Clear();
-            
+            if (uniqueIDStorage[0] != uniqueIDStorage[1])
+            {
+                connectedObjects[1] = new ConnectedObject(raycastHit.point, raycastHit.rigidbody, raycastHit.collider);
+                GeneralManager.instance.ropesController.CreateNewRope(GetSimpleSpline(), connectedObjects);
+                
+            }
         }
         else if (isHit == false)
         {
             uIMeshRenderer.meshedPoints.Clear();
             uIMeshRenderer.UpdateMesh();
-            drawPoints.Clear();
         }
+
+        uIMeshRenderer.meshedPoints.Clear();
+        uIMeshRenderer.UpdateMesh();
+        drawPoints.Clear();
         slowMotionControl.ContinueTime();
         postprocessing.DisableEffect();
     }

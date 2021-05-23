@@ -41,9 +41,7 @@ public class SpawnCivilian : MonoBehaviour
         civilianController.enabled = true;
         spawnZombies.SetCivillianController(civilianController);
 
-        Vector3 spawnParticlesPos = civilian.transform.position;
-        spawnParticlesPos.y += 2f;
-        StartCoroutine(PlayHelpParticles(spawnParticlesPos));
+        civilianController.spawnCivilian = this;
 
         CivilianBlank civilianBlank = civilian.GetComponent<CivilianBlank>();
         CivilianConstructor civilianConstructor = GeneralManager.instance.civilianConstructor;
@@ -73,6 +71,11 @@ public class SpawnCivilian : MonoBehaviour
     public void SetCivilianIsSaved()
     {
         createdCivilian.ChangeCivillianState(CivillianState.civilSaved);
+    }
+
+    public void RunPlayHelpParticles(Vector3 spawnPos)
+    {
+        StartCoroutine(PlayHelpParticles(spawnPos));
     }
 
     private IEnumerator PlayHelpParticles(Vector3 spawnPos)

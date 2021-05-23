@@ -92,6 +92,18 @@ public class CurrentZombieControl : MonoBehaviour
         }
     }
 
+    public void IgnoreRopeColliders(Collider[] colliders)
+    {
+
+        for (int i = 0; i < allChildrenColliders.Length; i++)
+        {
+            for (int k = 0; k < colliders.Length; k++)
+            {
+                Physics.IgnoreCollision(allChildrenColliders[i], colliders[k]);
+            }
+        }
+    }
+
     public bool GetIsEnabledRagdoll()
     {
         return isEnabledRagdoll;

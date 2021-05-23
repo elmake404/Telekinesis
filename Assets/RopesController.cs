@@ -24,12 +24,12 @@ public class RopesController : MonoBehaviour
         createdRope.SetPointsToSpawn(points); // ok
         createdRope.GenerateRopeSections(); // ok
         createdRope.CreateCurrentRope();  // ok
+        createdRope.SetRopeColliders();
         createdRope.PickObjectsToRope();
         createdRope.ObjectsIgnoreCollisionWithRope();
         createdRope.SetPinToConnected();
         //createdRope.MakeFixRope();
     }
-
 
 }
 

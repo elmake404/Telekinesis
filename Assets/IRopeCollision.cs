@@ -6,6 +6,7 @@ public interface IRopeCollision
 {
     TypeOfConnected GetTypeOfConnected();
 
+
     int GetUniqueID();
     void InitConnect();
     void BreakRope();

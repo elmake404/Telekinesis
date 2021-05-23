@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6518271352803782396}
   m_Layer: 0
-  m_Name: 08 Containers
+  m_Name: 08 Green_Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 6518271352803782398}
   - component: {fileID: 6518271352800882396}
   - component: {fileID: 6518271352801881116}
-  - component: {fileID: 6518271352797846652}
+  - component: {fileID: 7974338200568961127}
+  - component: {fileID: 6641123377853917074}
   m_Layer: 0
   m_Name: Box116
   m_TagString: Untagged
@@ -86,10 +87,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4927c31fc9daa4a93b8a51153bb157e3, type: 3}
+  - {fileID: 2100000, guid: 34f91c8f4f64b3e4db16d6e6e354e813, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,6 +99,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -109,8 +112,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6518271352797846652
-MeshCollider:
+--- !u!65 &7974338200568961127
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,8 +121,22 @@ MeshCollider:
   m_GameObject: {fileID: 6518271352804143838}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 4927c31fc9daa4a93b8a51153bb157e3, type: 3}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.030040024, y: 0.10016422, z: 0.03055196}
+  m_Center: {x: 0.000020004809, y: 0.000082861654, z: 0.014999774}
+--- !u!114 &6641123377853917074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6518271352804143838}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3c7b4757bcb1e43951346c9059d798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCollider: {fileID: 7974338200568961127}
+  interactParticles: {fileID: 195900, guid: ec61825cb06be72419bb09eee03af08c, type: 3}
+  selectedType: 4

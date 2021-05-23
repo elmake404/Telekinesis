@@ -7,6 +7,7 @@ public class CivilianController : MonoBehaviour
 {
     public CivilianRun civilianRun;
     public CivillianAnimController civillianAnimController;
+    public SpawnCivilian spawnCivilian;
     public GameObject heartsParticles;
     [HideInInspector] public Transform restPoint;
     [HideInInspector] public Vector3 platformPos;
@@ -17,6 +18,13 @@ public class CivilianController : MonoBehaviour
     {
         RunRunCivilianToRestPoint();
 
+    }
+
+    public void SpawnHelp()
+    {
+        Vector3 spawnPos = transform.position;
+        spawnPos.y += 2f;
+        spawnCivilian.RunPlayHelpParticles(spawnPos);
     }
 
     private void RunRunCivilianToRestPoint()
@@ -42,6 +50,7 @@ public class CivilianController : MonoBehaviour
                 civillianAnimController.ChangeAnimState(CivillianAnimState.panicIdle);
                 break;
             case CivillianState.civilDead:
+                GeneralManager.instance.canvasManager.DelayActivateFailBlock();
                 civillianAnimController.ChangeAnimState(CivillianAnimState.death);
                 break;
             case CivillianState.civilSaved:
