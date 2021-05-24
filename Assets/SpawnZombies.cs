@@ -17,7 +17,7 @@ public class SpawnZombies : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(DelaySpawnZombies());
+        SpawnCreatEnemy();
     }
 
     private void CreateEnemy()
@@ -47,7 +47,7 @@ public class SpawnZombies : MonoBehaviour
         instanceZombie.transform.position = posSpawn;
         Vector3 particlesPos = posSpawn;
         particlesPos.y = +0.050f;
-        StartCoroutine(PlaySpawnZombieParticles(particlesPos));
+        //StartCoroutine(PlaySpawnZombieParticles(particlesPos));
 
     }
 
@@ -58,18 +58,18 @@ public class SpawnZombies : MonoBehaviour
         return pos;
     }
 
-    private IEnumerator DelaySpawnZombies()
+    private void SpawnCreatEnemy()
     {
         for (int i = 0; i < posSpawn.Length; i++)
         {
             CreateEnemy();
-            yield return new WaitForSeconds(1f);
+            
         }
 
-        yield return null;
+        
     }
 
-    private IEnumerator PlaySpawnZombieParticles(Vector3 pos)
+    private IEnumerator PlaySpawnZombieParticles(Vector3 pos)   // Disabled
     {
         GameObject particles = Instantiate(spawnZombieParticles);
         particles.transform.position = pos;

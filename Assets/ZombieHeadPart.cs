@@ -75,6 +75,8 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
     private void DetachHead()
     {
+        if (isDetachHead == true) { return; }
+
         isDetachHead = true;
 
         Transform headTransform = zombieControl.GetHeadTransform();
@@ -111,7 +113,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     private void OnCollisionEnter(Collision collision)
     {
         if (zombieControl.isRopeBreak == true) { return; }
-        if (isDetachHead == true) { return; }
+        //if (isDetachHead == true) { return; }
 
         float force = Mathf.Abs(collision.impulse.magnitude);
 

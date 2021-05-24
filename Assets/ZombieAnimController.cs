@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum ZombieAnimationState
 {
-    isEmerge,
     isWalk,
     isAttack,
     isIdle,
@@ -19,7 +18,7 @@ public class ZombieAnimController : MonoBehaviour
     private int attackID;
     private int idleID;
     private int eatingID;
-    private ZombieAnimationState animationState = ZombieAnimationState.isEmerge;
+    private ZombieAnimationState animationState = ZombieAnimationState.isWalk;
 
     void Start()
     {
@@ -37,8 +36,6 @@ public class ZombieAnimController : MonoBehaviour
 
         switch (state)
         {
-            case ZombieAnimationState.isEmerge:
-                break;
             case ZombieAnimationState.isAttack:
                 animator.SetBool(attackID, true);
                 break;

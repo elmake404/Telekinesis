@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum ZombieControllerState
 {
-    zombieEmerge,
     zombieRun,
     zombieAttack,
     zombieIdle,
@@ -28,12 +27,11 @@ public class CurrentZombieControl : MonoBehaviour
     [HideInInspector] public bool isPinned = false;
     public GameObject particlesOnHit;
     public GameObject directParticlesOnHit;
-    private ZombieControllerState controllerState = ZombieControllerState.zombieEmerge;
+    private ZombieControllerState controllerState = ZombieControllerState.zombieRun;
 
     private void Start()
     {
-        StartCoroutine(WaitZombieEmergeAnim());
-
+        EnableAndSetAllColliders();
     }
 
     private void FixedUpdate()
@@ -52,9 +50,6 @@ public class CurrentZombieControl : MonoBehaviour
     {
         switch (state)
         {
-            case ZombieControllerState.zombieEmerge:
-                
-                break;
             case ZombieControllerState.zombieRun:
                 MoveToPlayer();
                 RotateZombie();
@@ -177,16 +172,6 @@ public class CurrentZombieControl : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitZombieEmergeAnim()
-    {
-        float duration = 1.5f;
-        yield return new WaitForSeconds(duration);
-        EnableAndSetAllColliders();
-        controllerState = ZombieControllerState.zombieRun;
-        zombieAnimController.SetAnimation(ZombieAnimationState.isWalk);
-        yield return null;
-
-    }
 
     private void EnableAndSetAllColliders()
     {

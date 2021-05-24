@@ -10,7 +10,7 @@ public class PlatformsController : MonoBehaviour
     private void Start()
     {
         EnableFirsPlatform();
-        
+
     }
 
 
@@ -35,13 +35,27 @@ public class PlatformsController : MonoBehaviour
 
     public int GetCurrentIndexPlatform()
     {
+        
         return currentPlatformIndex;
+    }
+
+    public void AddIndexToCurrentPlatform()
+    {
+        if (currentPlatformIndex + 1 >= platformControllers.Length)
+        {
+            return;
+        }
+        currentPlatformIndex += 1;
     }
 
     public void SwitchToTheNextPlatform()
     {
-        currentPlatformIndex += 1;
-        ActivatePlatform(currentPlatformIndex);
+        if (currentPlatformIndex + 1 >= platformControllers.Length)
+        {
+            return;
+        }
+
+        ActivatePlatform(currentPlatformIndex + 1);
     }
 
     private void ActivatePlatform(int index)
