@@ -31,6 +31,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
     public void InitConnect()
     {
+        zombieControl.isRopeBreak = false;
         zombieControl.isPinned = true;
     }
 
@@ -43,14 +44,14 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     {
         zombieControl.isRopeBreak = true;
         zombieControl.isPinned = false;
-        zombieControl.SetDefaultLayersToAllColliders();
+        //zombieControl.SetDefaultLayersToAllColliders();
     }
 
     public void Explode(Vector3 source)
     {
         
-        zombieControl.AddExplosionForceToBody(source);
-        zombieControl.EnableRagdoll();
+        //zombieControl.AddExplosionForceToBody(source);
+        //zombieControl.EnableRagdoll();
         ExplodeHeadOnExplode();
     }
 
@@ -61,7 +62,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
 
     private Rigidbody SeparateHead()
     {
-        GameObject head = zombieControl.GetHeadTransform().GetChild(0).gameObject;
+        GameObject head = zombieControl.headLink;
         head.transform.SetParent(null);
         SeparatedHeadControl separatedHead = head.AddComponent<SeparatedHeadControl>();
         separatedHead.destroyHeadParticles = destroyedHeadParticles;
@@ -100,7 +101,7 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
         headRigidbody.useGravity = true;
         Transform headTransform = zombieControl.GetHeadTransform();
 
-        int hash = headTransform.GetComponent<Renderer>().GetHashCode();
+        int hash = zombieControl.headLink.GetComponent<Renderer>().GetHashCode();
         TemporaryRendererContainer.instance.DeleteRenderer(hash);
         
 
@@ -113,9 +114,10 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
     private void OnCollisionEnter(Collision collision)
     {
         if (zombieControl.isRopeBreak == true) { return; }
-        //if (isDetachHead == true) { return; }
+        if (isDetachHead == true) { return; }
 
-        float force = Mathf.Abs(collision.impulse.magnitude);
+        
+        float force = Mathf.Abs(collision.relativeVelocity.magnitude);
 
         if (force > minImpulseToActive)
         {
@@ -123,6 +125,11 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
             zombieControl.EnableRagdoll();
             StartCoroutine(PlayParticlesOnSimpleHead(collision.contacts[0].point, force));
             StartCoroutine(PlayDirectParticles(collision.contacts[0], force));
+
+            if (zombieControl.isPinned == true)
+            {
+                zombieControl.connectedPin.createRope.BreakRope();
+            }
         }
 
 
@@ -134,7 +141,6 @@ public class ZombieHeadPart : MonoBehaviour, IRopeCollision, IExploded
                 int index = 0;
                 if (zombieControl.connectedPin.indexConnect == 0) { index = 1; }
                 else { index = 0; }
-
 
                 if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
                 {

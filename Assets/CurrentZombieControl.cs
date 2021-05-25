@@ -15,6 +15,7 @@ public class CurrentZombieControl : MonoBehaviour
 {
     public BlankEnemy blankEnemy;
     public ZombieAnimController zombieAnimController;
+    [HideInInspector] public GameObject headLink;
     private bool isEnabledRagdoll = false;
     [HideInInspector] public bool isInterCollisionWithOther = false;
     public ConnectedPin connectedPin;
@@ -23,8 +24,8 @@ public class CurrentZombieControl : MonoBehaviour
     private float minDistanceToPlayer = 1f;
     private Collider[] allChildrenColliders;
     private SpawnZombies spawnZombies;
-    [HideInInspector] public bool isRopeBreak = false;
-    [HideInInspector] public bool isPinned = false;
+    public bool isRopeBreak = false;
+    public bool isPinned = false;
     public GameObject particlesOnHit;
     public GameObject directParticlesOnHit;
     private ZombieControllerState controllerState = ZombieControllerState.zombieRun;

@@ -79,10 +79,13 @@ public class CreateRope : MonoBehaviour
 
     public void CreateCurrentRope()
     {
+        float springForce = 300f * createdRopeSections.Count;
+
         for (int i = 0; i < createdRopeSections.Count; i++)
         {
             SpringJoint springJoint = createdRopeSections[i].springJoint;
             springJoint.autoConfigureConnectedAnchor = false;
+            springJoint.spring = springForce;
 
             if (i == createdRopeSections.Count - 1)
             {
@@ -417,8 +420,7 @@ public class CreateRope : MonoBehaviour
 
 
     private void InitHitConnectedObjects()
-    {
-        Vector3 middleRopePos = Vector3.Lerp(createdRopeSections[0].transform.position, createdRopeSections[createdRopeSections.Count - 1].transform.position, 0.5f);
+    {//Vector3 middleRopePos = Vector3.Lerp(createdRopeSections[0].transform.position, createdRopeSections[createdRopeSections.Count - 1].transform.position, 0.5f);
         for (int i = 0; i < connectObjects.Length; i++)
         {
             IRopeCollision ropeCollision = connectObjects[i].attacheRigidbody.gameObject.GetComponent(typeof(IRopeCollision)) as IRopeCollision;

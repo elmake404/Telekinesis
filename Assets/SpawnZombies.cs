@@ -41,6 +41,7 @@ public class SpawnZombies : MonoBehaviour
         skinnedMeshRenderer.bones = blankEnemy.GetBones();
 
         GameObject instanceHead = Instantiate(head, blankEnemy.headContainer);
+        currentZombieControl.headLink = instanceHead;
         TemporaryRendererContainer.instance.AddRendererToPost(instanceHead.GetComponent<Renderer>());
 
         Vector3 posSpawn = GetPosSpawn();

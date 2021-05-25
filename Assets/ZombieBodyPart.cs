@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
 {
-    private float minImpulseToActive = 10f;
+    private float minImpulseToActive = 5f;
     public CurrentZombieControl currentZombie;
     public TypeOfConnected selectedType = TypeOfConnected.zombieBody;
     
-
     public void SetWithRopeConnected(ConnectedPin connectedPin)
     {
         currentZombie.connectedPin = connectedPin;
@@ -27,6 +26,7 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
 
     public void InitConnect()
     {
+        currentZombie.isRopeBreak = false;
         currentZombie.isPinned = true;
     }
 
@@ -34,7 +34,7 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
     {
         currentZombie.isRopeBreak = true;
         currentZombie.isPinned = false;
-        currentZombie.SetDefaultLayersToAllColliders();
+        //currentZombie.SetDefaultLayersToAllColliders();
     }
 
     public void Explode(Vector3 source)
@@ -62,7 +62,7 @@ public class ZombieBodyPart : MonoBehaviour, IRopeCollision, IExploded
 
     private void OnCollisionEnter(Collision collision)
     {
-        float force = Mathf.Abs(collision.impulse.magnitude);
+        float force = Mathf.Abs(collision.relativeVelocity.magnitude);
         if (force > minImpulseToActive)
         {
             ContactPoint[] contacts = collision.contacts;

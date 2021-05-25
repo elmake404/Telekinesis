@@ -28,7 +28,6 @@ public class PlayerMove : MonoBehaviour
 
         if (currentLerpTime > 1.0f && isSwitchPlatform == false)
         {
-            Debug.Log("Switch");
             isSwitchPlatform = true;
             GeneralManager.instance.platformsController.SwitchToTheNextPlatform();
         }
