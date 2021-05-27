@@ -26,30 +26,10 @@ public class SpawnZombies : MonoBehaviour
         GameObject instanceZombie = Instantiate(zombiePrefabBones);
         CurrentZombieControl currentZombieControl = instanceZombie.GetComponent<CurrentZombieControl>();
         linksToSpawnedZombies.Add(currentZombieControl);
-        currentZombieControl.SetSpawnZombies(this);
+        currentZombieControl.spawnZombies = this;
         currentZombieControl.civillianController = civilianController;
-
-        BlankEnemy blankEnemy = instanceZombie.GetComponent<BlankEnemy>();
-
-        GameObject head = GeneralManager.instance.zombieConstructor.GetLinkToRandomHead();
-        GameObject body = GeneralManager.instance.zombieConstructor.GetLinkToRandomBody();
-
-        GameObject instanceBody = Instantiate(body, blankEnemy.bodyContainer);
-        TemporaryRendererContainer.instance.AddRendererToPost(instanceBody.GetComponent<Renderer>());
-        SkinnedMeshRenderer skinnedMeshRenderer = instanceBody.GetComponent<SkinnedMeshRenderer>();
-        skinnedMeshRenderer.rootBone = blankEnemy.rootBones;
-        skinnedMeshRenderer.bones = blankEnemy.GetBones();
-
-        GameObject instanceHead = Instantiate(head, blankEnemy.headContainer);
-        currentZombieControl.headLink = instanceHead;
-        TemporaryRendererContainer.instance.AddRendererToPost(instanceHead.GetComponent<Renderer>());
-
         Vector3 posSpawn = GetPosSpawn();
         instanceZombie.transform.position = posSpawn;
-        Vector3 particlesPos = posSpawn;
-        particlesPos.y = +0.050f;
-        //StartCoroutine(PlaySpawnZombieParticles(particlesPos));
-
     }
 
     private Vector3 GetPosSpawn()
@@ -69,17 +49,7 @@ public class SpawnZombies : MonoBehaviour
 
         
     }
-
-    private IEnumerator PlaySpawnZombieParticles(Vector3 pos)   // Disabled
-    {
-        GameObject particles = Instantiate(spawnZombieParticles);
-        particles.transform.position = pos;
-        ParticleSystem particleSystem = particles.GetComponent<ParticleSystem>();
-        float duration = particleSystem.main.duration;
-        yield return new WaitForSeconds(duration);
-        Destroy(particles);
-        yield return null;
-    }
+    
 
     public void StopAnotherZombies(int currentHash)
     {
@@ -140,3 +110,20 @@ public class SpawnZombies : MonoBehaviour
     }
 }
 
+public enum ZombieBodyPartID
+{
+    body,
+    head,
+    rightHand,
+    leftHand,
+    rightFoot,
+    leftFoot
+}
+
+[System.Serializable]
+public struct BodyPartAndPutInObj
+{
+    public ZombieBodyPartID zombieBodyPartID;
+    public ZombieBodyControl[] zombieBodyControls;
+    public GameObject[] usedBodyParts;
+}

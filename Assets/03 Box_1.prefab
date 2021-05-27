@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f50b244f737eb94b9302328799e965e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedType: 6
   objectRigidbody: {fileID: 5241259130726169014}
   objectCollider: {fileID: 6642787386532811228}
   interactParticles: {fileID: 165672, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
-  selectedType: 3

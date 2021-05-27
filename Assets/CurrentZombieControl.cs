@@ -13,31 +13,40 @@ public enum ZombieControllerState
 
 public class CurrentZombieControl : MonoBehaviour
 {
-    public BlankEnemy blankEnemy;
     public ZombieAnimController zombieAnimController;
-    [HideInInspector] public GameObject headLink;
-    private bool isEnabledRagdoll = false;
-    [HideInInspector] public bool isInterCollisionWithOther = false;
+    public BlankZombie blankEnemy;
     public ConnectedPin connectedPin;
-    [HideInInspector] public CivilianController civillianController;
-    private float yRotate = 0;
-    private float minDistanceToPlayer = 1f;
-    private Collider[] allChildrenColliders;
-    private SpawnZombies spawnZombies;
-    public bool isRopeBreak = false;
-    public bool isPinned = false;
     public GameObject particlesOnHit;
     public GameObject directParticlesOnHit;
+    [HideInInspector] public bool isInterCollisionWithOther = false;
+    [HideInInspector] public CivilianController civillianController;
+    [HideInInspector] public SpawnZombies spawnZombies;
+    [HideInInspector] public bool isRopeBreak = false;
+    [HideInInspector] public bool isPinned = false;
+    private Transform thisTransform;
+    private GameObject thisGameObject;
+    private float yRotate = 0;
+    private float minDistanceToPlayer = 1f;
+    private bool isEnabledRagdoll = false;
     private ZombieControllerState controllerState = ZombieControllerState.zombieRun;
+    private Collider[] colliders;
+    private Rigidbody[] rigidbodies;
+
+    private void OnEnable()
+    {
+        thisTransform = transform;
+        thisGameObject = gameObject;
+    }
 
     private void Start()
     {
-        EnableAndSetAllColliders();
+        InitColliders();
+        InitRigidBodies();
     }
 
     private void FixedUpdate()
     {
-        SwitchStateEnemy(controllerState);
+        //SwitchStateEnemy(controllerState);
     }
 
     public void AttackTriggerAnimation()
@@ -74,6 +83,25 @@ public class CurrentZombieControl : MonoBehaviour
         }
     }
 
+    private void InitColliders()
+    {
+        colliders = thisTransform.GetComponentsInChildren<Collider>();
+    }
+
+    private void InitRigidBodies()
+    {
+        rigidbodies = thisGameObject.GetComponentsInChildren<Rigidbody>();
+    }
+
+    private void EnableRigidbodies()
+    {
+        for (int i = 0; i < rigidbodies.Length; i++)
+        {
+            rigidbodies[i].isKinematic = false;
+            rigidbodies[i].useGravity = true;
+        }
+    }
+
     public void MakeIdleZombie()
     {
         controllerState = ZombieControllerState.zombieIdle;
@@ -81,23 +109,12 @@ public class CurrentZombieControl : MonoBehaviour
 
     public void AddExplosionForceToBody(Vector3 source)
     {
-        for (int i = 0; i < allChildrenColliders.Length; i++)
-        {
-            if (allChildrenColliders[i].enabled == false) { continue; }
-            allChildrenColliders[i].attachedRigidbody.AddExplosionForce(3f, source, 5f, 10f, ForceMode.Impulse);
-        }
+
     }
 
     public void IgnoreRopeColliders(Collider[] colliders)
     {
-
-        for (int i = 0; i < allChildrenColliders.Length; i++)
-        {
-            for (int k = 0; k < colliders.Length; k++)
-            {
-                Physics.IgnoreCollision(allChildrenColliders[i], colliders[k]);
-            }
-        }
+    
     }
 
     public bool GetIsEnabledRagdoll()
@@ -105,41 +122,63 @@ public class CurrentZombieControl : MonoBehaviour
         return isEnabledRagdoll;
     }
 
-    public Transform GetHeadTransform()
-    {
-        return blankEnemy.headContainer;
-    }
-
-    public void EnableRagdoll()
+    public void InitRagdoll()
     {
         if (isEnabledRagdoll == true) { return; }
-        GeneralManager.instance.slowMotionControl.StartRunSlowMotion();
-        controllerState = ZombieControllerState.zombieDie;
-        zombieAnimController.DisableAnimator();
-        spawnZombies.AddNumOfDeadZombies();
-
         isEnabledRagdoll = true;
-        Rigidbody[] rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
+        zombieAnimController.DisableAnimator();
+        EnableRigidbodies();
         
-        for (int i = 0; i < rigidbodies.Length; i++)
+    }
+
+    private IEnumerator RunDestroyCharacter(ZombieBodyPartID partID)
+    {
+        blankEnemy.SetPartIsBroken(partID);
+
+        BodyPartAndPutInObj partAndPutInObj = blankEnemy.GetPartAndPutInObj(partID);
+        Transform[] instantiatedBones = blankEnemy.GetInstantiatedBones();
+        yield return new WaitForEndOfFrame();
+
+        ZombieBodyControl[] zombieBodyControls = blankEnemy.GetZombieBodyControls(instantiatedBones);
+        blankEnemy.PrepareBonesForSlicedPart(zombieBodyControls, partID);
+        blankEnemy.ReBuildHirachlyBones(instantiatedBones[0], zombieBodyControls, partID);
+        DisableZombieBodyPartsControllers(partAndPutInObj);
+
+        RelinkSlicedParts(instantiatedBones, partAndPutInObj);
+
+        blankEnemy.DisableBrokenBodyPart(partID);
+
+        yield return null;
+    }
+
+    public void InitBreakJoint(ZombieBodyPartID partID)
+    {
+        if (blankEnemy.PartIsBroken(partID) == true)
         {
-            rigidbodies[i].isKinematic = false;
-            rigidbodies[i].useGravity = true;
+            return;
         }
-        
+
+        StartCoroutine(RunDestroyCharacter(partID));
     }
 
-    private IEnumerator DelayedDeath()
+    private void RelinkSlicedParts(Transform[] bones, BodyPartAndPutInObj bodyPartAndPut)
     {
-        
-        yield return new WaitForSeconds(1.5f);
-        EnableRagdoll();
-        
+        for (int i = 0; i < bodyPartAndPut.usedBodyParts.Length; i++)
+        {
+            bodyPartAndPut.usedBodyParts[i].transform.SetParent(null);
+            SkinnedMeshRenderer meshRenderer = bodyPartAndPut.usedBodyParts[i].GetComponent<SkinnedMeshRenderer>();
+            meshRenderer.rootBone = bones[0];
+            meshRenderer.bones = bones;
+            
+        }
     }
 
-    public void StartRoutineDelayDeath()
+    private void DisableZombieBodyPartsControllers(BodyPartAndPutInObj partAndPutInObj)
     {
-        StartCoroutine(DelayedDeath());
+        for (int i = 0; i < partAndPutInObj.zombieBodyControls.Length; i++)
+        {
+            partAndPutInObj.zombieBodyControls[i].enabled = false;
+        }
     }
 
     private void RotateZombie()
@@ -173,30 +212,7 @@ public class CurrentZombieControl : MonoBehaviour
         }
     }
 
-
-    private void EnableAndSetAllColliders()
-    {
-        Collider[] colliders = transform.GetComponentsInChildren<Collider>();
-        allChildrenColliders = colliders;
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            colliders[i].enabled = true;
-        }
-
-    }
-
-    public void SetDefaultLayersToAllColliders()
-    {
-        for (int i = 0; i < allChildrenColliders.Length; i++)
-        {
-            allChildrenColliders[i].transform.gameObject.layer = 0;
-        }
-    }
-
-    public void SetSpawnZombies(SpawnZombies spawnZombies)
-    {
-        this.spawnZombies = spawnZombies;
-    }
+    
+    
     
 }

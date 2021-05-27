@@ -126,12 +126,12 @@ public class CreateRope : MonoBehaviour
                 SetTracerToRopePart(createdRopeSections[createdRopeSections.Count - 1].transform);
 
                 ZombieBodyPart zombieBodyPart_0 = connectObjects[0].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart_0.currentZombie.EnableRagdoll();
-                zombieBodyPart_0.currentZombie.IgnoreRopeColliders(ropeColliders);
+                zombieBodyPart_0.zombieControl.InitRagdoll();
+                zombieBodyPart_0.zombieControl.IgnoreRopeColliders(ropeColliders);
 
                 ZombieBodyPart zombieBodyPart_1 = connectObjects[1].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart_1.currentZombie.EnableRagdoll();
-                zombieBodyPart_1.currentZombie.IgnoreRopeColliders(ropeColliders);
+                zombieBodyPart_1.zombieControl.InitRagdoll();
+                zombieBodyPart_1.zombieControl.IgnoreRopeColliders(ropeColliders);
                 return;
             }
 
@@ -151,7 +151,7 @@ public class CreateRope : MonoBehaviour
                 }
 
                 ZombieHeadPart zombieHeadPart = connectObjects[index].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
-                zombieHeadPart.zombieControl.EnableRagdoll();
+                zombieHeadPart.zombieControl.InitRagdoll();
                 zombieHeadPart.IgnoreRopeColliders(ropeColliders);
 
                 SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
@@ -160,7 +160,7 @@ public class CreateRope : MonoBehaviour
                 if (index == 0) { index_2 = 1; } else { index_2 = 0; }
 
                 ZombieBodyPart zombieBodyPart = connectObjects[index_2].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart.currentZombie.EnableRagdoll();
+                zombieBodyPart.zombieControl.InitRagdoll();
                 zombieBodyPart.IgnoreRopeColliders(ropeColliders);
                 UnitonObjectsAtTwoEndsRope();
             }
@@ -183,7 +183,7 @@ public class CreateRope : MonoBehaviour
                 UnionObjectWithFixedJoint(index);
                 SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
                 ZombieBodyPart zombieBodyPart = connectObjects[index].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart.currentZombie.EnableRagdoll();
+                zombieBodyPart.zombieControl.InitRagdoll();
                 zombieBodyPart.IgnoreRopeColliders(ropeColliders);
                 return;
             }
@@ -227,9 +227,9 @@ public class CreateRope : MonoBehaviour
                 ZombieHeadPart zombieHeadPart_0 = connectObjects[0].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
                 ZombieHeadPart zombieHeadPart_1 = connectObjects[1].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
 
-                zombieHeadPart_0.zombieControl.EnableRagdoll();
+                zombieHeadPart_0.zombieControl.InitRagdoll();
                 zombieHeadPart_0.IgnoreRopeColliders(ropeColliders);
-                zombieHeadPart_1.zombieControl.EnableRagdoll();
+                zombieHeadPart_1.zombieControl.InitRagdoll();
                 zombieHeadPart_1.IgnoreRopeColliders(ropeColliders);
                 return;
             }
@@ -255,7 +255,7 @@ public class CreateRope : MonoBehaviour
                 SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
 
                 ZombieHeadPart zombieHeadPart = connectObjects[index].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
-                zombieHeadPart.zombieControl.EnableRagdoll();
+                zombieHeadPart.zombieControl.InitRagdoll();
                 zombieHeadPart.IgnoreRopeColliders(ropeColliders);
                 return;
             }

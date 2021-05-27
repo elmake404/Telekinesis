@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &104164
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &115996
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &130262
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &137140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &150480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &151438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &174142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &174302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZombie: {fileID: 3052245706131099917}
-  selectedType: 0
+  selectedType: 1
 --- !u!1 &186004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1848,7 @@ MonoBehaviour:
   splatBloodParticles: {fileID: 121962, guid: 22e35da3d2c81274bb1c8fd73cca399e, type: 3}
   destroyedHeadParticles: {fileID: 135106, guid: f563a43ef6da8ce43b59040b834b597d,
     type: 3}
-  selectedType: 1
+  selectedType: 2
 --- !u!1 &193508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,10 +1949,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blankEnemy: {fileID: 692836481119786091}
   zombieAnimController: {fileID: 4074619451195942874}
+  headLink: {fileID: 0}
   isInterCollisionWithOther: 0
-  zombieRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
   civillianController: {fileID: 0}
   isRopeBreak: 0
   isPinned: 0

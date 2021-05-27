@@ -4,8 +4,11 @@ using UnityEngine;
 
 public enum TypeOfConnected
 {
+    none,
     zombieBody,
     zombieHead,
+    zombieFoot,
+    zombieHand,
     barrelBomb,
     simpleObject,
     staticSimpleObject

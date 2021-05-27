@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaticObject : MonoBehaviour, IRopeCollision, IExploded, IInitObject
+public class StaticObject : ObjectToPick
 {
     public Collider thisCollider;
     private ConnectedPin connectedPin;
     public GameObject interactParticles;
-    public TypeOfConnected selectedType = TypeOfConnected.staticSimpleObject;
 
-    private void Start()
+    protected override void Start()
     {
         InitEnable();
     }
 
-    public int GetUniqueID()
+    public override int GetUniqueID()
     {
         return gameObject.GetInstanceID();
     }
 
-    public void InitComponent()
+    public override void InitComponent()
     {
         this.enabled = true;
     }
@@ -29,26 +28,12 @@ public class StaticObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
         thisCollider.enabled = true;
     }
 
-    public void InitConnect()
-    {
-
-    }
-
-    public void BreakRope()
-    {
-        
-    }
-    public void Explode(Vector3 source)
-    {
-
-    }
-
-    public TypeOfConnected GetTypeOfConnected()
+    public override TypeOfConnected GetTypeOfConnected()
     {
         return selectedType;
     }
 
-    public void SetWithRopeConnected(ConnectedPin connectedPin)
+    public override void SetWithRopeConnected(ConnectedPin connectedPin)
     {
         this.connectedPin = connectedPin;
     }
@@ -64,7 +49,7 @@ public class StaticObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
         Destroy(instance);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         float force = collision.impulse.magnitude;
 

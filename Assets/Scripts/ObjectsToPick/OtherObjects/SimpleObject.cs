@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObject
+public class SimpleObject : ObjectToPick
 {
     public Rigidbody objectRigidbody;
     public Collider objectCollider;
     public GameObject interactParticles;
-    public TypeOfConnected selectedType = TypeOfConnected.simpleObject;
     private ConnectedPin connectedPin;
     
-
-    private void Start()
+    
+    protected override void Start()
     {
         InitEnable();
     }
 
-    public int GetUniqueID()
+    public override int GetUniqueID()
     {
         return gameObject.GetInstanceID();
     }
 
-    public void InitComponent()
+    public override void InitComponent()
     {
         this.enabled = true;
     }
@@ -34,30 +33,14 @@ public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
         objectCollider.enabled = true;
     }
 
-    public void SetWithRopeConnected(ConnectedPin connectedPin)
+    public override void SetWithRopeConnected(ConnectedPin connectedPin)
     {
         this.connectedPin = connectedPin;
     }
 
-    public TypeOfConnected GetTypeOfConnected()
+    public override TypeOfConnected GetTypeOfConnected()
     {
         return selectedType;
-    }
-
-    public void InitConnect()
-    {
-        return;
-    }
-
-    public void Explode(Vector3 source)
-    {
-        //objectRigidbody.AddExplosionForce(5f, source, 5f, 5f, ForceMode.Impulse);
-    }
-
-    public void BreakRope()
-    {
-        
-
     }
 
     private IEnumerator PlayParticlesOnHit(ContactPoint contactPoint, float forceHit)
@@ -71,7 +54,7 @@ public class SimpleObject : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
         Destroy(instance);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         float force = collision.impulse.magnitude;
 

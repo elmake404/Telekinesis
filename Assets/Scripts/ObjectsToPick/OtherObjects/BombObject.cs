@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
+public class BombObject : ObjectToPick
 {
     public Rigidbody thisRigidbody;
     public Collider thisCollider;
     public Transform parent;
     public GameObject particlesExplosion;
     private ConnectedPin connectedPin;
-    public TypeOfConnected selectedType = TypeOfConnected.barrelBomb;
     private float minImpulseStrength = 5f;
     private float radiusExplosion = 3f;
     private bool isExplode = false;
 
 
-    void Start()
+    protected override void Start()
     {
         InitEnable();
     }
 
-    public int GetUniqueID()
+    public override int GetUniqueID()
     {
         return gameObject.GetInstanceID();
     }
 
-    public void InitComponent()
+    public override void InitComponent()
     {
         this.enabled = true;
     }
@@ -38,27 +37,17 @@ public class BombObject : MonoBehaviour, IRopeCollision, IInitObject
         
     }
 
-    public void InitConnect()
-    {
-
-    }
-
-    public void BreakRope()
-    {
-
-    }
-
-    public TypeOfConnected GetTypeOfConnected()
+    public override TypeOfConnected GetTypeOfConnected()
     {
         return selectedType;
     }
 
-    public void SetWithRopeConnected(ConnectedPin connectedPin)
+    public override void SetWithRopeConnected(ConnectedPin connectedPin)
     {
         this.connectedPin = connectedPin;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
         if (isExplode == true) { return; }
 

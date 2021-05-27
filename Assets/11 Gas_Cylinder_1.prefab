@@ -124,11 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294f139fd8361ed4ca5e272ff6c737e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedType: 5
   thisRigidbody: {fileID: 4365282217744544314}
   thisCollider: {fileID: 2029433171496604681}
   parent: {fileID: 7202509301848601923}
   particlesExplosion: {fileID: 140434, guid: dd38b45e2135c854d87201aa3d863978, type: 3}
-  selectedType: 2
 --- !u!1 &7202509301848893795
 GameObject:
   m_ObjectHideFlags: 0
