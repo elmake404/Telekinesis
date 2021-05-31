@@ -23,6 +23,7 @@ public class BlankZombie : MonoBehaviour
         return partAndPutInObj[(int)partID];
     }
 
+
     public Transform[] GetInstantiatedBones()
     {
         Transform instanceBonesHolder = Instantiate(bones[0]);
@@ -83,8 +84,6 @@ public class BlankZombie : MonoBehaviour
             }
         }
 
-        
-
     }
 
     public GameObject[] GetInstantiatedParts(ZombieBodyPartID partID)
@@ -102,7 +101,6 @@ public class BlankZombie : MonoBehaviour
             {
                 bodyControls[i].DestroyAttachedCharacterJoint();
             }
-            
         }
 
         for (int i = 0; i < bodyControls.Length; i++)
@@ -113,4 +111,79 @@ public class BlankZombie : MonoBehaviour
         }
     }
 
+    public void DestroyConfigurableJointsOnBodyPart(ZombieBodyPartID partID)
+    {
+        Transform rootBone = partAndPutInObj[(int)partID].zombieBodyControls[0].transform;
+        List<ConfigurableJoint> configurableJoints = new List<ConfigurableJoint>(rootBone.GetComponentsInChildren<ConfigurableJoint>());
+        configurableJoints.Add(rootBone.GetComponent<ConfigurableJoint>());
+
+        for (int i = 0; i < configurableJoints.Count; i++)
+        {
+            Destroy(configurableJoints[i]);
+        }
+    }
+
+    public int[] GetBonesIndexesFromHirachly(BodyPartAndPutInObj part)
+    {
+        Transform[] transforms = bones;
+        int[] instanceID = new int[part.zombieBodyControls.Length];
+        int[] indexes = new int[part.zombieBodyControls.Length];
+
+        for (int i = 0; i < instanceID.Length; i++)
+        {
+            instanceID[i] = part.zombieBodyControls[i].transform.GetInstanceID();
+        }
+
+        for (int i = 0; i < transforms.Length; i++)
+        {
+            for (int k = 0; k < instanceID.Length; k++)
+            {
+                if (transforms[i].GetInstanceID() == instanceID[k])
+                {
+                    indexes[k] = i;
+                    Debug.Log("FindIndexOf " + transforms[i].name);
+                }
+            }
+        }
+        return indexes;
+    }
+
+    public bool PartIsAttachedToRope(BodyPartAndPutInObj part)
+    {
+        bool isAttached = false;
+        for (int i = 0; i < part.zombieBodyControls.Length; i++)
+        {
+            if (part.zombieBodyControls[i].isAttachedToRope == true)
+            {
+                isAttached = true;
+                break;
+            }
+        }
+
+        return isAttached;
+    }
+
+    public List<List<ConnectedRope>> GetConnectedsRopesFromBodyPart(BodyPartAndPutInObj part)
+    {
+        List<List<ConnectedRope>> connectedRopes = new List<List<ConnectedRope>>();
+        for (int i = 0; i < part.zombieBodyControls.Length; i++)
+        {
+            connectedRopes.Add(part.zombieBodyControls[i].GetConnectedRopes());
+        }
+        return connectedRopes;
+    }
+
+    public Transform[] GetBonesFromHirachlyRootBone(Transform rootBone, int[] ids)
+    {
+        Transform[] transforms = rootBone.GetComponentsInChildren<Transform>();
+        Transform[] bones = new Transform[ids.Length];
+
+        for (int i = 0; i < ids.Length; i++)
+        {
+            bones[i] = transforms[ids[i]];
+            Debug.Log("GetBoneOfIndex  " + bones[i].name);
+        }
+
+        return bones;
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DrawRopeControl : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    public CreateRope createRope;
+    public RopeBehaviour createRope;
 
     private void FixedUpdate()
     {

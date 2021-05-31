@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class ZombieHeadPart : ZombieBodyControl
 {
-    private float minForce = 0f;
-
-
+    
     protected override void OnEnable()
     {
         base.OnEnable();
-
     }
 
     public override int GetUniqueID()
     {
         return zombieControl.gameObject.GetInstanceID();
+        
     }
 
     public override TypeOfConnected GetTypeOfConnected()
@@ -65,9 +63,8 @@ public class ZombieHeadPart : ZombieBodyControl
         
         if (force > minForce)
         {
-            zombieControl.InitRagdoll();
+            zombieControl.InitDeathZombie();
         }
-        
     }
 
 

@@ -48,27 +48,12 @@ public class ZombieBodyPart : ZombieBodyControl
     
     protected override void OnCollisionEnter(Collision collision)
     {
-        
-        /*
-        if (currentZombie.isRopeBreak == true) { return; }
-        if (currentZombie.isPinned == true)
-        {
-            if (collision.gameObject.layer == 8)
-            {
-                //if (currentZombie.connectedPin.createRope == null) { return; }
-                ConnectedObject[] objects = currentZombie.connectedPin.createRope.GetConnectedObjects();
-                int index = 0;
-                if (currentZombie.connectedPin.indexConnect == 0) { index = 1; }
-                else { index = 0; }
-                
+        float force = GetRelativeVelocityMagnitude(collision);
 
-                if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
-                {
-                    currentZombie.connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
-                }
-            }
+        if (force > minForce)
+        {
+            zombieControl.InitDeathZombie();
         }
-        */
         
     }
 }

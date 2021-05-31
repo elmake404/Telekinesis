@@ -11,9 +11,17 @@ public class PlatformController : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(SequentialEnableElements());
+    }
+
+    private IEnumerator SequentialEnableElements()
+    {
         EnableInteractObject();
+        yield return new WaitForEndOfFrame();
         EnableSpawnCivillian();
+        yield return new WaitForEndOfFrame();
         EnableSpawnZombie();
+        yield return null;
     }
 
     private void EnableInteractObject()
@@ -51,4 +59,6 @@ public class PlatformController : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+
 }

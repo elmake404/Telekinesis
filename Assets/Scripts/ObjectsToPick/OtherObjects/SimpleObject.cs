@@ -9,8 +9,12 @@ public class SimpleObject : ObjectToPick
     public Collider objectCollider;
     public GameObject interactParticles;
     private ConnectedPin connectedPin;
-    
-    
+
+    protected override void OnEnable()
+    {
+        connectedRopes = new List<ConnectedRope>();
+    }
+
     protected override void Start()
     {
         InitEnable();
@@ -63,22 +67,7 @@ public class SimpleObject : ObjectToPick
             StartCoroutine(PlayParticlesOnHit(collision.contacts[0], force));
         }
 
-        if (collision.gameObject.layer == 8)
-        {
-
-            if (connectedPin.createRope == null) { return; }
-            ConnectedObject[] objects = connectedPin.createRope.GetConnectedObjects();
-            int index = 0;
-            if (connectedPin.indexConnect == 0) { index = 1; }
-            else { index = 0; }
-
-            if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
-            {
-                
-                connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
-            }
-        }
-
+        
 
     }
 

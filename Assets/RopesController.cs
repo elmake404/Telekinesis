@@ -22,14 +22,14 @@ public class RopesController : MonoBehaviour
     public void CreateNewRope(List<Vector2> points, ConnectedObject[] connectedObject)
     {
         GameObject newObjCreatedRope = Instantiate(createRope);
-        CreateRope createdRope = newObjCreatedRope.GetComponent<CreateRope>();
-        createdRope.SetConnectObjectsRigidbodies(connectedObject);  // ok
-        createdRope.SetPointsToSpawn(points); // ok
-        createdRope.GenerateRopeSections(); // ok
-        createdRope.CreateCurrentRope();  // ok
+        RopeBehaviour createdRope = newObjCreatedRope.GetComponent<RopeBehaviour>();
+        createdRope.SetConnectObjectsRigidbodies(connectedObject);  
+        createdRope.SetPointsToSpawn(points);
+        createdRope.GenerateRopeSections(); 
+        createdRope.CreateCurrentRope();  
         createdRope.SetRopeColliders();
         createdRope.PickObjectsToRope();
-        createdRope.ObjectsIgnoreCollisionWithRope();
+        //createdRope.ObjectsIgnoreCollisionWithRope();
         createdRope.SetPinToConnected();
         //createdRope.MakeFixRope();
     }
@@ -56,13 +56,19 @@ public struct ConnectedObject
 
 public struct ConnectedPin
 {
-    public CreateRope createRope;
+    public RopeBehaviour createRope;
     public int indexConnect;
     
 
-    public ConnectedPin(CreateRope createRope, int indexConnect)
+    public ConnectedPin(RopeBehaviour createRope, int indexConnect)
     {
         this.createRope = createRope;
         this.indexConnect = indexConnect;
     }
+}
+
+public struct ConnectedRope
+{
+    public RopeBehaviour attachedRopeBehaviour;
+    public int orderInRope;
 }

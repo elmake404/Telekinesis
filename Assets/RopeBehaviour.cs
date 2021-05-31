@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateRope : MonoBehaviour
+public class RopeBehaviour : MonoBehaviour
 {
     private List<Vector2> pointsToSpawn = new List<Vector2>();
     public GameObject ropeSection;
@@ -79,7 +79,7 @@ public class CreateRope : MonoBehaviour
 
     public void CreateCurrentRope()
     {
-        float springForce = 300f * createdRopeSections.Count;
+        float springForce = 200f;
 
         for (int i = 0; i < createdRopeSections.Count; i++)
         {
@@ -105,196 +105,157 @@ public class CreateRope : MonoBehaviour
         GameObject instance = Instantiate(tracer, transform);
     }
 
+
     public void PickObjectsToRope()
     {
         TypeOfConnected[] typeOfConnects = new TypeOfConnected[2];
         IRopeCollision[] iropeCollisions = new IRopeCollision[2];
+        ObjectToPick[] objectToPicks = new ObjectToPick[2];
         iropeCollisions[0] = connectObjects[0].attacheRigidbody.gameObject.GetComponent<IRopeCollision>();
         iropeCollisions[1] = connectObjects[1].attacheRigidbody.gameObject.GetComponent<IRopeCollision>();
+        objectToPicks[0] = connectObjects[0].hitCollider.transform.GetComponent<ObjectToPick>();
+        objectToPicks[1] = connectObjects[1].hitCollider.transform.GetComponent<ObjectToPick>();
+
+        Debug.Log(connectObjects[0].hitCollider.name);
+        Debug.Log(connectObjects[1].hitCollider.name);
+
+        ConnectedRope[] connectedRopes = new ConnectedRope[2];
+        connectedRopes[0] = new ConnectedRope();
+        connectedRopes[1] = new ConnectedRope();
+
+        connectedRopes[0].attachedRopeBehaviour = this;      
+        connectedRopes[1].attachedRopeBehaviour = this;
+        objectToPicks[0].isAttachedToRope = true;
+        objectToPicks[1].isAttachedToRope = true;
+
+        objectToPicks[0].AddConnectedRope(connectedRopes[0]);
+        objectToPicks[1].AddConnectedRope(connectedRopes[1]);
 
         typeOfConnects[0] = iropeCollisions[0].GetTypeOfConnected();
         typeOfConnects[1] = iropeCollisions[1].GetTypeOfConnected();
 
 
-        if (typeOfConnects[0] == TypeOfConnected.zombieBody || typeOfConnects[1] == TypeOfConnected.zombieBody)
+        if (typeOfConnects[0] == TypeOfConnected.staticSimpleObject || typeOfConnects[1] == TypeOfConnected.staticSimpleObject)
         {
-            
-            if (typeOfConnects[0] == TypeOfConnected.zombieBody && typeOfConnects[1] == TypeOfConnected.zombieBody)
+            int otherConnectedIndex;
+            int indexStaticObject = GetIndexCorrectTypeConnected(typeOfConnects, TypeOfConnected.staticSimpleObject, out otherConnectedIndex);
+
+            connectedRopes[indexStaticObject].orderInRope = indexStaticObject;
+            connectedRopes[otherConnectedIndex].orderInRope = otherConnectedIndex;
+
+            switch (typeOfConnects[otherConnectedIndex])
             {
-                UnitonObjectsAtTwoEndsRope();
-                SetTracerToRopePart(createdRopeSections[0].transform);
-                SetTracerToRopePart(createdRopeSections[createdRopeSections.Count - 1].transform);
-
-                ZombieBodyPart zombieBodyPart_0 = connectObjects[0].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart_0.zombieControl.InitRagdoll();
-                zombieBodyPart_0.zombieControl.IgnoreRopeColliders(ropeColliders);
-
-                ZombieBodyPart zombieBodyPart_1 = connectObjects[1].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart_1.zombieControl.InitRagdoll();
-                zombieBodyPart_1.zombieControl.IgnoreRopeColliders(ropeColliders);
-                return;
-            }
-
-            else if (typeOfConnects[0] == TypeOfConnected.zombieHead || typeOfConnects[1] == TypeOfConnected.zombieHead)
-            {
-                int index = 0;
-                int indexRopeSection = 0;
-                if (typeOfConnects[0] == TypeOfConnected.zombieHead)
-                {
-                    index = 0;
-                    indexRopeSection = 0;
-                }
-                else
-                {
-                    index = 1;
-                    indexRopeSection = createdRopeSections.Count - 1;
-                }
-
-                ZombieHeadPart zombieHeadPart = connectObjects[index].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
-                zombieHeadPart.zombieControl.InitRagdoll();
-                zombieHeadPart.IgnoreRopeColliders(ropeColliders);
-
-                SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
-
-                int index_2 = 0;
-                if (index == 0) { index_2 = 1; } else { index_2 = 0; }
-
-                ZombieBodyPart zombieBodyPart = connectObjects[index_2].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart.zombieControl.InitRagdoll();
-                zombieBodyPart.IgnoreRopeColliders(ropeColliders);
-                UnitonObjectsAtTwoEndsRope();
-            }
-
-            else if (typeOfConnects[0] == TypeOfConnected.staticSimpleObject || typeOfConnects[1] == TypeOfConnected.staticSimpleObject)
-            {
-                int index = 0;
-                int indexRopeSection = 0;
-                if (typeOfConnects[0] == TypeOfConnected.zombieBody)
-                {
-                    index = 0;
-                    indexRopeSection = 0;
-                }
-                else
-                {
-                    index = 1;
-                    indexRopeSection = createdRopeSections.Count - 1;
-                }
-
-                UnionObjectWithFixedJoint(index);
-                SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
-                ZombieBodyPart zombieBodyPart = connectObjects[index].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart.zombieControl.InitRagdoll();
-                zombieBodyPart.IgnoreRopeColliders(ropeColliders);
-                return;
-            }
-
-            else
-            {
-                int index = 0;
-                int indexZombieBody = 0;
-                int indexRopeSection = 0;
-                if (typeOfConnects[0] == TypeOfConnected.zombieBody) 
-                { 
-                    index = 1;
-                    indexZombieBody = 0;
-                    indexRopeSection = createdRopeSections.Count - 1;
-                } 
-                else 
-                { 
-                    index = 0;
-                    indexZombieBody = 1;
-                    indexRopeSection = 0;
-                }
-
-                ZombieBodyPart zombieBodyPart = connectObjects[indexZombieBody].attacheRigidbody.transform.GetComponent<ZombieBodyPart>();
-                zombieBodyPart.IgnoreRopeColliders(ropeColliders);
-
-                UnionObjectWithFixedJoint(index);
-                SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
-                return;
+                case TypeOfConnected.none:
+                    Debug.LogError("Try connect None object");
+                    break;
+                case TypeOfConnected.zombieBody:
+                case TypeOfConnected.zombieHead:
+                case TypeOfConnected.zombieFoot:
+                case TypeOfConnected.zombieHand:
+                    ZombieBodyControl zombieBodyControl = objectToPicks[otherConnectedIndex] as ZombieBodyControl;
+                    zombieBodyControl.zombieControl.InitDeathZombie();
+                    UnionObjectWithFixedJoint(otherConnectedIndex);
+                    return;
+                case TypeOfConnected.barrelBomb:
+                case TypeOfConnected.simpleObject:
+                    UnionObjectWithFixedJoint(otherConnectedIndex);
+                    return;
+                case TypeOfConnected.staticSimpleObject:
+                    Debug.LogError("Try connect two static objects");
+                    return;
             }
         }
 
-        if (typeOfConnects[0] == TypeOfConnected.zombieHead || typeOfConnects[1] == TypeOfConnected.zombieHead)
+        else if (TypeIsPartOfZombieBody(typeOfConnects[0]) || TypeIsPartOfZombieBody(typeOfConnects[1]))
         {
-            
-            if (typeOfConnects[0] == TypeOfConnected.zombieHead && typeOfConnects[1] == TypeOfConnected.zombieHead)
+            int otherConnectedIndex;
+            int indexBodyZombie = GetIndexZombieBodyTypeOfConnected(typeOfConnects, out otherConnectedIndex);
+
+            connectedRopes[indexBodyZombie].orderInRope = indexBodyZombie;
+            connectedRopes[otherConnectedIndex].orderInRope = otherConnectedIndex;
+
+            switch (typeOfConnects[otherConnectedIndex])
             {
-                UnitonObjectsAtTwoEndsRope();
-                SetTracerToRopePart(createdRopeSections[0].transform);
-                SetTracerToRopePart(createdRopeSections[createdRopeSections.Count - 1].transform);
-
-                ZombieHeadPart zombieHeadPart_0 = connectObjects[0].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
-                ZombieHeadPart zombieHeadPart_1 = connectObjects[1].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
-
-                zombieHeadPart_0.zombieControl.InitRagdoll();
-                zombieHeadPart_0.IgnoreRopeColliders(ropeColliders);
-                zombieHeadPart_1.zombieControl.InitRagdoll();
-                zombieHeadPart_1.IgnoreRopeColliders(ropeColliders);
-                return;
+                case TypeOfConnected.none:
+                    Debug.LogError("Try connect None object");
+                    break;
+                case TypeOfConnected.zombieBody:
+                case TypeOfConnected.zombieHead:
+                case TypeOfConnected.zombieFoot:
+                case TypeOfConnected.zombieHand:
+                    ZombieBodyControl zombieBodyControl_0 = objectToPicks[indexBodyZombie] as ZombieBodyControl;
+                    zombieBodyControl_0.zombieControl.InitDeathZombie();
+                    ZombieBodyControl zombieBodyControl_1 = objectToPicks[otherConnectedIndex] as ZombieBodyControl;
+                    zombieBodyControl_1.zombieControl.InitDeathZombie();
+                    UnitonObjectsAtTwoEndsRope();
+                    return;
+                case TypeOfConnected.barrelBomb:
+                case TypeOfConnected.simpleObject:
+                    UnionObjectWithFixedJoint(otherConnectedIndex);
+                    return;
             }
+        }
 
+        else
+        {
+            connectedRopes[0].orderInRope = 0;
+            connectedRopes[1].orderInRope = 1;
+            UnitonObjectsAtTwoEndsRope();
+        }
+    }
 
-            else if (typeOfConnects[0] == TypeOfConnected.staticSimpleObject || typeOfConnects[1] == TypeOfConnected.staticSimpleObject)
-            {
-                int index = 0;
-                int indexRopeSection = 0;
-
-                if (typeOfConnects[0] == TypeOfConnected.zombieHead)
-                {
-                    index = 0;
-                    indexRopeSection = 0;
-                }
-                else
-                {
-                    index = 1;
-                    indexRopeSection = createdRopeSections.Count - 1;
-                }
-
-                UnionObjectWithFixedJoint(index);
-                SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
-
-                ZombieHeadPart zombieHeadPart = connectObjects[index].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
-                zombieHeadPart.zombieControl.InitRagdoll();
-                zombieHeadPart.IgnoreRopeColliders(ropeColliders);
-                return;
-            }
-
-            else
-            {
-                int index = 0;
-                int indexZombieHead = 0;
-                int indexRopeSection = 0;
-
-                if (typeOfConnects[0] == TypeOfConnected.zombieHead) 
-                { 
-                    index = 1;
-                    indexZombieHead = 0;
-                    indexRopeSection = createdRopeSections.Count - 1;
-                } 
-                else 
-                { 
-                    index = 0;
-                    indexZombieHead = 1;
-                    indexRopeSection = 0;
-                }
-
-                ZombieHeadPart zombieHeadPart = connectObjects[indexZombieHead].attacheRigidbody.transform.GetComponent<ZombieHeadPart>();
-                zombieHeadPart.IgnoreRopeColliders(ropeColliders);
-
-                SetTracerToRopePart(createdRopeSections[indexRopeSection].transform);
-                UnionObjectWithFixedJoint(index);
-                return;
-            }
-
+    private int GetIndexCorrectTypeConnected(TypeOfConnected[] storeTypes, TypeOfConnected findType, out int otherConnectedIndex)
+    {
+        if (storeTypes[0] == findType)
+        {
+            otherConnectedIndex = 1;
+            return 0;
+        }
+        else if (storeTypes[1] == findType)
+        {
+            otherConnectedIndex = 0;
+            return 1;
         }
         else
         {
-            SetTracerToRopePart(createdRopeSections[0].transform);
-            SetTracerToRopePart(createdRopeSections[createdRopeSections.Count - 1].transform);
-            UnitonObjectsAtTwoEndsRope();
+            otherConnectedIndex = -1;
+            return -1;
+        }
+    }
+
+    private int GetIndexZombieBodyTypeOfConnected(TypeOfConnected[] storeTypes, out int otherConnectedIndex)
+    {
+
+        if (TypeIsPartOfZombieBody(storeTypes[0]) == true)
+        {
+            otherConnectedIndex = 1;
+            return 0;
+        }
+        else if (TypeIsPartOfZombieBody(storeTypes[1]) == true)
+        {
+            otherConnectedIndex = 0;
+            return 1;
+        }
+        else
+        {
+            otherConnectedIndex = -1;
+            return -1;
         }
 
+    }
+
+    private bool TypeIsPartOfZombieBody(TypeOfConnected type)
+    {
+        switch (type)
+        {
+            case TypeOfConnected.zombieBody:
+            case TypeOfConnected.zombieHead:
+            case TypeOfConnected.zombieFoot:
+            case TypeOfConnected.zombieHand:
+                return true;
+            default:
+                return false;
+        }
     }
 
     public void SetRopeColliders()
@@ -331,7 +292,7 @@ public class CreateRope : MonoBehaviour
         if (indexNonFixed == 0) { indexRopeSection = 0; }
         else { indexRopeSection = createdRopeSections.Count - 1; }
 
-        ConfigurableJoint joint1 = createdRopeSections[indexRopeSection].transform.gameObject.AddComponent<ConfigurableJoint>();
+        ConfigurableJoint joint1 = createdRopeSections[indexRopeSection].gameObject.AddComponent<ConfigurableJoint>();
         jointsConnected[0] = joint1;
         jointsConnected[0].connectedBody = connectObjects[indexNonFixed].attacheRigidbody;
         joint1.xMotion = ConfigurableJointMotion.Locked;
@@ -357,6 +318,27 @@ public class CreateRope : MonoBehaviour
         joint2.zMotion = ConfigurableJointMotion.Locked;
     }
 
+    public void SetNewRigidbodyToSelectedJoint(int order, Rigidbody newRigidbody)
+    {
+        int indexRopeSection;
+        if (order == 0) { indexRopeSection = 0; } else { indexRopeSection = createdRopeSections.Count - 1; }
+        ConfigurableJoint configurableJoint;
+        bool isAttachedConfigurableJoint = createdRopeSections[indexRopeSection].TryGetComponent<ConfigurableJoint>(out configurableJoint);
+        if (isAttachedConfigurableJoint == false)
+        {
+            ConfigurableJoint createdConfigurableJoint = createdRopeSections[indexRopeSection].gameObject.AddComponent<ConfigurableJoint>();
+            createdConfigurableJoint.connectedBody = newRigidbody;
+            createdConfigurableJoint.xMotion = ConfigurableJointMotion.Locked;
+            createdConfigurableJoint.yMotion = ConfigurableJointMotion.Locked;
+            createdConfigurableJoint.zMotion = ConfigurableJointMotion.Locked;
+            jointsConnected[order] = createdConfigurableJoint;
+        }
+        else
+        {
+            configurableJoint.connectedBody = newRigidbody;
+        }
+    }
+
     public void SetPinToConnected()
     {
         for (int i = 0; i < connectObjects.Length; i++)
@@ -366,15 +348,6 @@ public class CreateRope : MonoBehaviour
             connectObjects[i].uniqueID = ropeCollision.GetUniqueID();
         }
 
-    }
-
-    public void ObjectsIgnoreCollisionWithRope()
-    {
-        for (int i = 0; i < createdRopeSections.Count; i++)
-        {
-            Physics.IgnoreCollision(connectObjects[0].hitCollider, createdRopeSections[i].sphereCollider);
-            Physics.IgnoreCollision(connectObjects[1].hitCollider, createdRopeSections[i].sphereCollider);
-        }
     }
 
     public void MakeFixRope()
@@ -389,7 +362,6 @@ public class CreateRope : MonoBehaviour
         lastRigidbody.isKinematic = true;
 
     }
-
 
     public List<RopeSection> GetCreatedRopeSections()
     {
@@ -450,16 +422,6 @@ public class CreateRope : MonoBehaviour
     public void ChangeConnectedObjectToPin(Rigidbody bodyToChange, int indexPin)
     {
         jointsConnected[indexPin].connectedBody = bodyToChange;
-    }
-
-    public void ManualBreakRopeIfConnectedObjCollided()
-    {
-        numOfDetectingCollision += 1;
-        if(numOfDetectingCollision >= 2)
-        {
-            //StopCoroutine(coroutineTimerToBreakRope);
-            BreakRope();
-        }
     }
 
     public ConnectedObject[] GetConnectedObjects()

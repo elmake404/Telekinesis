@@ -9,11 +9,10 @@ public class SpawnZombies : MonoBehaviour
     public GameObject spawnZombieParticles;
     public PlatformController platformController;
     public SpawnCivilian spawnCivilian;
-    private List<CurrentZombieControl> linksToSpawnedZombies = new List<CurrentZombieControl>();
+    private List<ZombieBehaviour> linksToSpawnedZombies = new List<ZombieBehaviour>();
     private CivilianController civilianController;
     private int numOfPosChanges = 0;
     private int numOfDeadZombies = 0;
-
 
     private void Start()
     {
@@ -22,12 +21,11 @@ public class SpawnZombies : MonoBehaviour
 
     private void CreateEnemy()
     {
-
         GameObject instanceZombie = Instantiate(zombiePrefabBones);
-        CurrentZombieControl currentZombieControl = instanceZombie.GetComponent<CurrentZombieControl>();
+        ZombieBehaviour currentZombieControl = instanceZombie.GetComponent<ZombieBehaviour>();
         linksToSpawnedZombies.Add(currentZombieControl);
         currentZombieControl.spawnZombies = this;
-        currentZombieControl.civillianController = civilianController;
+        currentZombieControl.SetCivillianController(civilianController);
         Vector3 posSpawn = GetPosSpawn();
         instanceZombie.transform.position = posSpawn;
     }
@@ -44,12 +42,8 @@ public class SpawnZombies : MonoBehaviour
         for (int i = 0; i < posSpawn.Length; i++)
         {
             CreateEnemy();
-            
-        }
-
-        
+        }  
     }
-    
 
     public void StopAnotherZombies(int currentHash)
     {
@@ -120,10 +114,22 @@ public enum ZombieBodyPartID
     leftFoot
 }
 
-[System.Serializable]
-public struct BodyPartAndPutInObj
+
+
+[System.Serializable] public struct BodyPartAndPutInObj
 {
     public ZombieBodyPartID zombieBodyPartID;
     public ZombieBodyControl[] zombieBodyControls;
     public GameObject[] usedBodyParts;
+}
+
+[System.Serializable] public struct ZombieBehaviourStates
+{
+    public ZombieBehaviourExemplar[] zombieBehaviourExemplars;
+}
+
+[System.Serializable] public struct ZombieBehaviourExemplar
+{
+    public ZombieBehaviourState behaviourState;
+    public ZombieBehaviour zombieBehaviour;
 }

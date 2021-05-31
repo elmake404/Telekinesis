@@ -5,6 +5,10 @@ using UnityEngine;
 public class ObjectToPick : MonoBehaviour, IRopeCollision, IExploded, IInitObject
 {
     public TypeOfConnected selectedType = TypeOfConnected.none;
+    //[HideInInspector] public RopeBehaviour currentRopeBehaviour;
+    //[HideInInspector] public int ownOrderInRope = 1;
+    [HideInInspector] public bool isAttachedToRope = false;
+    protected List<ConnectedRope> connectedRopes;
 
     public virtual TypeOfConnected GetTypeOfConnected()
     {
@@ -44,6 +48,16 @@ public class ObjectToPick : MonoBehaviour, IRopeCollision, IExploded, IInitObjec
     public virtual void DisableComponent()
     {
         this.enabled = false;
+    }
+
+    public virtual void AddConnectedRope(ConnectedRope connectedRope)
+    {
+        connectedRopes.Add(connectedRope);   
+    }
+
+    public List<ConnectedRope> GetConnectedRopes()
+    {
+        return connectedRopes;
     }
 
     protected virtual void OnEnable() { }

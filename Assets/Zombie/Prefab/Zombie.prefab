@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 2522455070285874042}
   - component: {fileID: 3592821139039223951}
   - component: {fileID: 8216218991220436092}
+  - component: {fileID: 1801454972706415777}
+  - component: {fileID: 5447367682570740223}
+  - component: {fileID: 3507921058438226435}
+  - component: {fileID: 1877426398554219131}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -92,15 +96,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 330500823846571630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a7fabd22f731bd438ce4dab4e65872e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b6851e3cee2ba34f9a2550195807753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieBehaviourStates:
+    zombieBehaviourExemplars:
+    - behaviourState: 1
+      zombieBehaviour: {fileID: 1801454972706415777}
+    - behaviourState: 2
+      zombieBehaviour: {fileID: 5447367682570740223}
+    - behaviourState: 3
+      zombieBehaviour: {fileID: 3507921058438226435}
+    - behaviourState: 4
+      zombieBehaviour: {fileID: 1877426398554219131}
   zombieAnimController: {fileID: 2522455070285874042}
   blankEnemy: {fileID: 8216218991220436092}
-  particlesOnHit: {fileID: 0}
-  directParticlesOnHit: {fileID: 0}
   isInterCollisionWithOther: 0
-  civillianController: {fileID: 0}
   spawnZombies: {fileID: 0}
   isRopeBreak: 0
   isPinned: 0
@@ -191,6 +202,86 @@ MonoBehaviour:
   - {fileID: 7937596413340922666}
   - {fileID: 7224920023120753557}
   - {fileID: 8669360101871896855}
+--- !u!114 &1801454972706415777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330500823846571630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f260312d8534664182bdc4c6aaf6c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombieBehaviourStates:
+    zombieBehaviourExemplars: []
+  zombieAnimController: {fileID: 0}
+  blankEnemy: {fileID: 0}
+  isInterCollisionWithOther: 0
+  spawnZombies: {fileID: 0}
+  isRopeBreak: 0
+  isPinned: 0
+--- !u!114 &5447367682570740223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330500823846571630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e16100b2cf652d47af70b12d1d70b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombieBehaviourStates:
+    zombieBehaviourExemplars: []
+  zombieAnimController: {fileID: 0}
+  blankEnemy: {fileID: 0}
+  isInterCollisionWithOther: 0
+  spawnZombies: {fileID: 0}
+  isRopeBreak: 0
+  isPinned: 0
+--- !u!114 &3507921058438226435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330500823846571630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2625064311c9a4f8f63f7383b009e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombieBehaviourStates:
+    zombieBehaviourExemplars: []
+  zombieAnimController: {fileID: 0}
+  blankEnemy: {fileID: 0}
+  isInterCollisionWithOther: 0
+  spawnZombies: {fileID: 0}
+  isRopeBreak: 0
+  isPinned: 0
+--- !u!114 &1877426398554219131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330500823846571630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df399b53f3d11640b971cc82c948c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombieBehaviourStates:
+    zombieBehaviourExemplars: []
+  zombieAnimController: {fileID: 0}
+  blankEnemy: {fileID: 0}
+  isInterCollisionWithOther: 0
+  spawnZombies: {fileID: 0}
+  isRopeBreak: 0
+  isPinned: 0
 --- !u!1 &371687778490310327
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,11 +567,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 1
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 0
   zombieBodyPartID: 0
   attachedCollider: {fileID: 7912895036476325548}
   attachedRigidbody: {fileID: 2927928064878114685}
+  isAttachCharacterJoint: 0
 --- !u!1 &1406505029835203421
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,8 +788,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 1000
+  m_BreakTorque: 1000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -714,11 +807,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 3
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 1
   zombieBodyPartID: 4
   attachedCollider: {fileID: 5049401645586344948}
   attachedRigidbody: {fileID: 581738991862461252}
+  isAttachCharacterJoint: 0
 --- !u!1 &1541602134663510157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,11 +1218,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 4
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 0
   zombieBodyPartID: 3
   attachedCollider: {fileID: 6978273859035436961}
   attachedRigidbody: {fileID: 9051398982172577297}
+  isAttachCharacterJoint: 0
 --- !u!1 &2118978653547598557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,11 +1488,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 4
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 0
   zombieBodyPartID: 2
   attachedCollider: {fileID: 6871889794586232700}
   attachedRigidbody: {fileID: 7720891735149953779}
+  isAttachCharacterJoint: 0
 --- !u!1 &2694817882127718574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,8 +2019,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 1000
+  m_BreakTorque: 1000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -1939,11 +2038,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 4
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 1
   zombieBodyPartID: 2
   attachedCollider: {fileID: 1899344921949178744}
   attachedRigidbody: {fileID: 5261861968868057413}
+  isAttachCharacterJoint: 0
 --- !u!1 &4110769757931607780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,11 +2278,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 3
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 0
   zombieBodyPartID: 5
   attachedCollider: {fileID: 2614744556275314340}
   attachedRigidbody: {fileID: 4680990253722936664}
+  isAttachCharacterJoint: 0
 --- !u!1 &4559257679052368981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,8 +2420,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 1000
+  m_BreakTorque: 1000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -2336,11 +2439,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 3
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 1
   zombieBodyPartID: 5
   attachedCollider: {fileID: 6872321932741901856}
   attachedRigidbody: {fileID: 6487495153378135394}
+  isAttachCharacterJoint: 0
 --- !u!1 &5068839859099930601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,8 +2691,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 1000
+  m_BreakTorque: 1000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -2605,11 +2710,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 4
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 1
   zombieBodyPartID: 3
   attachedCollider: {fileID: 395971557709199190}
   attachedRigidbody: {fileID: 2534720324700725568}
+  isAttachCharacterJoint: 0
 --- !u!1 &5412008290051657198
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,11 +3152,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 3
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 0
   zombieBodyPartID: 4
   attachedCollider: {fileID: 1124296459248251272}
   attachedRigidbody: {fileID: 4491514326972932985}
+  isAttachCharacterJoint: 0
 --- !u!1 &6248325942866098482
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,11 +3393,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 1
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 0
   zombieBodyPartID: 0
   attachedCollider: {fileID: 381568605375463044}
   attachedRigidbody: {fileID: 4934278877590080658}
+  isAttachCharacterJoint: 0
 --- !u!1 &6442688478044128468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,8 +3674,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1
-  m_BreakTorque: 1
+  m_BreakForce: 1000
+  m_BreakTorque: 1000
   m_EnableCollision: 0
   m_EnablePreprocessing: 0
   m_MassScale: 1
@@ -3582,11 +3693,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedType: 2
+  isAttachedToRope: 0
   zombieControl: {fileID: 3592821139039223951}
   isBreakingJoint: 1
   zombieBodyPartID: 1
   attachedCollider: {fileID: 8890370559502139337}
   attachedRigidbody: {fileID: 1526198207859060263}
+  isAttachCharacterJoint: 0
 --- !u!1 &7959941673608637569
 GameObject:
   m_ObjectHideFlags: 0

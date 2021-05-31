@@ -60,24 +60,6 @@ public class BombObject : ObjectToPick
             DestroyThisObject();
         }
 
-        else 
-        {
-            
-            if (collision.gameObject.layer == 8)
-            {
-                if (connectedPin.createRope == null) { return; }
-                ConnectedObject[] objects = connectedPin.createRope.GetConnectedObjects();
-                int index = 0;
-                if (connectedPin.indexConnect == 0) { index = 1; }
-                else { index = 0; }
-
-                if (collision.collider.gameObject.GetComponent<IRopeCollision>().GetUniqueID() == objects[index].uniqueID)
-                {
-                    connectedPin.createRope.ManualBreakRopeIfConnectedObjCollided();
-
-                }
-            }
-        }
     }
 
     private void MakeExplosion()

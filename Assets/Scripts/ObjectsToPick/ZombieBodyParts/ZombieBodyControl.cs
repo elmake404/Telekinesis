@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class ZombieBodyControl : ObjectToPick
 {
-    public CurrentZombieControl zombieControl;
+    public ZombieBehaviour zombieControl;
     public bool isBreakingJoint;
     public ZombieBodyPartID zombieBodyPartID;
     public Collider attachedCollider;
     public Rigidbody attachedRigidbody;
     [HideInInspector] public bool isAttachCharacterJoint;
-    protected ZombieBodyControl thisZombieBodyControl;
+    protected float minForce = 5.0f;
+    //[HideInInspector] public ZombieBodyControl thisZombieBodyControl;
     protected CharacterJoint attachedCharacterJoint;
 
     protected override void OnEnable()
     {
         isAttachCharacterJoint = TryGetComponent<CharacterJoint>(out attachedCharacterJoint);
+        connectedRopes = new List<ConnectedRope>();
+    }
+
+    protected override void Start()
+    {
+        
     }
 
     protected override void OnJointBreak(float breakForce)
     {
-        zombieControl.InitBreakJoint(zombieBodyPartID);
-        
+        zombieControl.InitBreakJoint(zombieBodyPartID, this);
     }
+
 
     public void DestroyAttachedCharacterJoint()
     {
