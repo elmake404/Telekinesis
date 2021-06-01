@@ -44,30 +44,28 @@ public class ZombieBehaviour : MonoBehaviour
     private float yRotate = 0;
     private float minDistanceToPlayer = 1f;
     private bool isEnabledRagdoll = false;
-    private Collider[] colliders;
     private Rigidbody[] rigidbodies;
+    public HashSet<int> hashCodeColliders;
 
     protected virtual void OnEnable()
     {
         
     }
 
-
     protected virtual void Start()
     {
         thisTransform = transform;
         thisGameObject = gameObject;
         thisZombieBehaviour = GetComponent<ZombieBehaviour>();
-        InitColliders();
         InitRigidBodies();
-
+        hashCodeColliders = GetHashCodeOfColliders();
         StartTask(ZombieTaskLog.targetSearch);
+        
     }
 
 
     protected virtual void FixedUpdate()
     {
-        
     }
 
     public void SetCivillianController(CivilianController controller)
@@ -189,9 +187,17 @@ public class ZombieBehaviour : MonoBehaviour
         return thisZombieBehaviour.zombieBehaviourStates.zombieBehaviourExemplars[(int)state - 1].zombieBehaviour;
     }
 
-    private void InitColliders()
+    private HashSet<int> GetHashCodeOfColliders()
     {
-        colliders = thisTransform.GetComponentsInChildren<Collider>();
+        List<Collider> colliders = new List<Collider>(blankEnemy.bones[0].GetComponentsInChildren<Collider>());
+        colliders.Add(blankEnemy.bones[0].GetComponent<Collider>());
+        HashSet<int> instanceCodes = new HashSet<int>();
+
+        for (int i = 0; i < colliders.Count; i++)
+        {
+            instanceCodes.Add(colliders[i].GetInstanceID());
+        }
+        return instanceCodes;
     }
 
     private void InitRigidBodies()

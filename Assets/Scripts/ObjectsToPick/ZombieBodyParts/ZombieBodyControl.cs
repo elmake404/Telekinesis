@@ -30,6 +30,10 @@ public class ZombieBodyControl : ObjectToPick
         zombieControl.InitBreakJoint(zombieBodyPartID, this);
     }
 
+    public void IgnoreRopeColliderWithZombieBody(Collider ropeCollider)
+    {
+        Physics.IgnoreCollision(attachedCollider, ropeCollider);
+    }
 
     public void DestroyAttachedCharacterJoint()
     {
@@ -61,5 +65,20 @@ public class ZombieBodyControl : ObjectToPick
         Destroy(attachedRigidbody);
     }
 
+    protected bool IsIgnoreCollision(Collision collision)
+    {
+        bool isContains = false;
+        ContactPoint[] contactPoints = collision.contacts;
 
+        for (int i = 0; i < contactPoints.Length; i++)
+        {
+            if (zombieControl.hashCodeColliders.Contains(contactPoints[i].otherCollider.GetInstanceID()))
+            {
+                isContains = true;
+                break;
+            }
+        }
+        return isContains;
+        
+    }
 }

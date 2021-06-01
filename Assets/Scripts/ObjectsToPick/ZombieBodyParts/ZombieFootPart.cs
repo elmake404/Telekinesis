@@ -33,14 +33,17 @@ public class ZombieFootPart : ZombieBodyControl
     }
 
 
-    protected override void OnJointBreak(float breakForce)
+    new private void OnJointBreak(float breakForce)
     {
         //base.OnJointBreak(breakForce);
         zombieControl.InitBreakJoint(zombieBodyPartID, transform.GetComponent<ZombieBodyControl>());
     }
 
-    protected override void OnCollisionEnter(Collision collision)
+    new private void OnCollisionEnter(Collision collision)
     {
+        if (IsIgnoreCollision(collision)) { return; }
+        Debug.Log(collision.collider.name);
+
         float force = GetRelativeVelocityMagnitude(collision);
 
         if (force > minForce)

@@ -46,8 +46,10 @@ public class ZombieBodyPart : ZombieBodyControl
         
     }
     
-    protected override void OnCollisionEnter(Collision collision)
+    new private void OnCollisionEnter(Collision collision)
     {
+        if (IsIgnoreCollision(collision)) { return; }
+        Debug.Log(collision.collider.name);
         float force = GetRelativeVelocityMagnitude(collision);
 
         if (force > minForce)

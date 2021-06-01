@@ -2,31 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum states
+public class test : MonoBehaviour
 {
-    a,
-    b,
-    c,
-    d
-}
-    public class test : MonoBehaviour
-    {
-        
+    public Collider collider1;
+    public Collider collider2;
+
     private void Start()
     {
-        states state = states.d;
-
-        switch (state)
-        {
-            case states.a:
-            case states.b:
-            case states.c:
-                Debug.Log("C");
-                break;
-            case states.d:
-                Debug.Log("D");
-                break;
-        }
+        Physics.IgnoreCollision(collider1, collider2);
     }
 }
 

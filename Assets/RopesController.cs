@@ -27,7 +27,6 @@ public class RopesController : MonoBehaviour
         createdRope.SetPointsToSpawn(points);
         createdRope.GenerateRopeSections(); 
         createdRope.CreateCurrentRope();  
-        createdRope.SetRopeColliders();
         createdRope.PickObjectsToRope();
         //createdRope.ObjectsIgnoreCollisionWithRope();
         createdRope.SetPinToConnected();

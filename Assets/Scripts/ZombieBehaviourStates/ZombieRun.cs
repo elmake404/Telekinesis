@@ -10,6 +10,10 @@ public class ZombieRun : ZombieBehaviour
     {
         currentTask = ZombieTaskLog.targetSearch;    
     }
+    protected override void Start()
+    {
+        
+    }
 
     protected override void FixedUpdate()
     {

@@ -141,7 +141,6 @@ public class BlankZombie : MonoBehaviour
                 if (transforms[i].GetInstanceID() == instanceID[k])
                 {
                     indexes[k] = i;
-                    Debug.Log("FindIndexOf " + transforms[i].name);
                 }
             }
         }
@@ -181,7 +180,6 @@ public class BlankZombie : MonoBehaviour
         for (int i = 0; i < ids.Length; i++)
         {
             bones[i] = transforms[ids[i]];
-            Debug.Log("GetBoneOfIndex  " + bones[i].name);
         }
 
         return bones;

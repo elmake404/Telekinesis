@@ -10,18 +10,11 @@ public class RopeBehaviour : MonoBehaviour
     private List<RopeSection> createdRopeSections = new List<RopeSection>();
     private ConnectedObject[] connectObjects = new ConnectedObject[2];
     private ConfigurableJoint[] jointsConnected = new ConfigurableJoint[2];
-    private bool isBreakROpe = false;
-    private int numOfDetectingCollision = 0;
-    private Coroutine coroutineTimerToBreakRope;
     private Collider[] ropeColliders;
 
     private void Start()
     {
         InitWorkOnConnectedObjects();
-        
-        //TimerToDestreoyRope();
-        //coroutineTimerToBreakRope = StartCoroutine(TimerToDestreoyRope());
-
     }
 
     
@@ -45,7 +38,10 @@ public class RopeBehaviour : MonoBehaviour
         {
             GameObject instanceSection = Instantiate(ropeSection);
             RopeSection instanceRopeSection = instanceSection.GetComponent<RopeSection>();
+            Physics.IgnoreCollision(connectObjects[0].hitCollider, instanceRopeSection.sphereCollider);
+            Physics.IgnoreCollision(connectObjects[1].hitCollider, instanceRopeSection.sphereCollider);
             createdRopeSections.Add(instanceRopeSection);
+            
 
             if (i == 0)
             {
@@ -93,16 +89,9 @@ public class RopeBehaviour : MonoBehaviour
                 continue;
             }
 
-            //float minDistance = Vector3.Distance(createdRopeSections[i].transform.position, createdRopeSections[i + 1].transform.position);
-            //springJoint.minDistance = minDistance;
             springJoint.connectedBody = createdRopeSections[i + 1].sphereRigidbody;
             springJoint.connectedAnchor = Vector3.zero;
         }
-    }
-
-    private void SetTracerToRopePart(Transform transform)
-    {
-        GameObject instance = Instantiate(tracer, transform);
     }
 
 
@@ -111,13 +100,16 @@ public class RopeBehaviour : MonoBehaviour
         TypeOfConnected[] typeOfConnects = new TypeOfConnected[2];
         IRopeCollision[] iropeCollisions = new IRopeCollision[2];
         ObjectToPick[] objectToPicks = new ObjectToPick[2];
+
+        
+
         iropeCollisions[0] = connectObjects[0].attacheRigidbody.gameObject.GetComponent<IRopeCollision>();
         iropeCollisions[1] = connectObjects[1].attacheRigidbody.gameObject.GetComponent<IRopeCollision>();
         objectToPicks[0] = connectObjects[0].hitCollider.transform.GetComponent<ObjectToPick>();
         objectToPicks[1] = connectObjects[1].hitCollider.transform.GetComponent<ObjectToPick>();
 
-        Debug.Log(connectObjects[0].hitCollider.name);
-        Debug.Log(connectObjects[1].hitCollider.name);
+        //Debug.Log(connectObjects[0].hitCollider.name);
+        //Debug.Log(connectObjects[1].hitCollider.name);
 
         ConnectedRope[] connectedRopes = new ConnectedRope[2];
         connectedRopes[0] = new ConnectedRope();
@@ -195,7 +187,6 @@ public class RopeBehaviour : MonoBehaviour
                     return;
             }
         }
-
         else
         {
             connectedRopes[0].orderInRope = 0;
@@ -316,6 +307,8 @@ public class RopeBehaviour : MonoBehaviour
         joint2.xMotion = ConfigurableJointMotion.Locked;
         joint2.yMotion = ConfigurableJointMotion.Locked;
         joint2.zMotion = ConfigurableJointMotion.Locked;
+
+        
     }
 
     public void SetNewRigidbodyToSelectedJoint(int order, Rigidbody newRigidbody)
@@ -366,12 +359,6 @@ public class RopeBehaviour : MonoBehaviour
     public List<RopeSection> GetCreatedRopeSections()
     {
         return createdRopeSections;
-    }
-
-    private IEnumerator TimerToDestreoyRope()
-    {
-        yield return new WaitForSeconds(5f);
-        BreakRope();
     }
 
     public void BreakRope()
