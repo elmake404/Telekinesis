@@ -9,6 +9,11 @@ public class ZombieHandPart : ZombieBodyControl
         base.OnEnable();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     public override TypeOfConnected GetTypeOfConnected()
     {
         return selectedType;
@@ -39,8 +44,6 @@ public class ZombieHandPart : ZombieBodyControl
 
     new private void OnCollisionEnter(Collision collision)
     {
-        if (IsIgnoreCollision(collision)) { return; }
-        Debug.Log(collision.collider.name);
         float force = GetRelativeVelocityMagnitude(collision);
 
 

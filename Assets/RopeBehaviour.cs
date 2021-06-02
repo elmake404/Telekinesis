@@ -75,7 +75,7 @@ public class RopeBehaviour : MonoBehaviour
 
     public void CreateCurrentRope()
     {
-        float springForce = 200f;
+        float springForce = 200f * createdRopeSections.Count;
 
         for (int i = 0; i < createdRopeSections.Count; i++)
         {
@@ -307,8 +307,6 @@ public class RopeBehaviour : MonoBehaviour
         joint2.xMotion = ConfigurableJointMotion.Locked;
         joint2.yMotion = ConfigurableJointMotion.Locked;
         joint2.zMotion = ConfigurableJointMotion.Locked;
-
-        
     }
 
     public void SetNewRigidbodyToSelectedJoint(int order, Rigidbody newRigidbody)

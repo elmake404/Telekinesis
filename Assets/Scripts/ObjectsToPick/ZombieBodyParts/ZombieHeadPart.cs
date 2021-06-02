@@ -10,6 +10,11 @@ public class ZombieHeadPart : ZombieBodyControl
         base.OnEnable();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     public override int GetUniqueID()
     {
         return zombieControl.gameObject.GetInstanceID();
@@ -60,7 +65,6 @@ public class ZombieHeadPart : ZombieBodyControl
 
     new private void OnCollisionEnter(Collision collision)
     {
-        if (IsIgnoreCollision(collision)) { return; }
         float force = GetRelativeVelocityMagnitude(collision);
         
         if (force > minForce)

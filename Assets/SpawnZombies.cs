@@ -11,11 +11,14 @@ public class SpawnZombies : MonoBehaviour
     public SpawnCivilian spawnCivilian;
     private List<ZombieBehaviour> linksToSpawnedZombies = new List<ZombieBehaviour>();
     private CivilianController civilianController;
+    private SpawnZombies thisSpawnZombies;
     private int numOfPosChanges = 0;
     private int numOfDeadZombies = 0;
 
     private void Start()
     {
+        thisSpawnZombies = GetComponent<SpawnZombies>();
+        
         SpawnCreatEnemy();
     }
 
@@ -24,7 +27,7 @@ public class SpawnZombies : MonoBehaviour
         GameObject instanceZombie = Instantiate(zombiePrefabBones);
         ZombieBehaviour currentZombieControl = instanceZombie.GetComponent<ZombieBehaviour>();
         linksToSpawnedZombies.Add(currentZombieControl);
-        currentZombieControl.spawnZombies = this;
+        currentZombieControl.SetSpawnZombies(thisSpawnZombies);
         currentZombieControl.SetCivillianController(civilianController);
         Vector3 posSpawn = GetPosSpawn();
         instanceZombie.transform.position = posSpawn;
@@ -50,8 +53,7 @@ public class SpawnZombies : MonoBehaviour
         for (int i = 0; i < linksToSpawnedZombies.Count; i++)
         {
             if (currentHash == linksToSpawnedZombies[i].GetHashCode()) { continue; }
-
-            linksToSpawnedZombies[i].MakeIdleZombie();
+            linksToSpawnedZombies[i].SwichZombieState(ZombieState.zombieIdle);
         }
     }
 
@@ -65,7 +67,6 @@ public class SpawnZombies : MonoBehaviour
             InitSavedCivillians();
             StartCoroutine(DelayStartMoveToNextPlatform());
             StartCoroutine(LazyDeleteAllSpawnedZombies());
-
         }
     }
 
@@ -123,13 +124,4 @@ public enum ZombieBodyPartID
     public GameObject[] usedBodyParts;
 }
 
-[System.Serializable] public struct ZombieBehaviourStates
-{
-    public ZombieBehaviourExemplar[] zombieBehaviourExemplars;
-}
 
-[System.Serializable] public struct ZombieBehaviourExemplar
-{
-    public ZombieBehaviourState behaviourState;
-    public ZombieBehaviour zombieBehaviour;
-}

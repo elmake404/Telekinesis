@@ -66,9 +66,6 @@ public class SimpleObject : ObjectToPick
         {
             StartCoroutine(PlayParticlesOnHit(collision.contacts[0], force));
         }
-
-        
-
     }
 
 }

@@ -14,39 +14,29 @@ public enum ZombieAnimationState
 public class ZombieAnimController : MonoBehaviour
 {
     public Animator animator;
-    private int walkID;
     private int attackID;
     private int idleID;
-    private int eatingID;
     private ZombieAnimationState animationState = ZombieAnimationState.isWalk;
 
     void Start()
     {
-        walkID = Animator.StringToHash("isWalk");
-        attackID = Animator.StringToHash("isAttack");
-        idleID = Animator.StringToHash("isIdle");
-        eatingID = Animator.StringToHash("isEating");
+        attackID = Animator.StringToHash("attack");
+        idleID = Animator.StringToHash("idle");
     }
 
     public void SetAnimation(ZombieAnimationState state)
     {
         if (state == ZombieAnimationState.isAnimatorOff) { return; }
         if (state == animationState) { return; }
-        
 
         switch (state)
         {
             case ZombieAnimationState.isAttack:
-                animator.SetBool(attackID, true);
-                break;
-            case ZombieAnimationState.isWalk:
-                animator.SetBool(walkID, true);
+                animator.SetTrigger(attackID);
+                Debug.Log("Attack anim state");
                 break;
             case ZombieAnimationState.isIdle:
-                animator.SetBool(idleID, true);
-                break;
-            case ZombieAnimationState.isEating:
-                animator.SetBool(eatingID, true);
+                animator.SetTrigger(idleID);
                 break;
         }
     }

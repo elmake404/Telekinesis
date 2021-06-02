@@ -13,6 +13,10 @@ public class BombObject : ObjectToPick
     private float radiusExplosion = 3f;
     private bool isExplode = false;
 
+    protected override void OnEnable()
+    {
+        connectedRopes = new List<ConnectedRope>();
+    }
 
     protected override void Start()
     {
@@ -56,10 +60,8 @@ public class BombObject : ObjectToPick
             isExplode = true;
             MakeExplosion();
             StartCoroutine(PlayParticlesExplosion());
-            ManualDestroyRope();
             DestroyThisObject();
         }
-
     }
 
     private void MakeExplosion()
@@ -75,6 +77,18 @@ public class BombObject : ObjectToPick
 
             IExploded exploded = colliders[i].gameObject.GetComponent<IExploded>();
             exploded.Explode(transform.position);
+
+            ObjectToPick objectToPick = colliders[i].gameObject.GetComponent<ObjectToPick>();
+            switch (objectToPick.selectedType)
+            {
+                case TypeOfConnected.zombieBody:
+                case TypeOfConnected.zombieHead:
+                case TypeOfConnected.zombieFoot:
+                case TypeOfConnected.zombieHand:
+                    ZombieBodyControl zombieBodyControl = objectToPick as ZombieBodyControl;
+                    zombieBodyControl.zombieControl.InitZombieExplosion(transform.position);
+                    break;
+            }
         }
     }
 
@@ -87,12 +101,11 @@ public class BombObject : ObjectToPick
         Destroy(particles);
     }
 
-    private void ManualDestroyRope()
+    /*private void ManualDestroyRope()
     {
         if (connectedPin.createRope == null) { return; }
         connectedPin.createRope.BreakRope();
-        
-    }
+    }*/
 
     private void DestroyThisObject()
     {
@@ -101,5 +114,5 @@ public class BombObject : ObjectToPick
         Destroy(parent.gameObject);
     }
 
-    
+
 }

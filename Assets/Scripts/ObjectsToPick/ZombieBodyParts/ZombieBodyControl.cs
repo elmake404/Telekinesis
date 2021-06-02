@@ -22,7 +22,7 @@ public class ZombieBodyControl : ObjectToPick
 
     protected override void Start()
     {
-        
+        attachedRigidbody.maxAngularVelocity = 1f;
     }
 
     protected override void OnJointBreak(float breakForce)
@@ -65,20 +65,10 @@ public class ZombieBodyControl : ObjectToPick
         Destroy(attachedRigidbody);
     }
 
-    protected bool IsIgnoreCollision(Collision collision)
+    public CharacterJoint GetAttachedCahracterJoint()
     {
-        bool isContains = false;
-        ContactPoint[] contactPoints = collision.contacts;
-
-        for (int i = 0; i < contactPoints.Length; i++)
-        {
-            if (zombieControl.hashCodeColliders.Contains(contactPoints[i].otherCollider.GetInstanceID()))
-            {
-                isContains = true;
-                break;
-            }
-        }
-        return isContains;
-        
+        return attachedCharacterJoint;
     }
+
+
 }

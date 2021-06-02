@@ -8,6 +8,10 @@ public class ZombieBodyPart : ZombieBodyControl
     {
         base.OnEnable();
     }
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     public override void SetWithRopeConnected(ConnectedPin connectedPin)
     {
@@ -48,8 +52,6 @@ public class ZombieBodyPart : ZombieBodyControl
     
     new private void OnCollisionEnter(Collision collision)
     {
-        if (IsIgnoreCollision(collision)) { return; }
-        Debug.Log(collision.collider.name);
         float force = GetRelativeVelocityMagnitude(collision);
 
         if (force > minForce)

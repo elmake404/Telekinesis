@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ZombieBehaviourState
+public enum ZombieState
 {
     none,
     zombieRun,
@@ -13,59 +13,84 @@ public enum ZombieBehaviourState
     zombieDie
 }
 
-public enum ZombieTaskLog
-{
-    none,
-    targetSearch,
-    killCivillian
-}
 
 public class ZombieBehaviour : MonoBehaviour
 {
-    
-    [SerializeField] private ZombieBehaviourStates zombieBehaviourStates;
     [SerializeField] private ZombieAnimController zombieAnimController;
     [SerializeField] private BlankZombie blankEnemy;
+    public GameObject bloodParticles;
 
     [HideInInspector] public ConnectedPin connectedPin;
     [HideInInspector] public bool isInterCollisionWithOther = false;
     
-    [HideInInspector] public SpawnZombies spawnZombies;
+    
+    [HideInInspector] protected SpawnZombies spawnZombies;
     [HideInInspector] public bool isRopeBreak = false;
     [HideInInspector] public bool isPinned = false;
 
-    protected ZombieBehaviourState currentBehaviourState = ZombieBehaviourState.none;
-    protected ZombieTaskLog currentTask = ZombieTaskLog.none;
-    protected ZombieBehaviour thisZombieBehaviour;
-    protected CivilianController civillianController;
-    private bool[] zombieTasksIsCompleted = new bool[Enum.GetNames(typeof(ZombieTaskLog)).Length];
-    private Transform thisTransform;
+    private ZombieState currentState = ZombieState.none;
+    private CivilianController civillianController;
     private GameObject thisGameObject;
     private float yRotate = 0;
-    private float minDistanceToPlayer = 1f;
     private bool isEnabledRagdoll = false;
     private Rigidbody[] rigidbodies;
-    public HashSet<int> hashCodeColliders;
 
-    protected virtual void OnEnable()
+    private void Start()
     {
-        
-    }
-
-    protected virtual void Start()
-    {
-        thisTransform = transform;
+        SetIgnoreSelfCollisions();
         thisGameObject = gameObject;
-        thisZombieBehaviour = GetComponent<ZombieBehaviour>();
         InitRigidBodies();
-        hashCodeColliders = GetHashCodeOfColliders();
-        StartTask(ZombieTaskLog.targetSearch);
-        
+        SwichZombieState(ZombieState.zombieRun);
     }
 
-
-    protected virtual void FixedUpdate()
+    private void FixedUpdate()
     {
+        IterateCurrentState();
+    }
+
+    public void SwichZombieState(ZombieState state)
+    {
+        if (currentState == state) { return; }
+        currentState = state;
+
+        switch (state)
+        {
+            case ZombieState.none:
+                break;
+            case ZombieState.zombieRun:
+                break;
+            case ZombieState.zombieAttack:
+                zombieAnimController.SetAnimation(ZombieAnimationState.isAttack);
+                spawnZombies.StopAnotherZombies(this.GetHashCode());
+                break;
+            case ZombieState.zombieIdle:
+                zombieAnimController.SetAnimation(ZombieAnimationState.isIdle);
+                break;
+            case ZombieState.zombieEating:
+                break;
+            case ZombieState.zombieDie:
+                zombieAnimController.DisableAnimator();
+                break;
+        }
+    }
+
+    private void IterateCurrentState()
+    {
+        switch (currentState)
+        {
+            case ZombieState.none:
+                break;
+            case ZombieState.zombieRun:
+                MoveToPlayer();
+                RotateToTarget();
+                float distance = CalculateDistanceToCivillian();
+                if (distance < 1.0f)
+                {
+                    SwichZombieState(ZombieState.zombieAttack);
+                    this.enabled = false;
+                }
+                break;
+        }
     }
 
     public void SetCivillianController(CivilianController controller)
@@ -73,132 +98,30 @@ public class ZombieBehaviour : MonoBehaviour
         civillianController = controller;
     }
 
+    public void SetSpawnZombies(SpawnZombies spawn)
+    {
+        spawnZombies = spawn;
+    }
+
     public void AttackTriggerAnimation()
     {
         spawnZombies.InitCivillianDead();
-        currentBehaviourState = ZombieBehaviourState.zombieEating;
-        SwitchStateBehaviour(currentBehaviourState);
     }
 
-    private void SwitchStateBehaviour(ZombieBehaviourState state)
+    private void SetIgnoreSelfCollisions()
     {
-        if (currentBehaviourState == state) { return; }
+        Collider[] colliders = transform.GetComponentsInParent<Collider>();
 
-        else if (currentBehaviourState != ZombieBehaviourState.none)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            DisableBehaviour(state);
+            for (int k = 0; k < colliders.Length; k++)
+            {
+                if (i == k) { continue; }
+                Physics.IgnoreCollision(colliders[i], colliders[k]);
+            }
         }
-
-        switch (state)
-        {
-            case ZombieBehaviourState.zombieRun:
-                ZombieRun zombieRun = GetZombieBehaviour(ZombieBehaviourState.zombieRun) as ZombieRun;
-                zombieRun.civillianController = civillianController;
-                zombieRun.thisZombieBehaviour = thisZombieBehaviour;
-                break;
-            case ZombieBehaviourState.zombieAttack:
-                Debug.Log((int)state + "ZombieAttack!!!");
-                break;
-            case ZombieBehaviourState.zombieIdle:
-                break;
-            case ZombieBehaviourState.zombieEating:
-                break;
-            case ZombieBehaviourState.zombieDie:
-                
-                break;
-        }
-
-        currentBehaviourState = state;
-        EnableBehaviour(state);
     }
 
-    private void StartTask(ZombieTaskLog taskLog)
-    {
-        if (TaskIsAlwaysCompleted(taskLog)) { Debug.LogError("TaskIsAlwaysCompleted"); }
-
-        switch (taskLog)
-        {
-            case ZombieTaskLog.targetSearch:
-                SwitchStateBehaviour(ZombieBehaviourState.zombieRun);
-                break;
-            case ZombieTaskLog.killCivillian:
-                SwitchStateBehaviour(ZombieBehaviourState.zombieAttack);
-                break;
-        }
-        currentTask = taskLog;
-    }
-
-    private void GoNextTask(ZombieTaskLog completedTask)
-    {
-        ZombieTaskLog newTask = ZombieTaskLog.none;
-
-
-        switch (completedTask)
-        {
-            case ZombieTaskLog.targetSearch:
-                StartTask(ZombieTaskLog.killCivillian);
-                newTask = ZombieTaskLog.killCivillian;
-                break;
-            case ZombieTaskLog.killCivillian:
-                break;
-        }
-
-        currentTask = newTask;
-    }
-
-
-    private void MarkTaskAsCompleted(ZombieTaskLog taskLog)
-    {
-        zombieTasksIsCompleted[(int)taskLog] = true;
-    }
-
-    public void CompletedTask(ZombieTaskLog taskLog)
-    {
-        thisZombieBehaviour.DisableBehaviour(currentBehaviourState);
-        MarkTaskAsCompleted(taskLog);
-        GoNextTask(taskLog);
-    }
-
-    private void StopExecutingTask()
-    {
-        thisZombieBehaviour.DisableBehaviour(currentBehaviourState);
-        thisZombieBehaviour.currentTask = ZombieTaskLog.none;
-        thisZombieBehaviour.currentBehaviourState = ZombieBehaviourState.zombieDie;
-    }
-
-    private bool TaskIsAlwaysCompleted(ZombieTaskLog taskLog)
-    {
-        return zombieTasksIsCompleted[(int)taskLog];
-    }
-
-    private void DisableBehaviour(ZombieBehaviourState state)
-    {
-        thisZombieBehaviour.zombieBehaviourStates.zombieBehaviourExemplars[(int)state - 1].zombieBehaviour.enabled = false;
-    }
-
-    private void EnableBehaviour(ZombieBehaviourState state)
-    {
-
-        thisZombieBehaviour.zombieBehaviourStates.zombieBehaviourExemplars[(int)state - 1].zombieBehaviour.enabled = true;
-    }
-
-    private ZombieBehaviour GetZombieBehaviour(ZombieBehaviourState state)
-    {
-        return thisZombieBehaviour.zombieBehaviourStates.zombieBehaviourExemplars[(int)state - 1].zombieBehaviour;
-    }
-
-    private HashSet<int> GetHashCodeOfColliders()
-    {
-        List<Collider> colliders = new List<Collider>(blankEnemy.bones[0].GetComponentsInChildren<Collider>());
-        colliders.Add(blankEnemy.bones[0].GetComponent<Collider>());
-        HashSet<int> instanceCodes = new HashSet<int>();
-
-        for (int i = 0; i < colliders.Count; i++)
-        {
-            instanceCodes.Add(colliders[i].GetInstanceID());
-        }
-        return instanceCodes;
-    }
 
     private void InitRigidBodies()
     {
@@ -212,11 +135,6 @@ public class ZombieBehaviour : MonoBehaviour
             rigidbodies[i].isKinematic = false;
             rigidbodies[i].useGravity = true;
         }
-    }
-
-    public void MakeIdleZombie()
-    {
-        currentBehaviourState = ZombieBehaviourState.zombieIdle;
     }
 
     public void AddExplosionForceToBody(Vector3 source)
@@ -236,19 +154,24 @@ public class ZombieBehaviour : MonoBehaviour
 
     public void InitDeathZombie()
     {
-        if (currentBehaviourState == ZombieBehaviourState.zombieDie) { return; }
-        StopExecutingTask();
+        if (currentState == ZombieState.zombieDie) { return; }
+        SwichZombieState(ZombieState.zombieDie);
+        blankEnemy.StartDelayReductionBreakForce();
+        spawnZombies.AddNumOfDeadZombies();
         InitRagdoll();
-        
+    }
+
+    public void InitZombieExplosion(Vector3 sourceExplosion)
+    {
+        InitDeathZombie();
+        ApplyForceOnExplosion(sourceExplosion);
     }
 
     private void InitRagdoll()
     {
         if (isEnabledRagdoll == true) { return; }
         isEnabledRagdoll = true;
-        zombieAnimController.DisableAnimator();
         EnableRigidbodies();
-        
     }
 
     private IEnumerator RunDestroyCharacter(ZombieBodyPartID partID)
@@ -258,12 +181,13 @@ public class ZombieBehaviour : MonoBehaviour
         blankEnemy.DisableBrokenBodyPart(partID);
         BodyPartAndPutInObj partAndPutInObj = blankEnemy.GetPartAndPutInObj(partID);
         Transform[] instantiatedBones = blankEnemy.GetInstantiatedBones();
+        Collider[] leftColliders = blankEnemy.DestroyUnusualCollidersAndReturnUsed(partID, instantiatedBones);
+        blankEnemy.MakeIgnoreCollisionsWithOtherColliders(leftColliders);
         DestroyAttachedConfigurableJoints(instantiatedBones[0]);
 
         yield return new WaitForEndOfFrame();
 
         ZombieBodyControl[] zombieBodyControls = blankEnemy.GetZombieBodyControls(instantiatedBones);
-        //Debug.Log(blankEnemy.PartIsAttachedToRope(partAndPutInObj));
         if (blankEnemy.PartIsAttachedToRope(partAndPutInObj) == true)
         {
             int[] indexesInHirachly = blankEnemy.GetBonesIndexesFromHirachly(partAndPutInObj);
@@ -273,12 +197,29 @@ public class ZombieBehaviour : MonoBehaviour
         }
 
         blankEnemy.PrepareBonesForSlicedPart(zombieBodyControls, partID);
-        blankEnemy.ReBuildHirachlyBones(instantiatedBones[0], zombieBodyControls, partID);
+        Transform newRootBone;
+        blankEnemy.ReBuildHirachlyBones(instantiatedBones[0], zombieBodyControls, partID, out newRootBone);
+        SpawnParticles.InParent(spawnZombies, bloodParticles, newRootBone);
+        RelinkSlicedParts(instantiatedBones, partAndPutInObj);
         DisableZombieBodyPartsControllers(partAndPutInObj);
 
-        RelinkSlicedParts(instantiatedBones, partAndPutInObj);
-
         yield return null;
+    }
+
+
+    private void ApplyForceOnExplosion(Vector3 sourceExplosion)
+    {
+        ZombieBodyPartID[] notYetDestroyedParts = blankEnemy.GetAllNotYetDeatroyedPartIDs();
+
+        for (int i = 0; i < notYetDestroyedParts.Length; i++)
+        {
+            BodyPartAndPutInObj part = blankEnemy.GetPartAndPutInObj(notYetDestroyedParts[i]);
+
+            for (int x = 0; x < part.zombieBodyControls.Length; x++)
+            {
+                part.zombieBodyControls[x].attachedRigidbody.AddExplosionForce(5f, sourceExplosion, 10f, 10f, ForceMode.Impulse);
+            }
+        }
     }
 
     private void DestroyAttachedConfigurableJoints(Transform rootBone)
@@ -303,12 +244,6 @@ public class ZombieBehaviour : MonoBehaviour
                 connectedRopesOnBone[k].attachedRopeBehaviour.SetNewRigidbodyToSelectedJoint(orderInRope, boneRigidbody);
             }
         }
-
-
-
-       /* RopeBehaviour ropeBehaviour = zombieBodyControl.currentRopeBehaviour;
-        Rigidbody rigidbody = comparableBone.GetComponent<Rigidbody>();
-        ropeBehaviour.SetNewRigidbodyToSelectedJoint(zombieBodyControl.ownOrderInRope, rigidbody);*/
     }
 
     public void InitBreakJoint(ZombieBodyPartID partID, ZombieBodyControl thatCall)
@@ -320,6 +255,8 @@ public class ZombieBehaviour : MonoBehaviour
 
         StartCoroutine(RunDestroyCharacter(partID));
     }
+
+    
 
     private void RelinkSlicedParts(Transform[] bones, BodyPartAndPutInObj bodyPartAndPut)
     {
@@ -341,7 +278,7 @@ public class ZombieBehaviour : MonoBehaviour
         }
     }
 
-    protected void RotateToPlayer()
+    private void RotateToTarget()
     {
         Vector3 playerCamPos = civillianController.transform.position;
         Vector3 normaDirToPlayer = (playerCamPos - transform.position).normalized;
@@ -350,7 +287,7 @@ public class ZombieBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, yRotate, 0);
     }
 
-    protected void MoveToPlayer()
+    private void MoveToPlayer()
     {
         if (isInterCollisionWithOther == true) { return; }
         Vector3 playerPos = civillianController.transform.position;
@@ -359,8 +296,9 @@ public class ZombieBehaviour : MonoBehaviour
         transform.position = pos;
     }
 
-    protected float CalculateDistanceToCivillian()
+    private float CalculateDistanceToCivillian()
     {
         return Vector3.Distance(transform.position, civillianController.transform.position);
     }
+
 }

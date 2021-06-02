@@ -1,12 +1,81 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BlankZombie : MonoBehaviour
 {
     public BodyPartAndPutInObj[] partAndPutInObj;
     public Transform[] bones;
     private bool[] partsIsBroken = new bool[6];
+    private int[] bonesID;
+    private Coroutine ReductionBreakForce;
+
+    private void Start()
+    {
+        InitBonesID();
+    }
+
+    private void InitBonesID()
+    {
+        bonesID = new int[bones.Length];
+
+        for (int i = 0; i < bonesID.Length; i++)
+        {
+            bonesID[i] = bones[i].GetInstanceID();
+        }
+    }
+
+    public void StartDelayReductionBreakForce()
+    {
+        ReductionBreakForce = StartCoroutine(DelayReductionBreakForce());
+    }
+
+    public ZombieBodyPartID[] GetAllNotYetDeatroyedPartIDs()
+    {
+        List<ZombieBodyPartID> notDstroyed = new List<ZombieBodyPartID>();
+        for (int i = 0; i < partsIsBroken.Length; i++)
+        {
+            if (partsIsBroken[i] == true)
+            {
+                continue;
+            }
+            else
+            {
+                notDstroyed.Add((ZombieBodyPartID)i);
+            }
+        }
+        return notDstroyed.ToArray();
+    }
+
+    private IEnumerator DelayReductionBreakForce()
+    {
+        for (float p = 0f; p < 15f; p += 0.5f)
+        {
+            for (int i = 0; i < partAndPutInObj.Length; i++)
+            {
+                if (partsIsBroken[i] == true)
+                {
+                    continue;
+                }
+                else
+                {
+                    for (int z = 0; z < partAndPutInObj[i].zombieBodyControls.Length; z++)
+                    {
+                        if (partAndPutInObj[i].zombieBodyControls[z].isBreakingJoint == true)
+                        {
+                            CharacterJoint characterJoint = partAndPutInObj[i].zombieBodyControls[z].GetAttachedCahracterJoint();
+                            characterJoint.breakForce = Mathf.Lerp(5000f, 300f, p / 15f);
+                        }
+                    }
+                    
+                }
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    
 
     public void SetPartIsBroken(ZombieBodyPartID partID)
     {
@@ -26,7 +95,8 @@ public class BlankZombie : MonoBehaviour
 
     public Transform[] GetInstantiatedBones()
     {
-        Transform instanceBonesHolder = Instantiate(bones[0]);
+        
+        Transform instanceBonesHolder = Instantiate(bones[0], transform);
         Transform[] bonesInBonesHolder = instanceBonesHolder.GetComponentsInChildren<Transform>();
         Transform[] tunedBones = new Transform[bones.Length];
 
@@ -39,7 +109,10 @@ public class BlankZombie : MonoBehaviour
             tunedBones[i] = bonesInBonesHolder[i];
             tunedBones[i].position = bones[i].position;
             tunedBones[i].rotation = bones[i].rotation;
+
         }
+        //tunedBones[0].position = bones[0].position;
+        tunedBones[0].SetParent(null);
         return tunedBones;
     }
 
@@ -68,12 +141,64 @@ public class BlankZombie : MonoBehaviour
                     bodyControls[i].DestroyAttachedCharacterJoint();
                 }
             }
+            bodyControls[i].gameObject.layer = 0;
+            Destroy(bodyControls[i]);
         }
     }
 
-    public void ReBuildHirachlyBones(Transform rootBone, ZombieBodyControl[] zombieBodyControls, ZombieBodyPartID partID)
+    public void MakeIgnoreCollisionsWithOtherColliders(Collider[] otherColliders)
     {
-        Transform beginJoint;
+        for (int i = 0; i < partAndPutInObj.Length; i++)
+        {
+            if (partsIsBroken[i] == true)
+            {
+                continue;
+            }
+            else
+            {
+                ZombieBodyControl[] zombieBodyControls = partAndPutInObj[i].zombieBodyControls;
+                for (int k = 0; k < zombieBodyControls.Length; k++)
+                {
+                    for (int p = 0; p < otherColliders.Length; p++)
+                    {
+                        Physics.IgnoreCollision(zombieBodyControls[k].attachedCollider, otherColliders[p]);
+                    }
+                }
+            }
+        }
+    }
+
+    public Collider[] DestroyUnusualCollidersAndReturnUsed(ZombieBodyPartID usingPartID, Transform[] instancedBones)
+    {
+        List<Collider> usingCollider = new List<Collider>();
+
+        for (int i = 0; i < partAndPutInObj.Length; i++)
+        {
+            if (i == (int)usingPartID)
+            {
+                int[] indexes = GetBonesIndexesFromHirachly(partAndPutInObj[i]);
+
+                for (int k = 0; k < indexes.Length; k++)
+                {
+                    usingCollider.Add(instancedBones[indexes[k]].GetComponent<Collider>());
+                }
+            }
+            else
+            {
+                int[] indexes = GetBonesIndexesFromHirachly(partAndPutInObj[i]);
+
+                for (int k = 0; k < indexes.Length; k++)
+                {
+                    Destroy(instancedBones[indexes[k]].GetComponent<Collider>());
+                }
+            }
+        }
+        return usingCollider.ToArray();
+    }
+
+    public void ReBuildHirachlyBones(Transform rootBone, ZombieBodyControl[] zombieBodyControls, ZombieBodyPartID partID, out Transform beginJoint)
+    {
+        beginJoint = rootBone;
         for (int i = 0; i < zombieBodyControls.Length; i++)
         {
             if (zombieBodyControls[i].zombieBodyPartID == partID && zombieBodyControls[i].isBreakingJoint)
@@ -83,7 +208,7 @@ public class BlankZombie : MonoBehaviour
                 rootBone.SetParent(beginJoint);
             }
         }
-
+        
     }
 
     public GameObject[] GetInstantiatedParts(ZombieBodyPartID partID)
@@ -125,7 +250,6 @@ public class BlankZombie : MonoBehaviour
 
     public int[] GetBonesIndexesFromHirachly(BodyPartAndPutInObj part)
     {
-        Transform[] transforms = bones;
         int[] instanceID = new int[part.zombieBodyControls.Length];
         int[] indexes = new int[part.zombieBodyControls.Length];
 
@@ -134,11 +258,11 @@ public class BlankZombie : MonoBehaviour
             instanceID[i] = part.zombieBodyControls[i].transform.GetInstanceID();
         }
 
-        for (int i = 0; i < transforms.Length; i++)
+        for (int i = 0; i < bonesID.Length; i++)
         {
             for (int k = 0; k < instanceID.Length; k++)
             {
-                if (transforms[i].GetInstanceID() == instanceID[k])
+                if (bonesID[i] == instanceID[k])
                 {
                     indexes[k] = i;
                 }
@@ -184,4 +308,7 @@ public class BlankZombie : MonoBehaviour
 
         return bones;
     }
+
+    
+    
 }
