@@ -16,11 +16,11 @@ public class PlatformController : MonoBehaviour
 
     private IEnumerator SequentialEnableElements()
     {
-        EnableInteractObject();
-        yield return new WaitForEndOfFrame();
         EnableSpawnCivillian();
         yield return new WaitForEndOfFrame();
         EnableSpawnZombie();
+        yield return new WaitForEndOfFrame();
+        EnableInteractObject();
         yield return null;
     }
 

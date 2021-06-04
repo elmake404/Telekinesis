@@ -10,7 +10,7 @@ public class ZombieBodyControl : ObjectToPick
     public Collider attachedCollider;
     public Rigidbody attachedRigidbody;
     [HideInInspector] public bool isAttachCharacterJoint;
-    protected float minForce = 5.0f;
+    protected float minForce = 15.0f;
     //[HideInInspector] public ZombieBodyControl thisZombieBodyControl;
     protected CharacterJoint attachedCharacterJoint;
 
@@ -70,5 +70,20 @@ public class ZombieBodyControl : ObjectToPick
         return attachedCharacterJoint;
     }
 
-
+    public bool IsIntersectOtherObjectToPick(Collision collision)
+    {
+        bool isIntersect = false;
+            ContactPoint[] contactPoints = collision.contacts;
+            for (int i = 0; i < contactPoints.Length; i++)
+            {
+                if (contactPoints[i].separation < 0f)
+                {
+                    Debug.Log("Lesss");
+                    isIntersect = true;
+                    break;
+                }
+            }
+        
+        return isIntersect;
+    }
 }

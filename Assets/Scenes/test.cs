@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    public Collider collider1;
-    public Collider collider2;
+    public Rigidbody boxRigidbody;
 
     private void Start()
     {
-        Physics.IgnoreCollision(collider1, collider2);
+        boxRigidbody.maxDepenetrationVelocity = 0.1f;
     }
 }
 

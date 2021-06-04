@@ -124,10 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f50b244f737eb94b9302328799e965e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedType: 6
+  isAttachedToRope: 0
   objectRigidbody: {fileID: 7304393813655726112}
   objectCollider: {fileID: 2518701154381190003}
   interactParticles: {fileID: 195900, guid: ec61825cb06be72419bb09eee03af08c, type: 3}
-  selectedType: 3
 --- !u!1 &3381790512992046951
 GameObject:
   m_ObjectHideFlags: 0

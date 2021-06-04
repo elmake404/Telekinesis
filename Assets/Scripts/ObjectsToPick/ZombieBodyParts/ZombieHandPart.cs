@@ -44,8 +44,9 @@ public class ZombieHandPart : ZombieBodyControl
 
     new private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.collider.name);
+        if (IsIntersectOtherObjectToPick(collision) == true) { return; }
         float force = GetRelativeVelocityMagnitude(collision);
-
 
         if (force > minForce)
         {

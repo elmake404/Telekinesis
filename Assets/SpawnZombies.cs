@@ -18,19 +18,18 @@ public class SpawnZombies : MonoBehaviour
     private void Start()
     {
         thisSpawnZombies = GetComponent<SpawnZombies>();
-        
         SpawnCreatEnemy();
     }
 
     private void CreateEnemy()
     {
-        GameObject instanceZombie = Instantiate(zombiePrefabBones);
+        Vector3 posSpawn = GetPosSpawn();
+        GameObject instanceZombie = Instantiate(zombiePrefabBones, posSpawn, Quaternion.identity);
         ZombieBehaviour currentZombieControl = instanceZombie.GetComponent<ZombieBehaviour>();
         linksToSpawnedZombies.Add(currentZombieControl);
         currentZombieControl.SetSpawnZombies(thisSpawnZombies);
         currentZombieControl.SetCivillianController(civilianController);
-        Vector3 posSpawn = GetPosSpawn();
-        instanceZombie.transform.position = posSpawn;
+        
     }
 
     private Vector3 GetPosSpawn()
