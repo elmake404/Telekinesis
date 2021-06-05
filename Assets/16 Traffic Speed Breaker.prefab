@@ -92,7 +92,7 @@ BoxCollider:
   m_GameObject: {fileID: 3381790512992046949}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.049999997, y: 0.024000004, z: 0.039845984}
   m_Center: {x: 0, y: 0, z: -0.0000000027939684}
@@ -119,15 +119,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3381790512992046949}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f50b244f737eb94b9302328799e965e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedType: 3
+  isAttachedToRope: 0
   objectRigidbody: {fileID: 7304393813655726112}
   objectCollider: {fileID: 2518701154381190003}
   interactParticles: {fileID: 195900, guid: ec61825cb06be72419bb09eee03af08c, type: 3}
-  selectedType: 3
 --- !u!1 &3381790512992046951
 GameObject:
   m_ObjectHideFlags: 0
