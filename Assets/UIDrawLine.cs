@@ -95,7 +95,7 @@ public class UIDrawLine : MonoBehaviour
             uniqueIDStorage[0] = ropeCollision.GetUniqueID();
 
             slowMotionControl.StopTime();
-            postprocessing.EnableEffect();
+            //postprocessing.EnableEffect();
             connectedObjects[0] = new ConnectedObject(raycastHit.point, raycastHit.rigidbody, raycastHit.collider);
             drawPoints.Add(Input.mousePosition);
             uIMeshRenderer.meshedPoints.AddPoint(GetUIScaledPoint(Input.mousePosition));
@@ -136,7 +136,7 @@ public class UIDrawLine : MonoBehaviour
         uIMeshRenderer.UpdateMesh();
         drawPoints.Clear();
         slowMotionControl.ContinueTime();
-        postprocessing.DisableEffect();
+        //postprocessing.DisableEffect();
     }
 
     private List <Vector2> GetSimpleSpline()

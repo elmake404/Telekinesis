@@ -19,7 +19,7 @@ public class PlatformController : MonoBehaviour
         EnableSpawnCivillian();
         yield return new WaitForEndOfFrame();
         EnableSpawnZombie();
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.5f);
         EnableInteractObject();
         yield return null;
     }

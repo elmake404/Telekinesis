@@ -12,8 +12,7 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerMove playerMove;
     private PlayerState currentPlayerState = PlayerState.playerIsNormal;
-    //private Transform currentPlayerLoc;
-    //private Transform destinationLoc;
+
 
     private void SwitchState(PlayerState state)
     {
@@ -38,17 +37,13 @@ public class PlayerController : MonoBehaviour
         SwitchState(currentPlayerState);
     }
 
-    /*public void SetCurrentAndDestinationLoc(Transform current, Transform destination)
-    {
-        currentPlayerLoc = current;
-        destinationLoc = destination;
-    }*/
+
 
     private void InitMove()
     {
         Vector3 currentPlayerLoc = transform.position;
         Vector3 destinationLoc = currentPlayerLoc;
-        destinationLoc.z += -20.0f;
+        destinationLoc.z += -50.0f;
         playerMove.SetCurrentLocateAndDestination(currentPlayerLoc, destinationLoc);
         playerMove.EnablePlayerMove();
         

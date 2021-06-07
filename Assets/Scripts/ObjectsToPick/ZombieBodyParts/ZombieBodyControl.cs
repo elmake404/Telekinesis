@@ -10,7 +10,7 @@ public class ZombieBodyControl : ObjectToPick
     public Collider attachedCollider;
     public Rigidbody attachedRigidbody;
     [HideInInspector] public bool isAttachCharacterJoint;
-    protected float minForce = 15.0f;
+    protected float minForce = 3.0f;
     //[HideInInspector] public ZombieBodyControl thisZombieBodyControl;
     protected CharacterJoint attachedCharacterJoint;
 
@@ -22,7 +22,7 @@ public class ZombieBodyControl : ObjectToPick
 
     protected override void Start()
     {
-        attachedRigidbody.maxAngularVelocity = 1f;
+        //attachedRigidbody.maxAngularVelocity = 1f;
     }
 
     protected override void OnJointBreak(float breakForce)

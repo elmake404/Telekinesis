@@ -17,16 +17,11 @@ public class PlayerMove : MonoBehaviour
         isSwitchPlatform = false;
     }
 
-    private void Start()
-    {
-        currentLerpTime = 0f;
-    }
-
     void Update()
     {
         currentLerpTime += Time.deltaTime;
 
-        if (currentLerpTime > 1.0f && isSwitchPlatform == false)
+        if (currentLerpTime > 0.5f && isSwitchPlatform == false)
         {
             isSwitchPlatform = true;
             GeneralManager.instance.platformsController.SwitchToTheNextPlatform();
@@ -37,7 +32,7 @@ public class PlayerMove : MonoBehaviour
             currentLerpTime = lerpTime;
             playerController.SwitchStateAction(PlayerState.playerIsNormal);
             GeneralManager.instance.platformsController.platformControllers[GeneralManager.instance.platformsController.GetCurrentIndexPlatform()].DisableThisPlatform();
-            //GeneralManager.instance.platformsController.SwitchToTheNextPlatform();
+            GeneralManager.instance.platformsController.SwitchToTheNextPlatform();
             GeneralManager.instance.platformsController.AddIndexToCurrentPlatform();
             DisablePlayerMove();
         }
@@ -47,7 +42,7 @@ public class PlayerMove : MonoBehaviour
         float t = currentLerpTime / lerpTime;
         t = t * t * t * (t * (6f * t - 15f) + 10f);
         transform.position = Vector3.Lerp(startPos, endPos, t);
-
+        Debug.Log("PlayerMove");
 
     }
 
