@@ -11,7 +11,7 @@ public class GeneralManager : MonoBehaviour
     public ZombieConstructor zombieConstructor;
     public PlatformsController platformsController;
     public PlayerController playerController;
-    public SlowMotionControl slowMotionControl;
+    public SlowMotionBehaviour slowMotionControl;
     public CivilianConstructor civilianConstructor;
     public Canvas canvas;
     public RectTransform canvasRectTransform;

@@ -30,6 +30,8 @@ public class ZombieBodyControl : ObjectToPick
         zombieControl.InitBreakJoint(zombieBodyPartID, this);
     }
 
+    
+
     public void IgnoreRopeColliderWithZombieBody(Collider ropeCollider)
     {
         Physics.IgnoreCollision(attachedCollider, ropeCollider);
@@ -78,7 +80,7 @@ public class ZombieBodyControl : ObjectToPick
             {
                 if (contactPoints[i].separation < 0f)
                 {
-                    Debug.Log("Lesss");
+                    //Debug.Log("Lesss");
                     isIntersect = true;
                     break;
                 }

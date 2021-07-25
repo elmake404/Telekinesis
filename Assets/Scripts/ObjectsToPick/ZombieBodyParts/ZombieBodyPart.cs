@@ -11,6 +11,7 @@ public class ZombieBodyPart : ZombieBodyControl
     protected override void Start()
     {
         base.Start();
+        
     }
 
     public override void SetWithRopeConnected(ConnectedPin connectedPin)
@@ -52,18 +53,32 @@ public class ZombieBodyPart : ZombieBodyControl
     
     new private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.name);
+        //Debug.Log(collision.collider.name);
         if (IsIntersectOtherObjectToPick(collision) == true) { return; }
         float force = GetRelativeVelocityMagnitude(collision);
 
-        if (force > minForce)
+        /*if (force > minForce)
         {
             if (collision.collider.gameObject.layer == 8)
             {
                 return;
             }
             zombieControl.InitDeathZombie();
+        }*/
+
+        ContactPoint[] contactPoints = new ContactPoint[10];
+        int numOfContacts = collision.GetContacts(contactPoints);
+        for (int i = 0; i < numOfContacts; i++)
+        {
+            if (contactPoints[i].otherCollider.gameObject.layer == 8)
+            {
+                if (contactPoints[i].otherCollider.attachedRigidbody.velocity.magnitude > 5f)
+                {
+                    zombieControl.InitDeathZombie();
+                }
+            }
+
         }
-        
+
     }
 }

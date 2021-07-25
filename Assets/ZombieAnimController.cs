@@ -33,7 +33,7 @@ public class ZombieAnimController : MonoBehaviour
         {
             case ZombieAnimationState.isAttack:
                 animator.SetTrigger(attackID);
-                Debug.Log("Attack anim state");
+                //Debug.Log("Attack anim state");
                 break;
             case ZombieAnimationState.isIdle:
                 animator.SetTrigger(idleID);

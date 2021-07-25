@@ -7,12 +7,13 @@ public class RopeLengthController : MonoBehaviour
 {
     public UIMeshedSpiral uIMeshedSpiral;
     public GameObject circle;
+    public Canvas canvas;
     private float canvasScale;
     private float yOffsetSpiral = 100f;
 
     private void Start()
     {
-        canvasScale = GeneralManager.instance.canvas.scaleFactor;
+        canvasScale = canvas.scaleFactor;
         yOffsetSpiral *= canvasScale;
         
     }

@@ -23,12 +23,13 @@ public class SpawnZombies : MonoBehaviour
 
     private void CreateEnemy()
     {
+
         Vector3 posSpawn = GetPosSpawn();
         GameObject instanceZombie = Instantiate(zombiePrefabBones, posSpawn, Quaternion.identity);
         ZombieBehaviour currentZombieControl = instanceZombie.GetComponent<ZombieBehaviour>();
         linksToSpawnedZombies.Add(currentZombieControl);
         currentZombieControl.SetSpawnZombies(thisSpawnZombies);
-        currentZombieControl.SetCivillianController(civilianController);
+        //currentZombieControl.SetCivillianController(civilianController);
         
     }
 
@@ -104,23 +105,6 @@ public class SpawnZombies : MonoBehaviour
     }
 }
 
-public enum ZombieBodyPartID
-{
-    body,
-    head,
-    rightHand,
-    leftHand,
-    rightFoot,
-    leftFoot
-}
 
-
-
-[System.Serializable] public struct BodyPartAndPutInObj
-{
-    public ZombieBodyPartID zombieBodyPartID;
-    public ZombieBodyControl[] zombieBodyControls;
-    public GameObject[] usedBodyParts;
-}
 
 

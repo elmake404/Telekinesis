@@ -24,16 +24,20 @@ public class ZombieBehaviour : MonoBehaviour
     [HideInInspector] public bool isInterCollisionWithOther = false;
     
     
-    [HideInInspector] protected SpawnZombies spawnZombies;
+    //[HideInInspector] protected SpawnZombies spawnZombies;
     [HideInInspector] public bool isRopeBreak = false;
     [HideInInspector] public bool isPinned = false;
 
     private ZombieState currentState = ZombieState.none;
-    private CivilianController civillianController;
+    private Transform _survivorTransform;
+    private Transform _platformTransform;
     private GameObject thisGameObject;
     private float yRotate = 0;
     private bool isEnabledRagdoll = false;
     private Rigidbody[] rigidbodies;
+
+    public delegate void DelegateAttackAnimationTrigger();
+    public event DelegateAttackAnimationTrigger OnAttackAnimationTrigger;
 
     private void Start()
     {
@@ -46,6 +50,11 @@ public class ZombieBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         IterateCurrentState();
+    }
+
+    public void SubscribeDelegateAttackAnimationTrigger(DelegateAttackAnimationTrigger delegateAttackAnimationTrigger)
+    {
+        OnAttackAnimationTrigger += delegateAttackAnimationTrigger;
     }
 
     public void SwichZombieState(ZombieState state)
@@ -61,7 +70,7 @@ public class ZombieBehaviour : MonoBehaviour
                 break;
             case ZombieState.zombieAttack:
                 zombieAnimController.SetAnimation(ZombieAnimationState.isAttack);
-                spawnZombies.StopAnotherZombies(this.GetHashCode());
+                //spawnZombies.StopAnotherZombies(this.GetHashCode());
                 break;
             case ZombieState.zombieIdle:
                 zombieAnimController.SetAnimation(ZombieAnimationState.isIdle);
@@ -93,21 +102,28 @@ public class ZombieBehaviour : MonoBehaviour
         }
     }
 
-    public void SetCivillianController(CivilianController controller)
+    public void SetSurvivorTransform(Transform transform)
     {
-        civillianController = controller;
+        _survivorTransform = transform;
+    }
+
+    public void SetPlatformTransform(Transform transform)
+    {
+        _platformTransform = transform;
     }
 
     public void SetSpawnZombies(SpawnZombies spawn)
     {
-        spawnZombies = spawn;
+        //spawnZombies = spawn;
     }
 
     public void AttackTriggerAnimation()
     {
-        spawnZombies.InitCivillianDead();
+        
+        OnAttackAnimationTrigger?.Invoke();
+        //Debug.Log("Attack!!");
     }
-
+    
     private void SetIgnoreSelfCollisions()
     {
         Collider[] colliders = transform.GetComponentsInParent<Collider>();
@@ -157,7 +173,7 @@ public class ZombieBehaviour : MonoBehaviour
         if (currentState == ZombieState.zombieDie) { return; }
         SwichZombieState(ZombieState.zombieDie);
         blankEnemy.StartDelayReductionBreakForce();
-        spawnZombies.AddNumOfDeadZombies();
+        //spawnZombies.AddNumOfDeadZombies();
         InitRagdoll();
     }
 
@@ -198,8 +214,8 @@ public class ZombieBehaviour : MonoBehaviour
 
         blankEnemy.PrepareBonesForSlicedPart(zombieBodyControls, partID);
         Transform newRootBone;
-        blankEnemy.ReBuildHirachlyBones(instantiatedBones[0], zombieBodyControls, partID, out newRootBone);
-        SpawnParticles.InParent(spawnZombies, bloodParticles, newRootBone);
+        blankEnemy.ReBuildHirachlyBones(_platformTransform ,instantiatedBones[0], zombieBodyControls, partID, out newRootBone);
+        //SpawnParticles.InParent(spawnZombies, bloodParticles, newRootBone);
         RelinkSlicedParts(instantiatedBones, partAndPutInObj);
         DisableZombieBodyPartsControllers(partAndPutInObj);
 
@@ -280,25 +296,50 @@ public class ZombieBehaviour : MonoBehaviour
 
     private void RotateToTarget()
     {
-        Vector3 playerCamPos = civillianController.transform.position;
-        Vector3 normaDirToPlayer = (playerCamPos - transform.position).normalized;
-        float yTargetRotate = Mathf.Atan2(normaDirToPlayer.x, transform.forward.z) * Mathf.Rad2Deg;
-        yRotate = Mathf.MoveTowards(yRotate, yTargetRotate, 20f * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0, yRotate, 0);
+        Vector3 normaDirToPlayer = (_survivorTransform.position - transform.position).normalized;
+        Quaternion rotate = Quaternion.identity;
+        Quaternion orignRotate = Quaternion.LookRotation(transform.forward);
+        rotate = Quaternion.RotateTowards(orignRotate, rotate, Time.deltaTime);
+        rotate.SetLookRotation(normaDirToPlayer);
+
+        /*float yTargetRotate = Mathf.Atan2(normaDirToPlayer.x, transform.forward.z) * Mathf.Rad2Deg;
+        yRotate = Mathf.MoveTowards(yRotate, yTargetRotate, 20f * Time.deltaTime);*/
+        //transform.rotation = Quaternion.Euler(0, yRotate, 0);
+        transform.rotation = rotate;
     }
 
     private void MoveToPlayer()
     {
         if (isInterCollisionWithOther == true) { return; }
-        Vector3 playerPos = civillianController.transform.position;
+        Vector3 playerPos = _survivorTransform.position;
         playerPos.y = 0f;
-        Vector3 pos = Vector3.MoveTowards(transform.position, playerPos, Time.deltaTime/2f);
+        Vector3 pos = Vector3.MoveTowards(transform.position, playerPos, Time.deltaTime * 0.5f);
         transform.position = pos;
     }
 
     private float CalculateDistanceToCivillian()
     {
-        return Vector3.Distance(transform.position, civillianController.transform.position);
+        return Vector3.Distance(transform.position, _survivorTransform.position);
     }
 
+}
+
+public enum ZombieBodyPartID
+{
+    body,
+    head,
+    rightHand,
+    leftHand,
+    rightFoot,
+    leftFoot
+}
+
+
+
+[System.Serializable]
+public struct BodyPartAndPutInObj
+{
+    public ZombieBodyPartID zombieBodyPartID;
+    public ZombieBodyControl[] zombieBodyControls;
+    public GameObject[] usedBodyParts;
 }

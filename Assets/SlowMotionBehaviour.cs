@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowMotionControl : MonoBehaviour
+public class SlowMotionBehaviour : MonoBehaviour
 {
     private float slowFactor = 0.05f;
     private float cacheFixedDeltaTime = 0f;
-    public bool isSlowMotion = false;
+    [HideInInspector] public bool isSlowMotion = false;
 
     private void Start()
     {

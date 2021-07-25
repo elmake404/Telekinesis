@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
     [HideInInspector] public Camera mainCamera;
-    public Postprocessing postprocessingCamera;
+
 
     private void OnEnable()
     {
@@ -28,5 +28,9 @@ public class CameraController : MonoBehaviour
         return ray;
     }
 
-    
+    private void OnDisable()
+    {
+        instance = null;
+        Debug.Log("Destroy");
+    }
 }

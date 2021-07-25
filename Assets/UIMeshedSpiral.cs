@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIMeshedSpiral : Graphic
 {
     [Range(0, 100)] public int sliderToggle;
+    public Canvas canvas;
     public float width;
     private float canvasScale;
 
@@ -14,7 +15,7 @@ public class UIMeshedSpiral : Graphic
     protected override void Start()
     {
         if (!Application.isPlaying) { return; }
-        canvasScale = GeneralManager.instance.canvas.scaleFactor;
+        canvasScale = canvas.scaleFactor;
         
     }
 
