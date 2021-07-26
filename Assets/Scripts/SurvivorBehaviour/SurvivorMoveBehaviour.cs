@@ -80,8 +80,12 @@ public class SurvivorMoveBehaviour
         {
             if (contactPoints[i].otherCollider.gameObject.layer == 8)
             {
-                OnStartDeceleration?.Invoke();
-                break;
+                TypeOfConnected type = contactPoints[i].otherCollider.gameObject.GetComponent<IRopeCollision>().GetTypeOfConnected();
+                if (type == TypeOfConnected.simpleObject)
+                {
+                    OnStartDeceleration?.Invoke();
+                    break;
+                }
             }
         }
     }
@@ -105,7 +109,7 @@ public class SurvivorMoveBehaviour
 
     private void StopDeceleration()
     {
-        Debug.Log("UnsubscribeDeceleration");
+        ///Debug.Log("UnsubscribeDeceleration");
         _levelBehaviour.UnSubscribeUpdaterDelegate(DecelerationSpeed);
         
         _speedMove = _maxSpeedMove;

@@ -83,6 +83,12 @@ public class ZombieHeadPart : ZombieBodyControl
                 if (contactPoints[i].otherCollider.attachedRigidbody.velocity.magnitude > 5f)
                 {
                     zombieControl.InitDeathZombie();
+                    break;
+                }
+                else if (expectedCollisionObjectID == contactPoints[i].otherCollider.gameObject.GetHashCode())
+                {
+                    zombieControl.InitDeathZombie();
+                    break;
                 }
             }
 

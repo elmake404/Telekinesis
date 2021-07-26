@@ -9,6 +9,7 @@ public class ZombieBodyControl : ObjectToPick
     public ZombieBodyPartID zombieBodyPartID;
     public Collider attachedCollider;
     public Rigidbody attachedRigidbody;
+    [HideInInspector] public int expectedCollisionObjectID;
     [HideInInspector] public bool isAttachCharacterJoint;
     protected float minForce = 3.0f;
     //[HideInInspector] public ZombieBodyControl thisZombieBodyControl;
@@ -30,7 +31,10 @@ public class ZombieBodyControl : ObjectToPick
         zombieControl.InitBreakJoint(zombieBodyPartID, this);
     }
 
-    
+    public void PropagateTheExpectedObjectOverTheBody(int id)
+    {
+        zombieControl.AddExpectedObjectToCollision(id);
+    }
 
     public void IgnoreRopeColliderWithZombieBody(Collider ropeCollider)
     {

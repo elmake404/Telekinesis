@@ -55,6 +55,6 @@ public class LevelBehaviour : MonoBehaviour
     public void UnSubscribeUpdaterDelegate(UpdaterDelegate updaterDelegate)
     {
         OnActionUpdater -= updaterDelegate;
-        Debug.Log("Usubscribe");
+        //Debug.Log("Usubscribe");
     }
 }

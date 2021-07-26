@@ -46,6 +46,11 @@ public class ZombieBodyPart : ZombieBodyControl
         
     }
 
+    public void AddExpectedObjectToTheCollision(int id)
+    {
+        zombieControl.AddExpectedObjectToCollision(id);
+    }
+
     public void IgnoreRopeColliders(Collider[] colliders)
     {
         
@@ -75,6 +80,12 @@ public class ZombieBodyPart : ZombieBodyControl
                 if (contactPoints[i].otherCollider.attachedRigidbody.velocity.magnitude > 5f)
                 {
                     zombieControl.InitDeathZombie();
+                    break;
+                }
+                else if (expectedCollisionObjectID == contactPoints[i].otherCollider.gameObject.GetHashCode())
+                {
+                    zombieControl.InitDeathZombie();
+                    break;
                 }
             }
 

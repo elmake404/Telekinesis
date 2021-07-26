@@ -65,7 +65,7 @@ public class BlankZombie : MonoBehaviour
                         if (partAndPutInObj[i].zombieBodyControls[z].isBreakingJoint == true)
                         {
                             CharacterJoint characterJoint = partAndPutInObj[i].zombieBodyControls[z].GetAttachedCahracterJoint();
-                            characterJoint.breakForce = Mathf.Lerp(5000f, 300f, p / 15f);
+                            characterJoint.breakForce = Mathf.Lerp(1000f, 300f, p / 15f);
                         }
                     }
                     
@@ -309,6 +309,15 @@ public class BlankZombie : MonoBehaviour
         return bones;
     }
 
-    
+    public void AddExpectedObjectToAllBody(int id)
+    {
+        for (int i = 0; i < partAndPutInObj.Length; i++)
+        {
+            for (int k = 0; k < partAndPutInObj[i].zombieBodyControls.Length; k++)
+            {
+                partAndPutInObj[i].zombieBodyControls[k].expectedCollisionObjectID = id;
+            }
+        }
+    }
     
 }

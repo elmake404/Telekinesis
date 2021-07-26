@@ -31,6 +31,6 @@ public class CameraController : MonoBehaviour
     private void OnDisable()
     {
         instance = null;
-        Debug.Log("Destroy");
+        //Debug.Log("Destroy");
     }
 }

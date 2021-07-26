@@ -52,6 +52,11 @@ public class ZombieBehaviour : MonoBehaviour
         IterateCurrentState();
     }
 
+    public void AddExpectedObjectToCollision(int id)
+    {
+        blankEnemy.AddExpectedObjectToAllBody(id);
+    }
+
     public void SubscribeDelegateAttackAnimationTrigger(DelegateAttackAnimationTrigger delegateAttackAnimationTrigger)
     {
         OnAttackAnimationTrigger += delegateAttackAnimationTrigger;
@@ -215,7 +220,7 @@ public class ZombieBehaviour : MonoBehaviour
         blankEnemy.PrepareBonesForSlicedPart(zombieBodyControls, partID);
         Transform newRootBone;
         blankEnemy.ReBuildHirachlyBones(_platformTransform ,instantiatedBones[0], zombieBodyControls, partID, out newRootBone);
-        //SpawnParticles.InParent(spawnZombies, bloodParticles, newRootBone);
+        SpawnParticles.InParent(this, bloodParticles, newRootBone);
         RelinkSlicedParts(instantiatedBones, partAndPutInObj);
         DisableZombieBodyPartsControllers(partAndPutInObj);
 

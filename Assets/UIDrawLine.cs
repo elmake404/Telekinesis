@@ -19,8 +19,8 @@ public class UIDrawLine : MonoBehaviour
     [SerializeField] private RopesController _ropesController;
     private float drawLineLength = 0f;
     private int[] uniqueIDStorage = new int[2];
-    
-
+    private TypeOfConnected[] typeOfConnecteds = new TypeOfConnected[2];
+    private GameObject[] raycastedObjects = new GameObject[2];
 
     private void Start()
     {
@@ -88,12 +88,14 @@ public class UIDrawLine : MonoBehaviour
         RaycastHit raycastHit;
         //bool isHit = Physics.Raycast(ray, out raycastHit, 100f, hitToOnject);
         bool isHit = Physics.SphereCast(ray.origin, 0.5f, ray.direction, out raycastHit, 100f, hitToOnject);
-        //Debug.Log(raycastHit.collider.gameObject.name);
-        //Debug.DrawRay(ray.origin + 3f * ray.direction, raycastHit.point, Color.red, Mathf.Infinity);
 
         if (isHit == true)
         {
             IRopeCollision ropeCollision = raycastHit.collider.gameObject.GetComponent<IRopeCollision>();
+            TypeOfConnected typeOfConnected = ropeCollision.GetTypeOfConnected();
+            raycastedObjects[0] = raycastHit.collider.gameObject;
+            typeOfConnecteds[0] = typeOfConnected;
+
             uniqueIDStorage[0] = ropeCollision.GetUniqueID();
             _slowMotionControl.StopTime();
             //postprocessing.EnableEffect();
@@ -121,12 +123,55 @@ public class UIDrawLine : MonoBehaviour
         if (isHit == true)
         {
             IRopeCollision ropeCollision = raycastHit.collider.gameObject.GetComponent<IRopeCollision>();
+            TypeOfConnected typeOfConnected = ropeCollision.GetTypeOfConnected();
+            raycastedObjects[1] = raycastHit.collider.gameObject;
+            typeOfConnecteds[1] = typeOfConnected;
+
+            bool isSimpleObjectAttached = typeOfConnecteds[0] == TypeOfConnected.simpleObject | typeOfConnecteds[1] == TypeOfConnected.simpleObject? (typeOfConnecteds[0] == typeOfConnecteds[1]? false : true) : false;
+            if (isSimpleObjectAttached)
+            {
+                System.Func<TypeOfConnected, bool> isZombieBodyPart = delegate (TypeOfConnected type)
+                {
+                    bool result = false;
+                    switch (type)
+                    {
+                        case TypeOfConnected.none:
+                            break;
+                        case TypeOfConnected.zombieBody:
+                        case TypeOfConnected.zombieHead:
+                        case TypeOfConnected.zombieFoot:
+                        case TypeOfConnected.zombieHand:
+                            result = true;
+                            break;
+                        case TypeOfConnected.barrelBomb:
+                            break;
+                        case TypeOfConnected.simpleObject:
+                            break;
+                        case TypeOfConnected.staticSimpleObject:
+                            break;
+                    }
+                    return result;
+                };
+                
+                bool isFirstConnect = isZombieBodyPart.Invoke(typeOfConnecteds[0]);
+                bool isSecondConnect = isZombieBodyPart.Invoke(typeOfConnecteds[1]);
+
+                System.Action<int> actionIfZombieBody = delegate (int index)
+                {
+                    ZombieBodyControl zombieBodyControl = raycastedObjects[index == 0 ? 1 : 0].GetComponent<ZombieBodyControl>();
+                    zombieBodyControl.zombieControl.AddExpectedObjectToCollision(uniqueIDStorage[index]);
+                };
+
+                if (isFirstConnect) { actionIfZombieBody.Invoke(1); }
+                else if (isSecondConnect) { actionIfZombieBody.Invoke(0); }
+            }
+            
+
             uniqueIDStorage[1] = ropeCollision.GetUniqueID();
-            Debug.Log(uniqueIDStorage[0] + "   " + uniqueIDStorage[1]);
+            //Debug.Log(uniqueIDStorage[0] + "   " + uniqueIDStorage[1]);
 
             if (uniqueIDStorage[0] != uniqueIDStorage[1])
             {
-                
                 connectedObjects[1] = new ConnectedObject(raycastHit.point, raycastHit.rigidbody, raycastHit.collider);
                 _ropesController.CreateNewRope(GetSimpleSpline(), connectedObjects);
                 
