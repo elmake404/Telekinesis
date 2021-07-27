@@ -40,7 +40,7 @@ public class SurvivorBehaviour
 
     public void SubscribeEnemiesWhenPlatformCreates(PlatformBehaviour platformBehaviour)
     {
-        PlatformType platformType = platformBehaviour.platformType;
+        PlatformType platformType = platformBehaviour.platformType.platformType;
         switch (platformType)
         {
             case PlatformType.standartPlatformType:

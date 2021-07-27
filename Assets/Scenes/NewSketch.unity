@@ -308,12 +308,72 @@ MonoBehaviour:
         type: 3}
       platformBehaviour: {fileID: 3519828195850859713, guid: 092d94e39dc33714ea7760694cdb7d18,
         type: 3}
-      platformType: 0
+      platformType:
+        platformType: 0
+        platformID: 0
     - gameObject: {fileID: 2975686672453073253, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
         type: 3}
       platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
         type: 3}
-      platformType: 1
+      platformType:
+        platformType: 1
+        platformID: 0
+    - gameObject: {fileID: 2975686672453073253, guid: 7bc671ae51743194f88c7defb61e3023,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 1
+    - gameObject: {fileID: 2975686672453073253, guid: dbcea94527d183b4fb126eaef08cad1f,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 2
+    - gameObject: {fileID: 2975686672453073253, guid: 31a65107b1f7a8f47b351d21d206f2bf,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 3
+    - gameObject: {fileID: 2975686672453073253, guid: 1fd138ae801fe654ebe703c418ab2f64,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 4
+    - gameObject: {fileID: 2975686672453073253, guid: 059d9f72587b4f945824d0352edc23c6,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 5
+    - gameObject: {fileID: 2975686672453073253, guid: 53595afad50df8546bf6a0255400d13b,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 6
+    - gameObject: {fileID: 2975686672453073253, guid: 1fd138ae801fe654ebe703c418ab2f64,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 7
+    - gameObject: {fileID: 2975686672453073253, guid: 4923141b10dd8e74ea50ae940bfa9d12,
+        type: 3}
+      platformBehaviour: {fileID: 2570249949366894934, guid: 6ec9d337302ae28428bb9fb1f22d2e14,
+        type: 3}
+      platformType:
+        platformType: 0
+        platformID: 8
     generatePlatformPattern: {fileID: 11400000, guid: 559389a1f51832145a46bbe784486b6d,
       type: 2}
   _survivorAnimator: {fileID: 1358108987}
@@ -492,7 +552,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 35
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -518,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070108824}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 4, z: -2}
+  m_LocalPosition: {x: 0, y: 12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

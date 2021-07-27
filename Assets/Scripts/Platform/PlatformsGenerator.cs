@@ -6,7 +6,7 @@ public enum PlatformType
 {
     standartPlatformType,
     safePlatformType,
-    platform_003
+    
 }
 
 public class PlatformsGenerator
@@ -124,7 +124,7 @@ public class PlatformsGenerator
     private PlatformBehaviour ReleaseSelectedPattern(int indexPattern)
     {
         
-        PlatformType selectedPattern = _generatePattern.spawnQueue[indexPattern];
+        Platform selectedPattern = _generatePattern.spawnQueue[indexPattern];
         GameObject instance = GameObject.Instantiate(_serializeStructPlatforms.GetSerializePlatformUnit(selectedPattern).gameObject);
         PlatformBehaviour behaviour = instance.GetComponent<PlatformBehaviour>();
         behaviour.InitionalAssign(_levelBehaviour);
@@ -152,12 +152,12 @@ public struct SerializeStructPlatforms
     public ScriptableGeneratePlatformPattern generatePlatformPattern;
 
 
-    public bool IsFindTypeAvaileble(PlatformType type)
+    public bool IsFindTypeAvaileble(Platform type)
     {
         bool result = false;
         for (int i = 0; i < platforms.Count; i++)
         {
-            if (platforms[i].platformType == type)
+            if (platforms[i].platformType.platformType == type.platformType && platforms[i].platformType.platformID == type.platformID)
             {
                 result = true;
                 break;
@@ -165,13 +165,13 @@ public struct SerializeStructPlatforms
         }
         return result;
     }
-    public SerializePlatformUnit GetSerializePlatformUnit(PlatformType type)
+    public SerializePlatformUnit GetSerializePlatformUnit(Platform type)
     {
         SerializePlatformUnit platformUnit = new SerializePlatformUnit();
 
         for (int i = 0; i < platforms.Count; i++)
         {
-            if (platforms[i].platformType == type)
+            if (platforms[i].platformType.platformType == type.platformType && platforms[i].platformType.platformID == type.platformID)
             {
                 platformUnit = platforms[i];
                 break;
@@ -186,5 +186,5 @@ public struct SerializePlatformUnit
 {
     public GameObject gameObject;
     public PlatformBehaviour platformBehaviour;
-    public PlatformType platformType;
+    public Platform platformType;
 }

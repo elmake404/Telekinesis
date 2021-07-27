@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d116486258612154bbc520c96ef6f6f9, type: 3}
   m_Name: PlatformGeneratorPattern_001
   m_EditorClassIdentifier: 
-  spawnQueue: 0000000000000000000000000000000001000000
+  spawnQueue:
+  - platformType: 0
+    platformID: 0
+  - platformType: 0
+    platformID: 1
+  - platformType: 0
+    platformID: 2
+  - platformType: 0
+    platformID: 3
+  - platformType: 0
+    platformID: 4
+  - platformType: 0
+    platformID: 5
+  - platformType: 0
+    platformID: 6
+  - platformType: 0
+    platformID: 7
+  - platformType: 0
+    platformID: 8
+  - platformType: 1
+    platformID: 0

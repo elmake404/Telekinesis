@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class PlatformBehaviour : MonoBehaviour
 {
-    public PlatformType platformType;
+    //public PlatformType platformType;
+    public Platform platformType;
 
     protected Bounds _bounds;
     protected List<ZombieBehaviour> _zombieBehaviours;
