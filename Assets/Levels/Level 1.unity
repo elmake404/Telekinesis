@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 55631700}
   - component: {fileID: 55631703}
   - component: {fileID: 55631704}
+  - component: {fileID: 55631705}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -159,7 +160,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.37299997, g: 0.8917481, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.48256254, g: 0.4666667, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -253,6 +254,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   postprocessingCamera: {fileID: 0}
+--- !u!114 &55631705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55631699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b9ae18c04c25345a5622a4d1fdcf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &314311202 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8036918644017844992, guid: 046c01d4f9eb23b47bb16b18f975b2bb,
@@ -315,10 +328,10 @@ Light:
     m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.244
-    m_Bias: 0.05
+    m_Strength: 1
+    m_Bias: 0
     m_NormalBias: 0
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0

@@ -71,7 +71,6 @@ public class UIDrawLine : MonoBehaviour
             drawPoints.Add(point);
             uIMeshRenderer.meshedPoints.AddPoint(GetUIScaledPoint(point));
             uIMeshRenderer.UpdateMesh();
-            return;
         }
         
     }
@@ -114,7 +113,7 @@ public class UIDrawLine : MonoBehaviour
         RaycastHit raycastHit;
         bool isHit = Physics.Raycast(ray, out raycastHit, 100f, hitToOnject);
 
-        if (isHit == true)
+        if (isHit)
         {
             IRopeCollision ropeCollision = raycastHit.collider.gameObject.GetComponent<IRopeCollision>();
             uniqueIDStorage[1] = ropeCollision.GetUniqueID();
@@ -126,7 +125,7 @@ public class UIDrawLine : MonoBehaviour
                 
             }
         }
-        else if (isHit == false)
+        else
         {
             uIMeshRenderer.meshedPoints.Clear();
             uIMeshRenderer.UpdateMesh();
