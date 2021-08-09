@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 3953755005444042422}
   - component: {fileID: 1885602474277733972}
   - component: {fileID: 2296527871648860190}
-  - component: {fileID: 6189255521622980753}
-  m_Layer: 0
+  - component: {fileID: 2663077135891995837}
+  - component: {fileID: 1638111769275751964}
+  - component: {fileID: 8299132567336918205}
+  m_Layer: 8
   m_Name: Military_Roadblock_Stripes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +57,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -66,6 +70,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -78,8 +83,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6189255521622980753
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2663077135891995837
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,7 +94,39 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -6482301412729332824, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 3.0000005, y: 1.0084851, z: 0.7988432}
+  m_Center: {x: -0.0000019073486, y: 0.50424254, z: 0}
+--- !u!54 &1638111769275751964
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557392290800749516}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8299132567336918205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557392290800749516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f50b244f737eb94b9302328799e965e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedType: 6
+  isAttachedToRope: 0
+  objectRigidbody: {fileID: 1638111769275751964}
+  objectCollider: {fileID: 2663077135891995837}
+  interactParticles: {fileID: 187952, guid: c05e92eaee7a00844867e5edc8e0dde1, type: 3}

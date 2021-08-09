@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 998301044451333934}
   - component: {fileID: 3686989701491088440}
   - component: {fileID: 2678455105645052191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Container_Door1_Red_Grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,6 +54,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -65,6 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -77,6 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1443233823164641132
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +92,7 @@ GameObject:
   - component: {fileID: 5161407767675225961}
   - component: {fileID: 5807586286617402072}
   - component: {fileID: 8478620303442459875}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Container_Door4_Red_Grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,6 +135,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -142,6 +148,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -154,6 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2588397931193823189
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +174,9 @@ GameObject:
   - component: {fileID: 8715845242848790648}
   - component: {fileID: 8542930170623447743}
   - component: {fileID: -2443151423995929302}
-  m_Layer: 0
+  - component: {fileID: 1545619103138098648}
+  - component: {fileID: 7256947615755052750}
+  m_Layer: 8
   m_Name: Container_Red_Grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,6 +223,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -224,6 +236,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -236,6 +249,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &-2443151423995929302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -249,6 +263,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.3734007, y: 3.564934, z: 3.6005087}
   m_Center: {x: 0.000034689903, y: 1.7824651, z: 0.00000029802322}
+--- !u!54 &1545619103138098648
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2588397931193823189}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7256947615755052750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2588397931193823189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3c7b4757bcb1e43951346c9059d798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedType: 7
+  isAttachedToRope: 0
+  thisCollider: {fileID: -2443151423995929302}
+  interactParticles: {fileID: 187952, guid: c05e92eaee7a00844867e5edc8e0dde1, type: 3}
 --- !u!1 &4255490052681847668
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +306,7 @@ GameObject:
   - component: {fileID: 6638199780229225077}
   - component: {fileID: 3615015302093907377}
   - component: {fileID: 1654356472845318884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Container_Door3_Red_Grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,6 +349,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -314,6 +362,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -326,6 +375,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5659311353396593305
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +387,7 @@ GameObject:
   - component: {fileID: 5516279323085149235}
   - component: {fileID: 3842055191000098049}
   - component: {fileID: 8428974465782543293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Container_Door2_Red_Grey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,6 +430,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -391,6 +443,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -403,3 +456,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
