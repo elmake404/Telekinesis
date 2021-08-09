@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 330500823846571630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8794855629075602718}
   - {fileID: 2466023828108403214}
@@ -479,6 +479,7 @@ MonoBehaviour:
   zombieBodyPartID: 0
   attachedCollider: {fileID: 7912895036476325548}
   attachedRigidbody: {fileID: 2927928064878114685}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &1406505029835203421
 GameObject:
@@ -719,6 +720,7 @@ MonoBehaviour:
   zombieBodyPartID: 4
   attachedCollider: {fileID: 5049401645586344948}
   attachedRigidbody: {fileID: 581738991862461252}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &1541602134663510157
 GameObject:
@@ -1130,6 +1132,7 @@ MonoBehaviour:
   zombieBodyPartID: 3
   attachedCollider: {fileID: 6978273859035436961}
   attachedRigidbody: {fileID: 9051398982172577297}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &2118978653547598557
 GameObject:
@@ -1400,6 +1403,7 @@ MonoBehaviour:
   zombieBodyPartID: 2
   attachedCollider: {fileID: 6871889794586232700}
   attachedRigidbody: {fileID: 7720891735149953779}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &2694817882127718574
 GameObject:
@@ -1950,6 +1954,7 @@ MonoBehaviour:
   zombieBodyPartID: 2
   attachedCollider: {fileID: 1899344921949178744}
   attachedRigidbody: {fileID: 5261861968868057413}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &4110769757931607780
 GameObject:
@@ -2190,6 +2195,7 @@ MonoBehaviour:
   zombieBodyPartID: 5
   attachedCollider: {fileID: 2614744556275314340}
   attachedRigidbody: {fileID: 4680990253722936664}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &4559257679052368981
 GameObject:
@@ -2351,6 +2357,7 @@ MonoBehaviour:
   zombieBodyPartID: 5
   attachedCollider: {fileID: 6872321932741901856}
   attachedRigidbody: {fileID: 6487495153378135394}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &5068839859099930601
 GameObject:
@@ -2622,6 +2629,7 @@ MonoBehaviour:
   zombieBodyPartID: 3
   attachedCollider: {fileID: 395971557709199190}
   attachedRigidbody: {fileID: 2534720324700725568}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &5412008290051657198
 GameObject:
@@ -3064,6 +3072,7 @@ MonoBehaviour:
   zombieBodyPartID: 4
   attachedCollider: {fileID: 1124296459248251272}
   attachedRigidbody: {fileID: 4491514326972932985}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &6248325942866098482
 GameObject:
@@ -3223,7 +3232,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.20838106, y: 0.22007275, z: 0.18348683}
+  m_Size: {x: 0.20838106, y: 0.22007275, z: 0.24}
   m_Center: {x: 0.000000029802322, y: 0.052725375, z: -0.0099463705}
 --- !u!54 &4934278877590080658
 Rigidbody:
@@ -3305,6 +3314,7 @@ MonoBehaviour:
   zombieBodyPartID: 0
   attachedCollider: {fileID: 381568605375463044}
   attachedRigidbody: {fileID: 4934278877590080658}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &6442688478044128468
 GameObject:
@@ -3523,7 +3533,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.11284231
+  m_Radius: 0.15
   m_Center: {x: 1.2051896e-15, y: 0.08508935, z: 0.015378879}
 --- !u!54 &1526198207859060263
 Rigidbody:
@@ -3605,6 +3615,7 @@ MonoBehaviour:
   zombieBodyPartID: 1
   attachedCollider: {fileID: 8890370559502139337}
   attachedRigidbody: {fileID: 1526198207859060263}
+  expectedCollisionObjectID: 0
   isAttachCharacterJoint: 0
 --- !u!1 &7959941673608637569
 GameObject:

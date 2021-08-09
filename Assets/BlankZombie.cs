@@ -65,7 +65,7 @@ public class BlankZombie : MonoBehaviour
                         if (partAndPutInObj[i].zombieBodyControls[z].isBreakingJoint == true)
                         {
                             CharacterJoint characterJoint = partAndPutInObj[i].zombieBodyControls[z].GetAttachedCahracterJoint();
-                            characterJoint.breakForce = Mathf.Lerp(5000f, 300f, p / 15f);
+                            characterJoint.breakForce = Mathf.Lerp(1000f, 300f, p / 15f);
                         }
                     }
                     
@@ -95,8 +95,8 @@ public class BlankZombie : MonoBehaviour
 
     public Transform[] GetInstantiatedBones()
     {
-        
         Transform instanceBonesHolder = Instantiate(bones[0], transform);
+        
         Transform[] bonesInBonesHolder = instanceBonesHolder.GetComponentsInChildren<Transform>();
         Transform[] tunedBones = new Transform[bones.Length];
 
@@ -196,7 +196,7 @@ public class BlankZombie : MonoBehaviour
         return usingCollider.ToArray();
     }
 
-    public void ReBuildHirachlyBones(Transform rootBone, ZombieBodyControl[] zombieBodyControls, ZombieBodyPartID partID, out Transform beginJoint)
+    public void ReBuildHirachlyBones(Transform platformTransform, Transform rootBone, ZombieBodyControl[] zombieBodyControls, ZombieBodyPartID partID, out Transform beginJoint)
     {
         beginJoint = rootBone;
         for (int i = 0; i < zombieBodyControls.Length; i++)
@@ -204,7 +204,7 @@ public class BlankZombie : MonoBehaviour
             if (zombieBodyControls[i].zombieBodyPartID == partID && zombieBodyControls[i].isBreakingJoint)
             {
                 beginJoint = zombieBodyControls[i].transform;
-                beginJoint.SetParent(null);
+                beginJoint.SetParent(platformTransform);
                 rootBone.SetParent(beginJoint);
             }
         }
@@ -309,6 +309,15 @@ public class BlankZombie : MonoBehaviour
         return bones;
     }
 
-    
+    public void AddExpectedObjectToAllBody(int id)
+    {
+        for (int i = 0; i < partAndPutInObj.Length; i++)
+        {
+            for (int k = 0; k < partAndPutInObj[i].zombieBodyControls.Length; k++)
+            {
+                partAndPutInObj[i].zombieBodyControls[k].expectedCollisionObjectID = id;
+            }
+        }
+    }
     
 }

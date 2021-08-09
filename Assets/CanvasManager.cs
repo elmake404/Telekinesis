@@ -16,16 +16,16 @@ public class CanvasManager : MonoBehaviour
     public Button nextLevelButton;
 
 
-    private string keyCurrentLevel = "currentLevel";
-    private string keyCountCompletedLevel = "countLevel";
-    private int currentIndexLevel;
-    private string textTemplate = "Level";
+    private string _keyCurrentLevel = "currentLevel";
+    private string _keyCountCompletedLevel = "countLevel";
+    private int _currentIndexLevel;
+    private string _textTemplate = "Level";
 
 
     private void Start()
     {
         //PlayerPrefs.DeleteAll();
-        currentIndexLevel = SceneManager.GetActiveScene().buildIndex;
+        _currentIndexLevel = SceneManager.GetActiveScene().buildIndex;
         OnClickEventRestartScene();
         OnClickEventWinScene();
     }
@@ -45,7 +45,7 @@ public class CanvasManager : MonoBehaviour
     {
         int maxSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
         Debug.Log(maxSceneIndex);
-        int nextSceneIndex = currentIndexLevel + 1;
+        int nextSceneIndex = _currentIndexLevel + 1;
 
         if (nextSceneIndex > maxSceneIndex)
         {
@@ -63,19 +63,20 @@ public class CanvasManager : MonoBehaviour
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(currentIndexLevel);
+        //SceneManager.LoadScene(_currentIndexLevel);
+        SceneManager.LoadScene(0);
     }
 
     public void SaveIncreasedCompletedCountLevel()
     {
-        int currentNum =  PlayerPrefs.GetInt(keyCountCompletedLevel);
+        int currentNum =  PlayerPrefs.GetInt(_keyCountCompletedLevel);
         if (currentNum == 0)
         {
-            PlayerPrefs.SetInt(keyCountCompletedLevel, 1);
+            PlayerPrefs.SetInt(_keyCountCompletedLevel, 1);
         }
         else
         {
-            PlayerPrefs.SetInt(keyCountCompletedLevel, currentNum + 1);
+            PlayerPrefs.SetInt(_keyCountCompletedLevel, currentNum + 1);
         }
 
         
@@ -83,7 +84,7 @@ public class CanvasManager : MonoBehaviour
 
     public int GetCompletedLevelCount()
     {
-        int num = PlayerPrefs.GetInt(keyCountCompletedLevel);
+        int num = PlayerPrefs.GetInt(_keyCountCompletedLevel);
         if (num == 0) { num = 1; }
         else { num += 1; }
         return num;
@@ -91,23 +92,23 @@ public class CanvasManager : MonoBehaviour
 
     public void SaveLevelId(int numOfLevel)
     {
-        PlayerPrefs.SetInt(keyCurrentLevel, numOfLevel);
+        PlayerPrefs.SetInt(_keyCurrentLevel, numOfLevel);
     }
 
     public int GetSavedLevelId()
     {
-        return PlayerPrefs.GetInt(keyCurrentLevel);
+        return PlayerPrefs.GetInt(_keyCurrentLevel);
     }
 
     public void DelayActivateFailBlock()
     {
-        levelFailText.text = textTemplate + " " + GetCompletedLevelCount();
+        levelFailText.text = _textTemplate + " " + GetCompletedLevelCount();
         StartCoroutine(RunDelayActivateFailBlock());
     }
 
     public void DelayActivateWinBlock()
     {
-        levelWinText.text = textTemplate + " " + GetCompletedLevelCount();
+        levelWinText.text = _textTemplate + " " + GetCompletedLevelCount();
         StartCoroutine(RunDelayActivateWinBlock());
     }
 

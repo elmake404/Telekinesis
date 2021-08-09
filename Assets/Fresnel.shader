@@ -8,6 +8,7 @@
 		_FresnelBias ("Fresnel Bias", Float) = 0
 		_FresnelScale ("Fresnel Scale", Float) = 1
 		_FresnelPower ("Fresnel Power", Float) = 1
+        _FatAmount ("Fat Amount", Range(0,1)) = 1
 
         [NoScaleOffset] _MainTex ("Texture", 2D) = "white" {}
 
@@ -37,6 +38,8 @@
             #pragma multi_compile_shadowcaster
             #include "UnityCG.cginc"
 
+            fixed _FatAmount;
+
             struct v2f { 
                 V2F_SHADOW_CASTER;
             };
@@ -44,6 +47,7 @@
             v2f vert(appdata_base v)
             {
                 v2f o;
+                v.vertex.xyz += v.normal * _FatAmount;
                 TRANSFER_SHADOW_CASTER_NORMALOFFSET(o)
                 return o;
             }
@@ -87,11 +91,12 @@
 			fixed _FresnelBias;
 			fixed _FresnelScale;
 			fixed _FresnelPower;
+            fixed _FatAmount;
 
 			v2f vert(appdata_t v)
 			{
 				v2f o;
-				o.pos = UnityObjectToClipPos(v.pos);
+				o.pos = UnityObjectToClipPos(v.pos.xyz + v.normal * _FatAmount);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex0);
 
 				float3 i = normalize(ObjSpaceViewDir(v.pos));
@@ -118,7 +123,7 @@
             #pragma fragment frag
             #include "UnityCG.cginc"
             #include "Lighting.cginc"
-
+            fixed _FatAmount;
             // compile shader into multiple variants, with and without shadows
             // (we don't care about any lightmaps yet, so skip these variants)
             #pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
@@ -136,6 +141,7 @@
             v2f vert (appdata_base v)
             {
                 v2f o;
+                v.vertex.xyz += v.normal * _FatAmount;
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv = v.texcoord;
                 half3 worldNormal = UnityObjectToWorldNormal(v.normal);

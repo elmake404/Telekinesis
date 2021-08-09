@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uIMeshedSpiral: {fileID: 1889333109195829058}
   circle: {fileID: 2953401864066686001}
+  canvas: {fileID: 8952637249889045902}
 --- !u!1 &1574626640448003101
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +492,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   sliderToggle: 100
+  canvas: {fileID: 8952637249889045902}
   width: 10
 --- !u!1 &3467899926508035687
 GameObject:
@@ -1070,6 +1072,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   canvasRectTransform: {fileID: 9213384514894405817}
+  _canvas: {fileID: 8952637249889045902}
+  _slowMotionControl: {fileID: 0}
+  _camera: {fileID: 0}
+  _ropesController: {fileID: 0}
 --- !u!1 &6473251446175156985
 GameObject:
   m_ObjectHideFlags: 0
